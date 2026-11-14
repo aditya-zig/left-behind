@@ -1,0 +1,30 @@
+name: Check
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run assets:verify
+      - run: npm run check
+      - run: npx playwright install --with-deps chromium
+      - name: Production browser checks
+        run: |
+          npm run preview -- --host 127.0.0.1 > /tmp/left-behind-preview.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          BASE_URL=http://127.0.0.1:4173 npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          path: test-results/

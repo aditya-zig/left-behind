@@ -1,0 +1,20 @@
+{
+  "eagle": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+  "rover": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C",
+  "alsep": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
+  "surveyor": "https://science.nasa.gov/mission/surveyor-3/",
+  "reflector": "https://www.nasa.gov/missions/apollo/apollo-11/the-apollo-experiment-that-keeps-on-giving/",
+  "sojourner": "https://science.nasa.gov/mission/mars-pathfinder/",
+  "spirit": "https://science.nasa.gov/mission/mer-spirit/",
+  "opportunity": "https://science.nasa.gov/mission/mer-opportunity/",
+  "viking1": "https://science.nasa.gov/mission/viking-1/",
+  "viking2": "https://science.nasa.gov/mission/viking-2/",
+  "phoenix": "https://science.nasa.gov/mission/phoenix/",
+  "insight": "https://science.nasa.gov/mission/insight/",
+  "ingenuity": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+  "dawn": "https://science.nasa.gov/mission/dawn/",
+  "near": "https://science.nasa.gov/mission/near-shoemaker/",
+  "pioneer10": "https://science.nasa.gov/mission/pioneer-10/",
+  "pioneer11": "https://science.nasa.gov/mission/pioneer-11/",
+  "kepler": "https://science.nasa.gov/mission/kepler/"
+}
