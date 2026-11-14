@@ -504,5 +504,29 @@
       "retrieved": "2026-11-14",
       "caption": "NASA Goddard / Ernie Wright; LRO camera and laser altimeter teams. Visualization map, not navigation-grade."
     }
+  },
+  "galaxy": {
+    "photo": {
+      "file": "/assets/galaxy.jpg",
+      "source": "https://science.nasa.gov/photojournal/our-milky-way-gets-a-makeover-artist-concept/",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia10/pia10748/PIA10748.jpg",
+      "kind": "NASA artist concept",
+      "bytes": 2049707,
+      "sha256": "aa6e5e2e96f0f7f3ab6499389a35cbf0899190f6cfc0196fe85acf4e5f9077d8",
+      "retrieved": "2026-11-14",
+      "caption": "Our Milky Way Gets a Makeover (PIA10748). NASA/JPL-Caltech/R. Hurt (SSC). Artist concept, not an external photograph of our galaxy."
+    }
+  },
+  "sun": {
+    "photo": {
+      "file": "/assets/sun-sdo.jpg",
+      "source": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000790",
+      "download": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000790/GSFC_20171208_Archive_e000790~medium.jpg",
+      "bytes": 176120,
+      "sha256": "002b7ea2f005e9138577753a3114e174251f94a25552f6b8a2afd128bcb5f594",
+      "retrieved": "2026-11-14",
+      "kind": "NASA SDO archival solar image",
+      "caption": "NASA's SDO Sees Giant Filament on the Sun. NASA/SDO. Archival instrument image, not a live solar feed."
+    }
   }
 }

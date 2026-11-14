@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "node --import tsx --test tests/*.test.ts",
-    "test:e2e": "node tests/browser.mjs",
+    "test:e2e": "node tests/cinematic.mjs",
     "test:prep": "node tests/prep.mjs",
     "check": "npm run test && npm run build",
     "assets:verify": "node scripts/restore-assets.mjs --verify",

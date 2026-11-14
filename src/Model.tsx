@@ -6,7 +6,7 @@ export const assetLibrary:Record<string,Record<string,Asset>>=resources;
 export function assetFor(artifact:Artifact){return assetLibrary[artifact.assetKey??artifact.id]??{};}
 // model-viewer can fail before dispatching an error when WebGL2 is absent.
 // Detect that case before importing it, then keep the NASA photograph usable.
-const webGLAvailable=(()=>{
+export const webGLAvailable=(()=>{
   try{
     const gl=document.createElement('canvas').getContext('webgl2');
     if(!gl)return false;
@@ -14,7 +14,7 @@ const webGLAvailable=(()=>{
     return true;
   }catch{return false;}
 })();
-export default function Model({artifact}:{artifact:Artifact}){
+export default function Model({artifact,autoRotate=false}:{artifact:Artifact;autoRotate?:boolean}){
   const asset=assetFor(artifact);
   const element=useRef<HTMLElement>(null);
   const [failed,setFailed]=useState(!webGLAvailable);
@@ -37,6 +37,7 @@ export default function Model({artifact}:{artifact:Artifact}){
         alt:`NASA reference 3D model of ${artifact.name}. ${artifact.modelNote??'Reference geometry, not a real-time spacecraft view.'}`,
         'camera-controls':true,'touch-action':'pan-y','interaction-prompt':'none','shadow-intensity':'0','exposure':'1.4',
         'camera-orbit':'35deg 65deg auto','field-of-view':'30deg','loading':'eager','reveal':'auto',
+        'auto-rotate':autoRotate,'auto-rotate-delay':0,'rotation-per-second':'12deg',
       })}
       {!loaded&&<span className="media-loading" role="status">Preparing NASA model…</span>}
       <span className="media-tag">NASA 3D reference · drag to inspect</span>

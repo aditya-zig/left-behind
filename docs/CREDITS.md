@@ -43,4 +43,13 @@ Local Draco decoder files are copied unmodified from Three.js 0.172.0 `examples/
 
 ## Original work and AI disclosure
 
-The interface, collection structure, explanatory comparisons and third-person educational scripts are original application work, with AI assistance for implementation, research organization and wording. They are not NASA transmissions, quotations, official NASA narration, or official guidance. No generated space images, generated videos or generated animations are bundled. Device speech synthesis is optional and is not a recorded human performance.
+The interface, collection structure, explanatory comparisons and third-person educational scripts are original application work, with AI assistance for implementation, research organization and wording. They are not NASA transmissions, quotations, official NASA narration, or official guidance. No AI-generated space imagery, videos or equipment models were created for the project. Device speech synthesis is optional and is not a recorded human performance.
+
+## Local redesign media (not pushed)
+
+- **NASA+ animation excerpts:** *Moon Base, The Series | Lunar Rovers*, https://plus.nasa.gov/video/moon-base-update-lunar-rovers/. Operator-supplied film, animation-only straight cuts, no interviews/audio. These are future exploration concepts, not historical recordings. NASA publication does not remove original contributor rights. Per-cut provenance and derived-file checksums: `src/media.json`.
+- **Blip UFO:** operator-supplied `3d.zip/mascot-ufo.html`. Geometry, materials and motion are adapted from that supplied source, preserved in `docs/assets/mascot-ufo.source.txt`. It is a fictional interface guide, not a NASA model. The local adaptation removes its CDN imports, generated star background, chat/export controls and `/api/speak` network call.
+- **PIA10748:** NASA/JPL-Caltech/R. Hurt, Milky Way artist concept, https://science.nasa.gov/photojournal/our-milky-way-gets-a-makeover-artist-concept/.
+- **GSFC_20171208_Archive_e000790:** archival NASA SDO Sun image, https://images.nasa.gov/details/GSFC_20171208_Archive_e000790. Not a live feed.
+
+The two additional original NASA image files are recorded in `src/assets.json`; the derived NASA+ MP4 and actual-frame poster have their own provenance register. Equipment without a matching NASA 3D model remains an explicitly labelled NASA image. No substitute model is represented as the historical object.
