@@ -8,5 +8,6 @@ dist/
 !.env.example
 test-results/
 playwright-report/
+.taste-skill/
 .DS_Store
 *.log

@@ -23,6 +23,7 @@ jobs:
           npm run preview -- --host 127.0.0.1 > /tmp/left-behind-preview.log 2>&1 &
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
           BASE_URL=http://127.0.0.1:4173 npm run test:e2e
+          BASE_URL=http://127.0.0.1:4173 npm run test:prep
       - uses: actions/upload-artifact@v4
         if: always()
         with:

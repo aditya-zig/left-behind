@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="A simple, one-question-at-a-time rehearsal guide for presenting Left Behind.">
+  <title>Left Behind — Presentation practice</title>
+  <link rel="icon" href="./favicon.svg">
+  <link rel="stylesheet" href="./prep.css">
+  <script src="./prep.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to practice</a>
+  <header class="shell topbar">
+    <a class="brand" href="./">Left Behind <span>Presentation practice</span></a>
+    <a href="./" target="_blank" rel="noopener">Open the project ↗</a>
+  </header>
+  <main id="main" class="shell" tabindex="-1">
+    <div class="intro">
+      <h1>Your project, in plain words.</h1>
+      <p>Read one answer. Understand it. Say it in your own words.</p>
+    </div>
+    <nav aria-label="Practice sections" class="tabs">
+      <button type="button" data-view="learn">Learn the answers</button>
+      <button type="button" data-view="basics">NASA basics</button>
+      <button type="button" data-view="mentor">Talk to the mentor</button>
+      <button type="button" data-view="practice">Practise answering</button>
+    </nav>
+    <div class="voice-settings">
+      <label for="speed">Reading speed</label>
+      <select id="speed"><option value="0.72">Very slow</option><option value="0.86" selected>Slow</option><option value="1">Normal</option></select>
+      <span id="speech-status" role="status">Read-aloud is optional. No microphone or recording.</span>
+    </div>
+    <div id="content">
+      <section class="panel">
+        <h2>What did we build?</h2>
+        <p class="answer">Left Behind is an interactive space museum. It explains what NASA left on the Moon and Mars, why it stayed, and what we learned.</p>
+        <p>Think of a museum exhibit: you see a machine, learn its story, and can check where the information came from.</p>
+        <noscript><p>Interactive practice needs JavaScript. The basic answer above and the project itself remain readable.</p></noscript>
+      </section>
+    </div>
+    <div class="progress-line">
+      <label for="familiar" id="familiar-label">0 of 10 answers marked familiar by you</label>
+      <progress id="familiar" max="10" value="0"></progress>
+      <span>This is your self-check, not a readiness score.</span>
+    </div>
+  </main>
+  <footer class="shell footer">
+    <p>You are explaining a science-communication project. You do not have to know all of NASA.</p>
+    <details><summary>Notes, privacy and sources</summary>
+      <p>This is an unlinked public study page, not a private account. Typed practice notes and self-checks stay in this browser; the page does not send them to a server. Read-aloud uses your browser or operating system’s voice service. We do not record or assess your voice.</p>
+      <p>Examples follow the project’s NASA citations. Open the <a href="./#/sources" target="_blank" rel="noopener">source archive</a> for the original records. Scripts are educational summaries, not NASA quotations. No learning gains or judging outcome are claimed.</p>
+      <button type="button" id="reset">Clear only my practice notes and self-checks</button>
+    </details>
+  </footer>
+</body>
+</html>

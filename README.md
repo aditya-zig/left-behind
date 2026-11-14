@@ -30,6 +30,12 @@ npm run test:e2e         # browser checks against localhost:5173 (start dev sepa
 
 For another server, use `BASE_URL=http://localhost:4173 npm run test:e2e`. An existing Chrome executable can be supplied with `CHROMIUM_PATH=/absolute/path/to/chrome`. E2E results and screenshots are written to ignored `test-results/`.
 
+## Presentation practice
+
+Open [`/prep.html`](https://left-behind-tau.vercel.app/prep.html) for an unlinked, beginner-friendly rehearsal guide: ten short judging answers, plain-English explanations, optional browser read-aloud, three NASA examples, mentor questions and ungraded practice. Notes and self-checks stay in browser storage. This is a public study page, not an authenticated private area. It makes no educational-effectiveness or judging-outcome claim.
+
+Run `BASE_URL=http://localhost:4173 npm run test:prep` against a production preview to check it. Speech controls are tested with a simulated voice service; actual voice availability depends on the browser and operating system.
+
 ## The experience
 
 - **Opening:** four NASA-sourced visual chapters, with pause, manual advance, and skip.
