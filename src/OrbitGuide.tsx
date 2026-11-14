@@ -1,3 +1,4 @@
+import {useEffect,useRef} from 'react';
 export function AlienUfo(){
   return <svg className="alien-ufo" viewBox="0 0 240 180" role="img" aria-label="Orbit, a fictional friendly alien in a flying saucer">
     <defs>
@@ -10,8 +11,8 @@ export function AlienUfo(){
     <path d="M66 114 Q66 27 120 24 Q174 27 174 114Z" fill="url(#ufo-dome)" stroke="#c5e6f0" strokeOpacity=".5" strokeWidth="1.5"/>
     <path d="M96 108 Q96 85 120 86 Q144 85 144 108" fill="#569772"/>
     <path d="M93 58 Q93 37 120 36 Q147 37 147 58 Q146 83 120 94 Q94 83 93 58" fill="url(#alien-skin)"/>
-    <g className="alien-eyes"><ellipse cx="107" cy="64" rx="9" ry="14" transform="rotate(-24 107 64)" fill="#111e23"/><ellipse cx="133" cy="64" rx="9" ry="14" transform="rotate(24 133 64)" fill="#111e23"/><ellipse cx="104" cy="60" rx="2.2" ry="3.7" fill="#dff9ff"/><ellipse cx="130" cy="60" rx="2.2" ry="3.7" fill="#dff9ff"/></g>
-    <path d="M115 83 Q120 87 125 83" fill="none" stroke="#366746" strokeWidth="1.6" strokeLinecap="round"/>
+    <g className="alien-look"><g className="alien-eyes"><ellipse cx="107" cy="64" rx="9" ry="14" transform="rotate(-24 107 64)" fill="#111e23"/><ellipse cx="133" cy="64" rx="9" ry="14" transform="rotate(24 133 64)" fill="#111e23"/><ellipse cx="104" cy="60" rx="2.2" ry="3.7" fill="#dff9ff"/><ellipse cx="130" cy="60" rx="2.2" ry="3.7" fill="#dff9ff"/></g></g>
+    <path className="alien-mouth" d="M115 83 Q120 87 125 83" fill="none" stroke="#366746" strokeWidth="1.6" strokeLinecap="round"/>
     <path d="M82 68 Q80 45 98 35" stroke="#e2faff" strokeOpacity=".6" strokeWidth="3" fill="none" strokeLinecap="round"/>
     <ellipse cx="120" cy="119" rx="95" ry="27" fill="#263645"/><ellipse cx="120" cy="111" rx="100" ry="22" fill="url(#ufo-metal)"/>
     <ellipse cx="120" cy="110" rx="66" ry="11" fill="#667b8d" fillOpacity=".3"/>
@@ -20,13 +21,19 @@ export function AlienUfo(){
   </svg>;
 }
 
-type Props={text:string;title:string;voice:boolean;voiceSupported:boolean;motion:boolean;minimized:boolean;onToggleVoice:()=>void;onMinimize:()=>void;onNext?:()=>void;onDetails?:()=>void;travelling:boolean};
+type Props={text:string;title:string;voice:boolean;voiceSupported:boolean;narrating?:boolean;motion:boolean;minimized:boolean;onToggleVoice:()=>void;onMinimize:()=>void;onNext?:()=>void;onDetails?:()=>void;travelling:boolean};
 export default function OrbitGuide(p:Props){
-  return <aside className={`orbit-guide ${p.motion?'guide-animated':''} ${p.minimized?'guide-minimized':''} ${p.travelling?'guide-travelling':''}`} aria-label="Orbit's guided story">
+  const ref=useRef<HTMLElement>(null);
+  useEffect(()=>{
+    if(!p.motion||p.minimized)return;let frame=0,x=0,y=0;
+    const move=(event:PointerEvent)=>{x=event.clientX;y=event.clientY;if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const host=ref.current;if(!host)return;const r=host.querySelector('.ufo-button')?.getBoundingClientRect();if(!r)return;const dx=Math.max(-1,Math.min(1,(x-r.x-r.width/2)/250)),dy=Math.max(-1,Math.min(1,(y-r.y-r.height/2)/250));host.style.setProperty('--look-x',`${dx*4}px`);host.style.setProperty('--look-y',`${dy*3}px`);host.style.setProperty('--look-tilt',`${dx*5}deg`);});};
+    window.addEventListener('pointermove',move,{passive:true});return()=>{window.removeEventListener('pointermove',move);cancelAnimationFrame(frame);ref.current?.style.removeProperty('--look-x');ref.current?.style.removeProperty('--look-y');ref.current?.style.removeProperty('--look-tilt');};
+  },[p.motion,p.minimized]);
+  return <aside ref={ref} className={`orbit-guide ${p.motion?'guide-animated':''} ${p.minimized?'guide-minimized':''} ${p.travelling?'guide-travelling':''} ${p.narrating?'guide-speaking':''}`} aria-label="Orbit's guided story">
     {!p.minimized&&<div className="guide-bubble glass">
       <div className="guide-bubble-top"><span>Orbit <span className="guide-role">Your fictional guide</span></span><button aria-label="Minimize guide" onClick={p.onMinimize}>−</button></div>
       <strong className="guide-story-title">{p.title}</strong><p className="guide-speech">{p.text}</p>
-      <div className="guide-actions"><button disabled={!p.voiceSupported} aria-pressed={p.voice} onClick={p.onToggleVoice}>{p.voice?'◖ Voice on':'◖ Voice off'}</button>{p.onNext&&<button onClick={p.onNext}>Next line →</button>}{p.onDetails&&<button onClick={p.onDetails}>More info ↗</button>}</div>
+      {p.onDetails&&<button className="guide-primary" onClick={p.onDetails}>Inspect this equipment ↗</button>}<div className="guide-actions"><button disabled={!p.voiceSupported} aria-pressed={p.voice} onClick={p.onToggleVoice}>{p.voice?'Voice on':'Voice off'}</button>{p.onNext&&<button onClick={p.onNext}>Next thought →</button>}<span className="voice-caption">{p.voice?(p.narrating?'Reading these exact words':'Device voice · exact transcript'):'Read or listen at your pace'}</span></div>
     </div>}
     <button className="ufo-button" aria-label={p.minimized?'Show Orbit guide':'Minimize Orbit guide'} onClick={p.onMinimize}><AlienUfo/></button>
   </aside>;

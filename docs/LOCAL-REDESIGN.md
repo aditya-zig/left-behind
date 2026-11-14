@@ -1,6 +1,6 @@
-# Cinematic redesign — local review only
+# Globe version — checkpoint history
 
-Branch: `main` (local). The restored globe-first checkpoint is committed as `Globe version`. No push or deployment is authorized; the public website remains unchanged.
+Checkpoint: `8acec2d` (`Globe version`), now published on `main` after explicit authorization. The notes below describe its restoration and verification. Current **local-only** judge-feedback changes are on `feedback`; see [FEEDBACK.md](FEEDBACK.md). The feedback branch has not replaced the published site.
 
 Open http://127.0.0.1:5173/ while the local preview is running. To restart: `npm run build && npm run preview -- --port 5173 --strictPort`.
 
@@ -8,7 +8,7 @@ Open http://127.0.0.1:5173/ while the local preview is running. To restart: `npm
 
 Restored the pre-film globe-first interface shown in the operator's reference screenshots: Solar System opening, large Moon/Mars globes, glass navigation and mission dock, and the original Orbit guide. The source was recovered from the earlier local file snapshots, not by resetting public `main`.
 
-The film-first version remains at `7ad7477`. The subsequent local readability work is preserved on `backup/film-before-globe-rollback-20261114` at `8e1c07c`. NASA mission records, media provenance and the presentation coach are retained. No push or deployment was performed.
+The film-first version remains at `7ad7477`. The subsequent local readability work is preserved on `backup/film-before-globe-rollback-20261114` at `8e1c07c`. NASA mission records, media provenance and the presentation coach are retained. The restoration itself was local; the checkpoint was subsequently published after authorization.
 
 ## Restored experience
 

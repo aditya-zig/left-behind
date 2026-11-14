@@ -30,6 +30,8 @@ NASA guidelines: https://www.nasa.gov/nasa-brand-center/images-and-media/. NASA 
 
 ## Fonts
 
+- **Atkinson Hyperlegible Next** (local `feedback` branch interface), The Atkinson Hyperlegible Next Project Authors, SIL Open Font License 1.1. Source: https://github.com/google/fonts/tree/main/ofl/atkinsonhyperlegiblenext. Font: `public/fonts/atkinson-hyperlegible-next.ttf`; full license: `public/fonts/OFL.txt`. Served locally, without a font-service request.
+
 - **Imbue**, The Imbue Project Authors / Etcetera Type Company, SIL Open Font License 1.1. Original: https://github.com/google/fonts/tree/main/ofl/imbue. License: `imbue-OFL.txt`.
 - **Albert Sans**, The Albert Sans Project Authors, SIL Open Font License 1.1. Original: https://github.com/google/fonts/tree/main/ofl/albertsans. License: `albertsans-OFL.txt`.
 
