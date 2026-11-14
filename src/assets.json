@@ -1,0 +1,508 @@
+{
+  "eagle": {
+    "model": {
+      "file": "/assets/eagle.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Apollo%20Lunar%20Module/Apollo%20Lunar%20Module.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Apollo%20Lunar%20Module",
+      "kind": "NASA 3D model",
+      "bytes": 716840,
+      "sha256": "379101dfcee399267addf771709107c35e826b0b9e5233272f123e4c8a585c4e",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/eagle.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Apollo%20Lunar%20Module/Apollo%20Lunar%20Module.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Apollo%20Lunar%20Module",
+      "kind": "NASA model preview",
+      "bytes": 1124858,
+      "sha256": "ceaaee11e4f5475462257287e73f3dcd547e3eab87810e48ffe51a7c66dcaf1f",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/eagle-photo.jpg",
+      "download": "https://images-assets.nasa.gov/image/as11-40-5927/as11-40-5927~medium.jpg",
+      "source": "https://images.nasa.gov/details/as11-40-5927",
+      "kind": "NASA Image and Video Library photograph",
+      "bytes": 189198,
+      "sha256": "1b94294ec9e48b09efc52ec18d92860d79cf70fb0bd9a60397fee60cbff70991",
+      "retrieved": "2026-11-14",
+      "caption": "Buzz Aldrin beside the Apollo 11 lunar module on the Moon. Photograph by Neil Armstrong. NASA.",
+      "nasaId": "as11-40-5927"
+    }
+  },
+  "opportunity": {
+    "model": {
+      "file": "/assets/opportunity.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29",
+      "kind": "NASA 3D model",
+      "bytes": 36668,
+      "sha256": "95c852efb385b55bea3104a0fca2730cd2ef25353af4d38273d3f0bda5c68c31",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/opportunity.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29",
+      "kind": "NASA model preview",
+      "bytes": 302605,
+      "sha256": "41d5aa8faaf467454abd5e4418599995eda17043136529e56486da624b4c2510",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/opportunity-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/1057_rover2_768.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/mer-opportunity/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA/JPL artist concept of a Mars Exploration Rover; not a photograph of Opportunity on Mars.",
+      "bytes": 156616,
+      "sha256": "7b3034b86fb42b199d82726f1d1e2f5e6710da2bea33883ff51ed969f41bb3cb",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "insight": {
+    "model": {
+      "file": "/assets/insight.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/InSight%20Cruise%20Lander/InSight%20Cruise%20Lander%20%28arm%20deployed%29.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/InSight%20Cruise%20Lander",
+      "kind": "NASA 3D model",
+      "bytes": 3949036,
+      "sha256": "298434c885069f49b9e4f1d178e019c7ec2771fe1a9ce21278c70521eb9caac5",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/insight.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/InSight%20Cruise%20Lander/InSight%20Cruise%20Lander%20%28arm%20deployed%29.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/InSight%20Cruise%20Lander",
+      "kind": "NASA model preview",
+      "bytes": 1174859,
+      "sha256": "417b7f96296419116f0082f079acb98883145250fb99161809a4e7df800f310c",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/insight-photo.jpg",
+      "download": "https://science.nasa.gov/wp-content/uploads/2008/02/insight.jpg",
+      "source": "https://science.nasa.gov/mission/insight/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA-published artist concept of InSight on Mars, not a surface photograph.",
+      "bytes": 178801,
+      "sha256": "c069e86352f2188f7c1ddf76c51ba236ec48ba99a03e8784f370f09a179e1729",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "ingenuity": {
+    "model": {
+      "file": "/assets/ingenuity.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Ingenuity%20Mars%20Helicopter/Ingenuity%20Mars%20Helicopter.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Ingenuity%20Mars%20Helicopter",
+      "kind": "NASA 3D model",
+      "bytes": 2019408,
+      "sha256": "9e5a5398ab335eae7d46335085301ce46fb7de052300b645debe8bac6d39f2b5",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/ingenuity.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Ingenuity%20Mars%20Helicopter/Ingenuity%20Mars%20Helicopter.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Ingenuity%20Mars%20Helicopter",
+      "kind": "NASA model preview",
+      "bytes": 562286,
+      "sha256": "65559a8dc72111c73c854cc41c09d953548771070fc2b3931e4e70d407e913dc",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/ingenuity-photo.jpg",
+      "download": "https://science.nasa.gov/wp-content/uploads/2024/06/ingenuity-topiccard-3x2-1.jpg",
+      "source": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+      "kind": "NASA mission photograph",
+      "caption": "Ingenuity on the Martian surface, photographed by Perseverance. NASA/JPL-Caltech.",
+      "bytes": 239116,
+      "sha256": "f3c44a94b51d02ff14fc170f3e301b7f10edf85998692b1b3fdf18f887386d32",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "viking1": {
+    "model": {
+      "file": "/assets/viking1.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Viking%20Lander/Viking%20Lander.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Viking%20Lander",
+      "kind": "NASA 3D model",
+      "bytes": 1849384,
+      "sha256": "1233dc2c96a1c0b08ca9a20f7ed9c09e0223f06f14f6ae6371349504c1929149",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/viking1.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Viking%20Lander/Viking%20Lander.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Viking%20Lander",
+      "kind": "NASA model preview",
+      "bytes": 447880,
+      "sha256": "3d6ef08b7abb92c8f0a6d070371f93e249beba6e0260a0078c7dc4f34c77813b",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/viking1-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/Viking_1_First_Image_From_Mars_1280.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/viking-1/",
+      "kind": "NASA mission photograph",
+      "caption": "The first image returned from the Martian surface by Viking 1. NASA/JPL.",
+      "bytes": 275936,
+      "sha256": "8f03890e1e3d9e335de640ca6f5d2d19a06195504b53244c9c22b5e23cd56bb6",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "dawn": {
+    "model": {
+      "file": "/assets/dawn.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Dawn/Dawn.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Dawn",
+      "kind": "NASA 3D model",
+      "bytes": 927020,
+      "sha256": "411249aed791994b6a2014894ad6bd7ca0445dbcf6d5342af9edc5df988f04b7",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/dawn.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Dawn/Dawn.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Dawn",
+      "kind": "NASA model preview",
+      "bytes": 1118264,
+      "sha256": "2a5c7d395136787354d2155f2a826888c596b912d55fd4ec597a8ad588bcc673",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/dawn-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/2932/Dawn_Artists_Concept.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/dawn/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA-published artist concept of Dawn, not an in-flight photograph.",
+      "bytes": 18371,
+      "sha256": "4e44538ca17dcd2d120371e2e9e2f08b0d40229e00a38a9833c118a1cd5b5971",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "near": {
+    "model": {
+      "file": "/assets/near.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/NEAR%20Shoemaker/NEAR%20Shoemaker.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/NEAR%20Shoemaker",
+      "kind": "NASA 3D model",
+      "bytes": 701808,
+      "sha256": "f3de2f87c97685b207be97e80d7cdca37d1567dd68204e1feb2d85f90e3adb0c",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/near.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/NEAR%20Shoemaker/NEAR%20Shoemaker.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/NEAR%20Shoemaker",
+      "kind": "NASA model preview",
+      "bytes": 696697,
+      "sha256": "18180fa36bba129763365110478c3fc0e1dcfa74c61bdd3b2b828cc54534bbc4",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/near-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/nearspacecraft.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/near-shoemaker/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA-published artist concept of NEAR Shoemaker at asteroid Eros, not a photograph.",
+      "bytes": 305199,
+      "sha256": "17375dee9a0927dcee8d84d4d57f5b7b88f059d9228c40d56dc00b0d3000b1c4",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "pioneer10": {
+    "model": {
+      "file": "/assets/pioneer10.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Pioneer%2010/Pioneer%2010.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Pioneer%2010",
+      "kind": "NASA 3D model",
+      "bytes": 2049840,
+      "sha256": "81443a7fa01cca0dda878cd27692b3307f9c332c4eb8e55a844499d7b350573c",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/pioneer10.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Pioneer%2010/Pioneer%2010.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Pioneer%2010",
+      "kind": "NASA model preview",
+      "bytes": 996987,
+      "sha256": "46a4bd3dc507930f9f3df5fda41b63d65d8b52023968414b5f559c9424a3b5ea",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/pioneer10-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/731/Illustrated_Pioneer_10_at_Jupiter.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/pioneer-10/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA-published illustration of Pioneer 10 at Jupiter; not a spacecraft photograph.",
+      "bytes": 334752,
+      "sha256": "e0525ece58c599c2df1f59f8b1ef0dcb52873d9f7be82b8f4384c26388290f46",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "kepler": {
+    "model": {
+      "file": "/assets/kepler.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Kepler%20%28A%29/Kepler%20%28A%29.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Kepler%20%28A%29",
+      "kind": "NASA 3D model",
+      "bytes": 2003276,
+      "sha256": "382014d90e2cf3e1f23e931d233547e652fe3629fddfb5acb8a99e2ceb72ff19",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/kepler.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Kepler%20%28A%29/Kepler%20%28A%29.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Kepler%20%28A%29",
+      "kind": "NASA model preview",
+      "bytes": 383848,
+      "sha256": "5497ace149d07e6fcd6938b1bcd3221562ad8dfe9eaa03add8c8aeea1e1465aa",
+      "retrieved": "2026-11-14"
+    },
+    "photo": {
+      "file": "/assets/kepler-photo.jpg",
+      "download": "https://images-assets.nasa.gov/image/PIA18904/PIA18904~large.jpg",
+      "source": "https://science.nasa.gov/mission/kepler/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA artist concept of Kepler operating as K2, PIA18904; not an in-flight photograph.",
+      "bytes": 556399,
+      "sha256": "c3e41554bc512d947ba2784fda20d052948482222d3906eda9eed8d5b870ea5f",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "control": {
+    "model": {
+      "file": "/assets/control.glb",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/JSC%20Mission%20Control%20Room/JSC%20Mission%20Control%20Room.glb",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/JSC%20Mission%20Control%20Room",
+      "kind": "NASA 3D model",
+      "bytes": 185220,
+      "sha256": "296d6d12bef495bc1679c55a289e989847661f294f0cbb70354794063f84eaaa",
+      "retrieved": "2026-11-14"
+    },
+    "preview": {
+      "file": "/assets/control.png",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/JSC%20Mission%20Control%20Room/JSC%20Mission%20Control%20Room.png",
+      "source": "https://github.com/nasa/NASA-3D-Resources/tree/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/JSC%20Mission%20Control%20Room",
+      "kind": "NASA model preview",
+      "bytes": 646588,
+      "sha256": "8a7550da1ca9d1a1e53bac6fe41ca3b4d9513252297d6de660c61f63551cfe92",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "surveyor": {
+    "photo": {
+      "file": "/assets/surveyor-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/as12-48-7134_1280.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/surveyor-3/",
+      "kind": "NASA mission photograph",
+      "caption": "An Apollo 12 astronaut visits Surveyor 3 on the Moon, AS12-48-7134. NASA.",
+      "bytes": 449722,
+      "sha256": "a5e502aeb1ce12d1fbb8896532b001cb2fb413889d152bcabe135b273bbc47c9",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "reflector": {
+    "photo": {
+      "file": "/assets/reflector-photo.jpg",
+      "download": "https://images-assets.nasa.gov/image/as11-40-5952/as11-40-5952~medium.jpg",
+      "source": "https://images.nasa.gov/details/as11-40-5952",
+      "kind": "NASA Image and Video Library photograph",
+      "bytes": 597239,
+      "sha256": "26632f848c9097103f8ed6f0337991288c70d6bb18ce284955afed35d44f03f6",
+      "retrieved": "2026-11-14",
+      "caption": "Apollo 11 laser ranging retroreflector array on the lunar surface. NASA.",
+      "nasaId": "as11-40-5952"
+    }
+  },
+  "sojourner": {
+    "photo": {
+      "file": "/assets/sojourner-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/pathfinder20160226-16.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/mars-pathfinder/",
+      "kind": "NASA mission surface panorama",
+      "caption": "The Mars Pathfinder landing region, a NASA/JPL surface panorama.",
+      "bytes": 231768,
+      "sha256": "6593fc20997be658278acc6053aa2195ce1e9ed367475b7bf7008701e8037609",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "spirit": {
+    "photo": {
+      "file": "/assets/spirit-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/rover2-1.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/mer-spirit/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA/JPL artist concept of a Mars Exploration Rover; not a photograph of Spirit on Mars.",
+      "bytes": 353855,
+      "sha256": "744b8f04bb5e6ed765e765d1a7f132cda4a9acef84730aadbb9147d1356969e0",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "viking2": {
+    "photo": {
+      "file": "/assets/viking2-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/3514/Viking_Lander_Line_Drawing-1.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/viking-2/",
+      "kind": "NASA technical illustration",
+      "caption": "NASA technical line drawing of a Viking lander. Not a photograph or final-site reconstruction.",
+      "bytes": 249961,
+      "sha256": "d67340c49423bc977f8144fb76db636ef60224dd7f724eebfa6c764fbcd575b1",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "phoenix": {
+    "photo": {
+      "file": "/assets/phoenix-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/detail_files/2347_Phoenix-Lander-on-Mars-hi-res-300-dpi-full2.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/phoenix/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA-published artist concept of Phoenix on Mars; not a surface photograph.",
+      "bytes": 238439,
+      "sha256": "3602da3d439aac6955470f54b6e245d26a0743b01254d24b4be6a566e1a629b9",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "pioneer11": {
+    "photo": {
+      "file": "/assets/pioneer11-photo.jpg",
+      "download": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/Pioneer11_1600.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "source": "https://science.nasa.gov/mission/pioneer-11/",
+      "kind": "NASA-published artist concept",
+      "caption": "NASA-published artist concept of Pioneer 11, not an in-flight photograph.",
+      "bytes": 285133,
+      "sha256": "8d84593597b12dbc57059bc04d6551918a29c6fc6053fd8e091f96a23bc91a02",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "moon": {
+    "texture": {
+      "file": "/assets/moon.jpg",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/Images%20and%20Textures/Moon/Moon.jpg",
+      "source": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/Images%20and%20Textures/Moon/Moon.jpg",
+      "kind": "NASA texture",
+      "bytes": 2957499,
+      "sha256": "1318334a5089fb186d39996f60677b5f5b42cde74158ceff97b3e2283bfd41d4",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "mars": {
+    "texture": {
+      "file": "/assets/mars.jpg",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/Images%20and%20Textures/Mars/Mars.jpg",
+      "source": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/Images%20and%20Textures/Mars/Mars.jpg",
+      "kind": "NASA texture",
+      "bytes": 972896,
+      "sha256": "12ec6bf02ebd42a246edc778cb2ce8c595b4d9f0892badf0bfff8abb2303c780",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "earth": {
+    "texture": {
+      "file": "/assets/earth.jpg",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/Images%20and%20Textures/Earth%20%28A%29/Earth%20%28A%29.jpg",
+      "source": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/Images%20and%20Textures/Earth%20%28A%29/Earth%20%28A%29.jpg",
+      "kind": "NASA texture",
+      "bytes": 1398329,
+      "sha256": "5e18afce2860f02a215c09954fff5d3d1ca140cafa26c368d24d7636dd6705a7",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "stars": {
+    "texture": {
+      "file": "/assets/stars.jpg",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/Images%20and%20Textures/Hipparcos%20Star%20Map/Hipparcos%20Star%20Map.jpg",
+      "source": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/Images%20and%20Textures/Hipparcos%20Star%20Map/Hipparcos%20Star%20Map.jpg",
+      "kind": "NASA texture",
+      "bytes": 2782926,
+      "sha256": "69df300963b0996fd9678c204bb913fea17e26d1dc74bf5b4593a7ddb3714522",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "mars-terrain": {
+    "terrain": {
+      "file": "/assets/mars-terrain.stl",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Printing/Opportunity%20Landing%20Site/Opportunity%20Landing%20Site.stl",
+      "source": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Printing/Opportunity%20Landing%20Site/Opportunity%20Landing%20Site.stl",
+      "kind": "NASA terrain",
+      "bytes": 2756784,
+      "sha256": "4049e3213e5da0202de079ac0bb60c13db37d9434772d3b8f6657cdece148d5b",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "rover": {
+    "photo": {
+      "file": "/assets/rover-photo.jpg",
+      "download": "https://images-assets.nasa.gov/image/as15-86-11603/as15-86-11603~medium.jpg",
+      "source": "https://images.nasa.gov/details/as15-86-11603",
+      "kind": "NASA Image and Video Library photograph",
+      "bytes": 220064,
+      "sha256": "ef304d4e5cfd929228c3346214468389ab6f49892c36c276d1f60aa65bf75d23",
+      "retrieved": "2026-11-14",
+      "caption": "James Irwin working at the Apollo 15 lunar rover on 31 July 1971. Photograph by David Scott. NASA.",
+      "nasaId": "as15-86-11603"
+    }
+  },
+  "alsep": {
+    "photo": {
+      "file": "/assets/alsep-photo.jpg",
+      "download": "https://images-assets.nasa.gov/image/as12-47-6918/as12-47-6918~medium.jpg",
+      "source": "https://images.nasa.gov/details/as12-47-6918",
+      "kind": "NASA Image and Video Library photograph",
+      "bytes": 171369,
+      "sha256": "5e8d4e2f43573914253091e8215bc5c4d356f657f78bc276fafdcff22fd1c454",
+      "retrieved": "2026-11-14",
+      "caption": "Apollo 12 ALSEP deployed on the Moon, 19 November 1969. Photograph by Alan Bean. NASA.",
+      "nasaId": "as12-47-6918"
+    }
+  },
+  "earthrise": {
+    "photo": {
+      "file": "/assets/earthrise-photo.jpg",
+      "download": "https://images-assets.nasa.gov/image/as11-44-6549/as11-44-6549~medium.jpg",
+      "source": "https://images.nasa.gov/details/as11-44-6549",
+      "kind": "NASA Image and Video Library photograph",
+      "bytes": 93488,
+      "sha256": "c6181615a588748022e580d378eb124543bc63233510d7667ff2bdd631ac1c19",
+      "retrieved": "2026-11-14",
+      "caption": "Earth rising over the lunar horizon, photographed from Apollo 11. NASA.",
+      "nasaId": "as11-44-6549"
+    }
+  },
+  "solar-system": {
+    "photo": {
+      "file": "/assets/solar-system-photo.jpg",
+      "download": "https://images-assets.nasa.gov/image/PIA10969/PIA10969~medium.jpg",
+      "source": "https://images.nasa.gov/details/PIA10969",
+      "kind": "NASA published artist concept",
+      "bytes": 207273,
+      "sha256": "fa23dac0f256daf12491f95316ac0dc034f7b4b5b031cebecbb994ca0bad53c0",
+      "retrieved": "2026-11-14",
+      "caption": "NASA/JPL solar-system montage, artist concept. Not to scale.",
+      "nasaId": "PIA10969"
+    }
+  },
+  "moon-terrain": {
+    "terrain": {
+      "file": "/assets/moon-terrain.stl",
+      "download": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Printing/Apollo%2011%20-%20Landing%20Site/Apollo%2011%20-%20Landing%20Site.stl",
+      "source": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Printing/Apollo%2011%20-%20Landing%20Site/Apollo%2011%20-%20Landing%20Site.stl",
+      "kind": "NASA terrain",
+      "bytes": 7138484,
+      "sha256": "72eae5e493d3966dae392ce7563d66676e5a0b72d9753609d39723c8e84b1c72",
+      "retrieved": "2026-11-14"
+    }
+  },
+  "moon-map": {
+    "texture": {
+      "file": "/assets/moon-map.jpg",
+      "source": "https://svs.gsfc.nasa.gov/4720/",
+      "download": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_2k.jpg",
+      "bytes": 457942,
+      "sha256": "f7130a1822681fa7512d7dcfd40db8c10b9ba4f06777910348698260ed7a2170",
+      "kind": "NASA SVS / LRO CGI Moon Kit color map (2025), equirectangular visualization texture",
+      "retrieved": "2026-11-14",
+      "caption": "NASA Goddard / Ernie Wright; LRO camera and laser altimeter teams. Visualization map, not navigation-grade."
+    }
+  }
+}
