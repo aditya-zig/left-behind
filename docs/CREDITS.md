@@ -7,14 +7,16 @@ The **machine-readable, per-file register** is [`src/assets.json`](../src/assets
 NASA 3D Resources collection, pinned to `11ebb4ee043715aefbba6aeec8a61746fad67fa7`:
 
 - Apollo Lunar Module (full two-stage reference; only the descent stage remained)
-- Mars Exploration Rover — Opportunity (also used as the shared MER reference for Spirit)
+- Mars Exploration Rover — Opportunity
 - InSight Cruise Lander, arm-deployed configuration (not its final dusty surface condition)
 - Ingenuity Mars Helicopter
-- Viking Lander (generic model, used for both Viking landers)
-- Dawn; NEAR Shoemaker; Pioneer 10 (also used as Pioneer 11's shared-design reference); Kepler (A)
+- Viking Lander (generic model, used for Viking 1)
+- Dawn; NEAR Shoemaker; Pioneer 10; Kepler (A)
 - JSC Mission Control Room (opening uses the supplied preview)
 - Apollo 11 Landing Site and Opportunity Landing Site STL printing models
 - Mars map, Hipparcos star catalogue projection, Earth image, lunar reference image and original model previews
+
+Spirit, Viking 2 and Pioneer 11 use their NASA-published mission imagery rather than relabeling a sibling spacecraft’s model.
 
 Collection: https://github.com/nasa/NASA-3D-Resources. Its README lists NASA/JPL and individual contributors and links NASA media guidelines. “NASA model” in the interface means a model distributed in NASA's official collection, not a claim that all conversion work was authored by NASA. Preserve original creator credits and any rights notices found at each linked source.
 

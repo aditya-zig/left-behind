@@ -96,7 +96,7 @@ export const artifacts: Artifact[] = [
     story:'InSight did not need wheels. Its destination was beneath its feet. After landing on a smooth Martian plain, its robotic arm placed a seismometer on the ground. Marsquakes let scientists investigate the planet’s hidden interior. Over time, dust gathered on its solar panels and power dwindled. The lander fell silent in 2022. It remains in Elysium Planitia, while its recordings keep giving scientists a way to look inside Mars.',
     fact:'2018–2022', factLabel:'surface science mission',
     modelNote:'NASA repository model: InSight cruise lander, arm-deployed configuration. This is a reference model, not a reconstruction of its final dusty condition.',
-    sources:[science('insight','Mission purpose, stationary landing site, dates and coordinates.'),{title:'NASA · InSight mission ends',url:'https://www.nasa.gov/news-release/nasa-retires-insight-mars-lander-mission-after-years-of-science/',supports:'Loss of solar power from dust and mission retirement.'}],
+    sources:[science('insight','Mission purpose, stationary landing site, dates and coordinates.'),{title:'NASA · InSight mission ends',url:'https://www.nasa.gov/missions/insight/nasa-retires-insight-mars-lander-mission-after-years-of-science/',supports:'Loss of solar power from dust and mission retirement.'}],
   },
   {
     id:'ingenuity', name:'Ingenuity', mission:'Mars 2020 · Helicopter technology demonstration', world:'mars', year:2021, category:'Experimental aircraft', featured:true,
@@ -180,7 +180,7 @@ export const artifacts: Artifact[] = [
     discovery:'Dawn revealed Vesta and Ceres as distinct, complex worlds and investigated Ceres’ bright salt deposits.',
     story:'Dawn did not settle on a surface. It traveled between worlds, first orbiting Vesta and then Ceres. An efficient ion engine made that unusual journey possible. When its orientation-control fuel ran out in 2018, the science mission ended. The spacecraft stayed in orbit around Ceres. Here, left behind means something different: a silent explorer circling the world it helped reveal, not equipment resting on the Moon or Mars.',
     fact:'2 worlds',factLabel:'orbited: Vesta and Ceres',
-    sources:[science('dawn','Vesta and Ceres exploration.'),{title:'NASA/JPL · Dawn mission ends',url:'https://www.jpl.nasa.gov/news/nasas-dawn-mission-to-asteroid-belt-comes-to-end/',supports:'Hydrazine depletion, 2018 mission end and protective orbit around Ceres.'}],
+    sources:[science('dawn','Vesta and Ceres exploration.'),{title:'NASA · Dawn mission ends',url:'https://www.nasa.gov/news-release/nasas-dawn-mission-to-asteroid-belt-comes-to-end/',supports:'Hydrazine depletion, 2018 mission end and protective orbit around Ceres.'}],
   },
   {
     id:'near',name:'NEAR Shoemaker',mission:'Near Earth Asteroid Rendezvous',world:'beyond',year:1996,category:'Asteroid explorer',featured:false,
