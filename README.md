@@ -2,6 +2,8 @@
 
 **The machines stayed. The discoveries came home.**
 
+**Live experience:** https://left-behind-tau.vercel.app
+
 An independent, source-led web documentary for the NASA Space Apps challenge **Abandoned but not Forgotten: Storytelling about NASA’s Discarded Equipment on the Moon and Mars**.
 
 Explore the Moon and Mars through ten guided stories, eighteen mission records, original NASA reference models, published mission imagery, and inspectable NASA landing-site terrain. No generated space imagery, procedural stars, particle effects, simulated telemetry, or automatic 3D animation.
@@ -66,7 +68,9 @@ Every bundled NASA file has its original download URL, source record, retrieval 
 
 ## Deploy
 
-Import this GitHub repository into Vercel. Framework **Vite**, build **`npm run build`**, output **`dist`**, project root **`.`**, Node **24.x**. No environment variables or paid integrations are necessary. Hash routes work on a plain static host without rewrites.
+Production is deployed at **https://left-behind-tau.vercel.app**, connected to this repository’s `main` branch. The initial import and deployment were performed through the signed-in Vercel interface using computer use.
+
+To deploy your own copy, import this GitHub repository into Vercel. Framework **Vite**, build **`npm run build`**, output **`dist`**, project root **`.`**, Node **24.x**. No environment variables or paid integrations are necessary. Hash routes work on a plain static host without rewrites.
 
 ## Accuracy, accessibility and privacy
 

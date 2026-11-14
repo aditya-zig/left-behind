@@ -4,14 +4,24 @@ import type { Artifact } from './data';
 export type Asset = {file:string;source:string;kind:string;download:string;bytes:number;sha256:string;retrieved:string;caption?:string};
 export const assetLibrary:Record<string,Record<string,Asset>>=resources;
 export function assetFor(artifact:Artifact){return assetLibrary[artifact.assetKey??artifact.id]??{};}
+// model-viewer can fail before dispatching an error when WebGL2 is absent.
+// Detect that case before importing it, then keep the NASA photograph usable.
+const webGLAvailable=(()=>{
+  try{
+    const gl=document.createElement('canvas').getContext('webgl2');
+    if(!gl)return false;
+    gl.getExtension('WEBGL_lose_context')?.loseContext();
+    return true;
+  }catch{return false;}
+})();
 export default function Model({artifact}:{artifact:Artifact}){
   const asset=assetFor(artifact);
   const element=useRef<HTMLElement>(null);
-  const [failed,setFailed]=useState(false);
+  const [failed,setFailed]=useState(!webGLAvailable);
   const [loaded,setLoaded]=useState(false);
   useEffect(()=>{
-    setFailed(false);setLoaded(false);
-    if(!asset.model)return;
+    setFailed(!webGLAvailable);setLoaded(false);
+    if(!asset.model||!webGLAvailable)return;
     let active=true;
     import('@google/model-viewer').catch(()=>{if(active)setFailed(true);});
     const current=element.current;
