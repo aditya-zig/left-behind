@@ -1,4 +1,5 @@
 import { chromium } from 'playwright';
+import { expect } from '@playwright/test';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 const base=process.env.BASE_URL??'http://localhost:5173';
@@ -12,7 +13,12 @@ page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text());});
 page.on('request',req=>{if(!req.url().startsWith(base)&&!req.url().startsWith('blob:')&&!req.url().startsWith('data:'))external.push(req.url());});
 page.on('response',res=>{if(res.status()>=400)failures.push(`${res.status()} ${res.url()}`);});
 async function check(name,fn){await fn();checks.push(name);console.log('PASS',name);}
-async function route(hash){await page.goto(`${base}/${hash}`);await page.locator('main h1').waitFor();}
+async function route(hash){
+  await page.goto(`${base}/${hash}`);
+  const view=hash.split('/')[1];
+  const headings={moon:/The Moon/,mars:/Mars/,collection:/Machines with/,sources:/No source/,legacy:/They stayed/,about:/A museum/};
+  await expect(page.locator('main h1')).toContainText(headings[view]??/Left behind/);
+}
 async function noOverflow(){assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`Overflow at ${page.url()}`);}
 async function modelReady(){await page.waitForFunction(()=>document.querySelector('model-viewer')?.loaded===true,null,{timeout:45000});}
 async function selected(name){await page.waitForFunction(n=>document.querySelector('.mission-title h2')?.textContent===n,name);}
@@ -52,26 +58,26 @@ try{
   });
   await check('Collection search, empty state and separate deep-space destination work',async()=>{
     await page.getByRole('link',{name:/The collection/}).first().click();await page.waitForURL('**/#/collection');
-    assert.equal(await page.locator('.collection-card').count(),18);
+    await expect(page.locator('.collection-card')).toHaveCount(18);
     const search=page.getByLabel('Search mission records');
-    await search.fill('VIKING');assert.equal(await page.locator('.collection-card').count(),2);
+    await search.fill('VIKING');await expect(page.locator('.collection-card')).toHaveCount(2);
     await search.fill('zzzzzzzz');assert.match(await page.locator('.empty-state').innerText(),/No mission found/);
     await search.fill('');await page.getByRole('button',{name:'Beyond',exact:true}).click();
-    assert.equal(await page.locator('.collection-card').count(),5);
+    await expect(page.locator('.collection-card')).toHaveCount(5);
     await page.locator('.collection-card').filter({hasText:'Kepler'}).click();await page.waitForURL('**/#/collection/kepler');await modelReady();
     assert.match(await page.locator('.beyond-detail').innerText(),/Earth-trailing orbit around the Sun/);
   });
   await check('Deep-space records load NASA models or the documented archival image',async()=>{
     for(const [id,name] of [['dawn','Dawn'],['near','NEAR Shoemaker'],['pioneer10','Pioneer 10']]){
-      await route(`#/collection/${id}`);await page.getByRole('heading',{name,exact:true}).waitFor();await modelReady();
+      await route(`#/collection/${id}`);await expect(page.locator('.beyond-detail h2')).toHaveText(name);await modelReady();
     }
-    await route('#/collection/pioneer11');await page.getByRole('heading',{name:'Pioneer 11',exact:true}).waitFor();
-    assert.equal(await page.locator('model-viewer').count(),0);
+    await route('#/collection/pioneer11');await expect(page.locator('.beyond-detail h2')).toHaveText('Pioneer 11');
+    await expect(page.locator('model-viewer')).toHaveCount(0);
     await page.waitForFunction(()=>{const img=document.querySelector('.beyond-detail .artifact-media img');return img?.complete&&img.naturalWidth>0;});
     assert.match(await page.locator('.beyond-detail .media-tag').innerText(),/NASA artist concept/);
   });
   await check('Mission-level sources and per-asset provenance are visible',async()=>{
-    await route('#/sources');assert.equal(await page.locator('.source-record').count(),18);
+    await route('#/sources');await expect(page.locator('.source-record')).toHaveCount(18);
     assert.ok(await page.locator('.asset-row').count()>=45);assert.equal(await page.locator('a[href*="notion"]').count(),0);
     await page.locator('.source-record').first().locator('summary').click();assert.match(await page.locator('.source-record').first().innerText(),/sample mass/);
   });
@@ -119,7 +125,7 @@ try{
       await fallback.waitForFunction(()=>{const img=document.querySelector('.artifact-media img');return img?.complete&&img.naturalWidth>0;});
       await fallback.locator('.artifact-index').getByRole('button',{name:/The first lunar rover/}).click();
       await fallback.getByRole('heading',{name:'The first lunar rover',exact:true}).waitFor();
-      await fallback.getByRole('link',{name:/The collection/}).first().click();assert.equal(await fallback.locator('.collection-card').count(),18);
+      await fallback.getByRole('link',{name:/The collection/}).first().click();await expect(fallback.locator('.collection-card')).toHaveCount(18);
       assert.deepEqual(fallbackErrors,[]);
     }finally{await fallback.close();}
   });
