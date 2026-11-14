@@ -1,31 +1,17 @@
-import {createElement,useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {worldArtifacts, type Artifact} from './data';
 import {flightEase} from './cinematic';
-import {assetFor,webGLAvailable} from './Model';
 
 export type FlightMode='galaxy'|'solar'|'earth'|'choose'|'moon'|'mars';
 export type World='moon'|'mars';
-type Props={mode:FlightMode;selected:Artifact;motion:boolean;previewing:boolean;reset:number;onReady:()=>void;onArrive:()=>void;onUnavailable?:()=>void;onHover:(item:Artifact,anchor:{x:number;y:number})=>void;onLeave:()=>void;onSelect:(item:Artifact)=>void};
+type Props={mode:FlightMode;selected:Artifact;motion:boolean;previewing:boolean;reset:number;onReady:()=>void;onArrive:()=>void;onHover:(item:Artifact,anchor:{x:number;y:number})=>void;onLeave:()=>void;onSelect:(item:Artifact)=>void};
 const sites={moon:worldArtifacts('moon'),mars:worldArtifacts('mars')};
 const centers={earth:new THREE.Vector3(0,0,0),moon:new THREE.Vector3(22,0,0),mars:new THREE.Vector3(53,1,-10)};
 const radii={earth:8,moon:3.8,mars:6};
 const direction=(lat:number,lon:number)=>new THREE.Vector3(Math.cos(lat*Math.PI/180)*Math.cos(lon*Math.PI/180),Math.sin(lat*Math.PI/180),-Math.cos(lat*Math.PI/180)*Math.sin(lon*Math.PI/180));
-const spread=[[-175,-145],[165,-130],[-195,0],[185,35],[-55,145]];
-
-// Original NASA geometry, rendered in the map marker itself, not a generated icon.
-function EquipmentMarker({item,motion}:{item:Artifact;motion:boolean}){
-  const asset=assetFor(item),element=useRef<HTMLElement>(null),[failed,setFailed]=useState(!webGLAvailable);
-  useEffect(()=>{
-    if(!asset.model||!webGLAvailable)return;
-    let active=true;import('@google/model-viewer').catch(()=>{if(active)setFailed(true);});
-    const current=element.current,error=()=>setFailed(true);current?.addEventListener('error',error);
-    return()=>{active=false;current?.removeEventListener('error',error);};
-  },[asset.model]);
-  const image=asset.preview??asset.photo;
-  return <span className={`map-equipment-visual ${asset.model&&!failed?'has-3d':'has-image'}`} aria-hidden="true">{asset.model&&!failed?createElement('model-viewer',{ref:element,src:asset.model.file,poster:asset.preview?.file,alt:'',tabIndex:-1,'camera-controls':false,'interaction-prompt':'none','shadow-intensity':'0',exposure:'1.4','field-of-view':'30deg','camera-orbit':'35deg 65deg auto',loading:'lazy',reveal:'auto','auto-rotate':motion,'auto-rotate-delay':0,'rotation-per-second':'16deg'}):image&&<img src={image.file} alt="" loading="lazy"/>}</span>;
-}
+const spread=[[-145,-95],[135,-95],[-175,-5],[160,25],[-95,100]];
 
 export default function FlightScene(props:Props){
   const host=useRef<HTMLDivElement>(null),canvas=useRef<HTMLDivElement>(null);
@@ -37,7 +23,7 @@ export default function FlightScene(props:Props){
     if(!host.current||!canvas.current)return;
     const container=host.current;
     let renderer:THREE.WebGLRenderer;
-    try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance'});}catch{setError(true);latest.current.onUnavailable?.();latest.current.onReady();latest.current.onArrive();return;}
+    try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance'});}catch{setError(true);latest.current.onReady();latest.current.onArrive();return;}
     // Each effect owns its canvas. StrictMode teardown must not lose the next effect's context.
     canvas.current.appendChild(renderer.domElement);setError(false);
     renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -60,18 +46,14 @@ export default function FlightScene(props:Props){
     const sun=new THREE.Sprite(new THREE.SpriteMaterial({map:load('/assets/sun-sdo.jpg'),blending:THREE.AdditiveBlending,depthWrite:false}));sun.scale.set(38,33.6,1);sun.position.set(-80,2,-30);planets.add(sun);
     const aim=()=>{
       const {mode,selected}=latest.current;arrived=false;aiming=true;flightElapsed=0;fromPosition.copy(camera.position);fromTarget.copy(controls.target);
-      controls.autoRotate=false;
-      // Discard residual orbit inertia before a flight/recenter or a motion-off snap.
-      const damping=controls.enableDamping;controls.enableDamping=false;controls.update();controls.enableDamping=damping;
-      controls.minDistance=.1;controls.maxDistance=5000;
+      controls.autoRotate=false;controls.minDistance=.1;controls.maxDistance=5000;
       if(mode==='galaxy'){goalPosition.set(0,65,780);goalTarget.set(0,0,-200);}
       else if(mode==='solar'){goalPosition.set(32,60,170);goalTarget.set(10,0,-8);}
       else if(mode==='earth'){goalPosition.set(13,4,26);goalTarget.copy(centers.earth);}
       else if(mode==='choose'){goalPosition.set(34,13,62);goalTarget.set(35,0,-5);}
       else{
         const center=centers[mode],r=radii[mode];
-        const distance=container.clientWidth<600?6.6:container.clientWidth<900?4.4:3.2;
-        goalTarget.copy(center);goalPosition.copy(center).add(direction(...(selected.coordinates??[0,0])).multiplyScalar(r*distance));
+        goalTarget.copy(center);goalPosition.copy(center).add(direction(...(selected.coordinates??[0,0])).multiplyScalar(r*3.2));
       }
       if(!latest.current.motion){camera.position.copy(goalPosition);controls.target.copy(goalTarget);aiming=false;}
     };
@@ -84,7 +66,7 @@ export default function FlightScene(props:Props){
     const observer=new ResizeObserver(resize);observer.observe(container);resize();
     const viewObserver=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;last=performance.now();},{threshold:.01});viewObserver.observe(container);
     const resetClock=()=>{last=performance.now();};document.addEventListener('visibilitychange',resetClock);
-    const onContextLost=(event:Event)=>{event.preventDefault();if(alive){setError(true);latest.current.onUnavailable?.();latest.current.onReady();latest.current.onArrive();}};renderer.domElement.addEventListener('webglcontextlost',onContextLost);
+    const onContextLost=(event:Event)=>{event.preventDefault();if(alive){setError(true);latest.current.onReady();latest.current.onArrive();}};renderer.domElement.addEventListener('webglcontextlost',onContextLost);
     const tick=(now:number)=>{
       frame=requestAnimationFrame(tick);const elapsed=Math.max(0,(now-last)/1000),dt=Math.min(elapsed,.05);last=now;
       if(!alive||document.hidden||!visible)return;
@@ -100,7 +82,7 @@ export default function FlightScene(props:Props){
         if(progress===1)aiming=false;
       }
       if(!aiming&&!arrived){arrived=true;latest.current.onArrive();}
-      controls.enabled=isSurface&&!aiming;controls.enableDamping=motion;controls.autoRotate=isSurface&&motion&&!previewing&&!aiming;
+      controls.enabled=isSurface&&!aiming;controls.autoRotate=isSurface&&motion&&!previewing&&!aiming;
       if(isSurface&&!aiming){controls.minDistance=radii[mode]*1.4;controls.maxDistance=radii[mode]*7;}
       controls.update(elapsed);
       if(!isSurface&&motion){meshes.earth.rotation.y+=dt*.025;meshes.mars.rotation.y+=dt*.02;}
@@ -114,17 +96,8 @@ export default function FlightScene(props:Props){
           const front=mode===body&&!aiming&&normal.dot(towardCamera)>.15;
           p.project(camera);const x=(p.x*.5+.5)*container.clientWidth,y=(-p.y*.5+.5)*container.clientHeight;
           pin.dataset.visible=String(front&&p.z<1&&x>20&&x<container.clientWidth-20&&y>50&&y<container.clientHeight-40);
-          // Move the whole hit region, not a child outside its composited parent bounds.
-          pin.style.transform=`translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;
-          if(body==='moon'){
-            const w=container.clientWidth,h=container.clientHeight,compact=w<600,tablet=w<900;
-            const slots=compact?[[.25,.42],[.61,.36],[.18,.55],[.72,.50],[.50,.60]]:[[.42,.45],[.72,.30],[.20,.52],[.77,.51],[.48,.60]];
-            const [sx,sy]=slots[index%5],[offsetX,offsetY]=spread[index%5];
-            // Labels/models occupy safe UI slots; leader lines retain the actual projected site.
-            const dx=tablet?sx*w-x:offsetX,dy=tablet?sy*h-y:offsetY;
-            pin.style.setProperty('--pin-x',`${dx}px`);pin.style.setProperty('--pin-y',`${dy}px`);
-            const line=pin.querySelector('line');line?.setAttribute('x2',String(dx));line?.setAttribute('y2',String(dy));
-          }
+          pin.style.transform=`translate3d(${x}px,${y}px,0)`;
+          if(body==='moon'){const compact=container.clientWidth<600;const [dx,dy]=spread[index%spread.length];pin.style.setProperty('--pin-x',`${dx*(compact?.44:1)}px`);pin.style.setProperty('--pin-y',`${dy*(compact?.75:1)}px`);}
         });
       }
       renderer.render(scene,camera);
@@ -141,10 +114,10 @@ export default function FlightScene(props:Props){
       if(event.key==='+'||event.key==='='){commands.current?.zoom(.85);event.preventDefault();}if(event.key==='-'){commands.current?.zoom(1.18);event.preventDefault();}if(event.key==='Home'){commands.current?.aim();event.preventDefault();}
     }}/>
     {error&&<div className="flight-fallback"><img src={props.mode==='mars'?'/assets/mars.jpg':props.mode==='moon'?'/assets/moon-map.jpg':'/assets/galaxy.jpg'} alt="NASA reference imagery"/><p>3D is unavailable on this device. Every mission, NASA image and story is still available below.</p></div>}
-    {!error&&(['moon','mars'] as const).filter(body=>body===props.mode).flatMap(body=>sites[body].map((item,index)=><div key={item.id} ref={el=>{if(el)pinRefs.current.set(item.id,el);else pinRefs.current.delete(item.id);}} className={`orbital-hotspot ${body==='moon'?'spread-site':''} ${props.selected.id===item.id?'selected':''}`} data-visible="false">
+    {!error&&(['moon','mars'] as const).flatMap(body=>sites[body].map((item,index)=><div key={item.id} ref={el=>{if(el)pinRefs.current.set(item.id,el);else pinRefs.current.delete(item.id);}} className={`orbital-hotspot ${body==='moon'?'spread-site':''} ${props.selected.id===item.id?'selected':''}`} data-visible="false">
       {body==='moon'&&<svg className="pin-leader" aria-hidden="true"><line x1="0" y1="0" x2={spread[index%5][0]} y2={spread[index%5][1]}/></svg>}
       <span className="site-origin"/>
-      <button className="orbital-pin" tabIndex={props.mode===body?0:-1} aria-label={`Explore ${item.name}`} title={`${item.name} · ${assetFor(item).model?'NASA 3D reference, not to scale':'NASA mission image; no matching 3D model in the collection'}`} onMouseEnter={event=>{const rect=event.currentTarget.getBoundingClientRect();props.onHover(item,{x:rect.x+rect.width/2,y:rect.y});}} onFocus={event=>{const rect=event.currentTarget.getBoundingClientRect();props.onHover(item,{x:rect.x+rect.width/2,y:rect.y});}} onMouseLeave={props.onLeave} onBlur={props.onLeave} onClick={()=>props.onSelect(item)}><EquipmentMarker item={item} motion={props.motion}/><span className="site-name">{item.name}</span>{!assetFor(item).model&&<span className="map-image-label">NASA image</span>}</button>
+      <button className="orbital-pin" tabIndex={props.mode===body?0:-1} aria-label={`Preview ${item.name}`} onMouseEnter={event=>{const rect=event.currentTarget.getBoundingClientRect();props.onHover(item,{x:rect.x+rect.width/2,y:rect.y});}} onFocus={event=>{const rect=event.currentTarget.getBoundingClientRect();props.onHover(item,{x:rect.x+rect.width/2,y:rect.y});}} onMouseLeave={props.onLeave} onClick={()=>props.onSelect(item)}><span className="site-dot"/><span className="site-name">{item.name}</span></button>
     </div>))}
     {isWorld&&!error&&<div className="flight-map-controls glass" aria-label="Globe controls"><button aria-label="Zoom in" onClick={()=>commands.current?.zoom(.82)}>+</button><button aria-label="Zoom out" onClick={()=>commands.current?.zoom(1.2)}>−</button><button aria-label="Recenter globe" onClick={()=>commands.current?.aim()}>⌖</button></div>}
   </div>;
