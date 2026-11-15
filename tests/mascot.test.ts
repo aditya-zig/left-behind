@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { artifacts } from '../src/data';
 import script from '../src/mascot-script.json';
 import { recordedStory, journeyRecording, recordingUrl } from '../src/mascotVoice';
@@ -29,9 +30,17 @@ test('every recording is a local WAV with a matching ID and timestamp duration',
       offset += 8 + size + (size % 2);
     }
     assert.ok(byteRate > 0 && bytes > 0, line.id);
-    // Supplied clips include up to 20ms of master audio on each boundary.
-    const padding = bytes / byteRate - (line.end - line.start);
-    assert.ok(padding >= -.001 && padding <= .041, line.id);
+    assert.ok(Math.abs(bytes / byteRate - (line.end - line.start)) < .001, line.id);
+    assert.equal(createHash('sha256').update(wav).digest('hex'),line.sha256,line.id);
+  }
+});
+test('corrected clips tile the master without overlap or lost speech', () => {
+  assert.equal(script[0].start,0);
+  for(let i=1;i<script.length;i++)assert.equal(script[i].start,script[i-1].end,script[i].id);
+  for(const line of script){
+    assert.ok(line.end>line.start);
+    assert.ok(line.supplied_end>line.supplied_start);
+    assert.equal(line.alignment,'master-word-timestamps-midpoint-cut');
   }
 });
 test('opening and travel states always have an exact mapped recording', () => {

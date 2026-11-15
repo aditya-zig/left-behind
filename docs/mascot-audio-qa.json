@@ -1,0 +1,660 @@
+[
+  {
+    "id": "journey_landing_01",
+    "expected": "Psst. Every machine out here still has a story. Pick a world and I'll tell you the ones nobody told you.",
+    "transcribed": "Psst, every machine out here still has a story. Pick a world and I'll tell you the ones nobody told you.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "journey_choose_destination_01",
+    "expected": "Eighteen machines. Two worlds, and the deep space beyond. Which story do you dare open first?",
+    "transcribed": "18 machines two worlds and the deep space beyond which story do you dare open first?",
+    "similarity": 0.938,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "journey_travel_moon_01",
+    "expected": "Hold tight. Next stop: the only other world humans have ever walked on.",
+    "transcribed": "Hold tight. Next stop. The only other world humans have ever walked on.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "journey_moon_arrival_01",
+    "expected": "No wind. No rain. Nothing here gets tidied up. Hover over a glowing dot. Something was left there.",
+    "transcribed": "No wind, no rain, nothing here gets tidied up. Hover over a glowing dot, something was left there.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "journey_travel_mars_01",
+    "expected": "Seven months of space travel in a few seconds. You're welcome.",
+    "transcribed": "Seven months of space travel in a few seconds. You're welcome",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "journey_mars_arrival_01",
+    "expected": "Red dust. Thin sky. Eight machines that never came home. Drag the planet and find them.",
+    "transcribed": "Red dust thin sky eight machines that never came home drag the planet and find them",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "journey_travel_beyond_mars_01",
+    "expected": "Leaving Mars behind. Out here, the machines are far from home, and getting farther.",
+    "transcribed": "Leaving Mars behind out here. The machines are far from home and getting farther",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "journey_guided_tour_start_01",
+    "expected": "Guided tour? Great choice. Stay close. I'll save the best for last.",
+    "transcribed": "guided tour great choice stay close I'll save as the best for last",
+    "similarity": 0.963,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_apollo_lunar_modules_eagle_01",
+    "expected": "You're standing where humans first set foot on another world. Half of their ship is still here.",
+    "transcribed": "You're standing where humans first set foot on another world half of their ship is still here",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_apollo_lunar_modules_eagle_02",
+    "expected": "Eagle landed two astronauts at Tranquility Base. The bottom half became the launch pad for the trip home, then stayed behind.",
+    "transcribed": "Eagle landed two astronauts at Tranquility Base. The bottom half became the launch pad for the trip home, then stayed behind.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_apollo_lunar_modules_eagle_03",
+    "expected": "No wind. No rain. Their bootprints are probably still there, beside a plaque saying they came in peace.",
+    "transcribed": "no wind, no rain. Their boot prints are probably still there beside a plaque saying they came in peace.",
+    "similarity": 0.919,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "moon_apollo_lunar_modules_eagle_04",
+    "expected": "Six Apollo landers left their bottom halves on the Moon. Eagle was just the first.",
+    "transcribed": "6 apollo landers left their bottom halves on the moon. Eagle was just the first.",
+    "similarity": 0.933,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "moon_lunar_roving_vehicles_01",
+    "expected": "Imagine driving on the Moon. Someone did. Then they parked it and walked away forever.",
+    "transcribed": "Just imagine driving on the moon, someone did. Then they parked it and walked away forever.",
+    "similarity": 0.968,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "moon_lunar_roving_vehicles_02",
+    "expected": "An electric buggy that folded flat to fit inside the lander, then unfolded into a four-wheeled explorer.",
+    "transcribed": "An electric buggy that folded flat to fit inside the lander, then unfolded into a four-wheeled Explorer.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_lunar_roving_vehicles_03",
+    "expected": "Its batteries were never meant to be recharged. Parked under a black sky, it's still waiting.",
+    "transcribed": "It's batteries were never meant to be recharged. Parked under a black sky, it's still waiting.",
+    "similarity": 0.914,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_lunar_roving_vehicles_04",
+    "expected": "Three moon buggies sit on the Moon today, from Apollo 15, 16 and 17. All parked permanently.",
+    "transcribed": "Three moon buggies sit on the moon today from Apollo 15, 16, and 17, all parked permanently.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_alsep_listening_station_01",
+    "expected": "Something listened to the Moon for years. Then NASA switched it off.",
+    "transcribed": "Something listened to the moon for years. Then NASA switched it off.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_alsep_listening_station_02",
+    "expected": "Apollo astronauts wired seismometers and other instruments to a central station and left them running.",
+    "transcribed": "Apollo astronauts wired seismometers and other instruments to a central station and left them running.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_alsep_listening_station_03",
+    "expected": "When a spent lander hit the surface, the Moon rang like a bell for almost an hour.",
+    "transcribed": "When a spent lander hit the surface the moon rang like a bell for almost an hour",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_alsep_listening_station_04",
+    "expected": "Built to run for a year. The Apollo 12 station ran for almost eight.",
+    "transcribed": "Built to run for a year, the Apollo 12 station ran for almost eight.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_surveyor_3_01",
+    "expected": "A robot landed on the Moon in 1967. Two years later, humans walked up and took pieces of it home.",
+    "transcribed": "A robot landed on the moon in 1967. Two years later, humans walked up and took pieces of it home.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_surveyor_3_02",
+    "expected": "The Surveyors of the 1960s proved soft landings were possible, long before any astronaut tried.",
+    "transcribed": "The surveyors of the 1960s proved soft landings were possible, long before any astronaut tried.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_surveyor_3_03",
+    "expected": "Apollo 12 landed close enough to walk over. They brought its camera back to Earth.",
+    "transcribed": "Apollo 12 landed close enough to walk over. They brought its camera back to Earth.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_surveyor_3_04",
+    "expected": "It bounced twice on landing, then settled in a crater. The rest of the robot is still there.",
+    "transcribed": "It bounced twice on landing, then settled in a crater. The rest of the robot is still there.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_laser_retroreflector_01",
+    "expected": "Scientists still fire lasers at the Moon. And something here fires them back.",
+    "transcribed": "Scientists still fire lasers at the moon, and something here fires them back.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_laser_retroreflector_02",
+    "expected": "Apollo 11 left a panel of one hundred tiny mirrors. Each sends light straight back where it came from.",
+    "transcribed": "Apollo 11 left a panel of 100 tiny mirrors each sends light straight back where it came from",
+    "similarity": 0.919,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "moon_laser_retroreflector_03",
+    "expected": "A pulse makes the round trip in about two and a half seconds. That's how we know the Moon drifts away about as fast as your fingernails grow.",
+    "transcribed": "A pulse makes the round trip in about two and a half seconds. That's how we know the moon drifts away about as fast as your fingernails grow.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "moon_laser_retroreflector_04",
+    "expected": "No power. No moving parts. Still working.",
+    "transcribed": "No power, no moving parts, still working.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_sojourner_01",
+    "expected": "The size of a microwave oven. The first rover to ever roam Mars.",
+    "transcribed": "The size of a microwave oven the first rover to ever roam Mars",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_sojourner_02",
+    "expected": "It landed on July 4, 1997, bouncing across the surface in airbags like a giant beach ball.",
+    "transcribed": "It landed on July 4, 1997, bouncing across the surface in airbags like a giant beach ball.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_sojourner_03",
+    "expected": "Planned for a week. It lasted nearly three months.",
+    "transcribed": "Planned for a week, it lasted nearly three months.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_sojourner_04",
+    "expected": "It studied rocks nicknamed Yogi and Barnacle Bill, and never strayed far from its lander. Now permanently parked.",
+    "transcribed": "It studied rocks nicknamed Yogi and Barnacle Bill and never strayed far from its lander now permanently parked",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_spirit_01",
+    "expected": "Opportunity had a twin. Spirit's story was less lucky, and braver.",
+    "transcribed": "Opportunity had a twin, Spirit's story was less lucky and braver.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_spirit_02",
+    "expected": "It landed in Gusev Crater three weeks before its twin.",
+    "transcribed": "It landed in Goose of Crater three weeks before its twin.",
+    "similarity": 0.857,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_spirit_03",
+    "expected": "A wheel broke, so it drove backward, dragging it. That dug up bright white soil, a sign of ancient hot springs.",
+    "transcribed": "A wheel broke, so it drove backward, dragging it. That dug up bright white soil, a sign of ancient hot springs.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_spirit_04",
+    "expected": "In 2009 it sank into soft sand. Last contact: March 2010. Now a monument to Mars exploration.",
+    "transcribed": "In 2009, it sank into soft sand. Last contact, March 2010, now a monument to Mars exploration.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_opportunity_01",
+    "expected": "Plan: ninety days. Reality: almost fifteen years. Meet the rover that refused to quit.",
+    "transcribed": "Plan 90 days. Reality almost 15 years. Meet the rover that refused to quit.",
+    "similarity": 0.857,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_opportunity_02",
+    "expected": "It drove farther than a marathon, on another planet.",
+    "transcribed": "It drove farther than a marathon on another planet.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_opportunity_03",
+    "expected": "It found minerals that form in water. Ancient Mars was wet.",
+    "transcribed": "It found minerals that form in water. Ancient Mars was wet.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_opportunity_04",
+    "expected": "In 2018 a global dust storm blocked the Sun. Engineers sent over a thousand wake-up calls. Silence.",
+    "transcribed": "In 2018, a global dust storm blocked the sun. Engineers sent over a thousand wake-up calls. Silence.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_viking_1_01",
+    "expected": "In 1976, a robot landed on Mars to ask the biggest question: is anything alive here?",
+    "transcribed": "In 1976, a robot landed on Mars to ask the biggest question. Is anything alive here?",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_viking_1_02",
+    "expected": "NASA's first successful Mars landing. Its cameras showed the world a red sky.",
+    "transcribed": "NASA's first successful Mars landing. Its cameras showed the world a red sky.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_viking_1_03",
+    "expected": "It scooped soil and ran three experiments hunting for life. People still argue about the results.",
+    "transcribed": "It scooped soil and ran three experiments hunting for life. People still argue about the results.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_viking_1_04",
+    "expected": "It worked for over six years. In 1982 a faulty command cut contact. It's still sitting exactly where it touched down.",
+    "transcribed": "It worked for over six years in 1982 a faulty command-cut contact. It's still sitting exactly where it touched down",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_viking_2_01",
+    "expected": "Two landers. One mission. Viking 2 saw something rare: a frozen morning on Mars.",
+    "transcribed": "Two landers, one mission. Viking 2 saw something rare, a frozen morning on Mars.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_viking_2_02",
+    "expected": "It landed in September 1976, on a plain called Utopia Planitia.",
+    "transcribed": "It landed in September 1976 on a plane called Utopia Planitia.",
+    "similarity": 0.909,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_viking_2_03",
+    "expected": "In winter its cameras caught a thin layer of white frost on the ground.",
+    "transcribed": "In winter, its cameras caught a thin layer of white frost on the ground.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_viking_2_04",
+    "expected": "It lasted until April 1980, when its batteries failed. Both Vikings remain exactly where they touched down.",
+    "transcribed": "It lasted until April 1980 when its batteries failed both Vikings remain exactly where they touched down",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_phoenix_01",
+    "expected": "Most rovers chase warm places. Phoenix went to the cold top of Mars, hunting for ice.",
+    "transcribed": "Most rovers chase warm places. Phoenix went to the cold top of Mars hunting for ice",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_phoenix_02",
+    "expected": "It dug a trench. Bright chunks vanished within days. Water ice, right under the dust.",
+    "transcribed": "It dug a trench. Bright chunks vanished within days. Water ice right under the dust.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_phoenix_03",
+    "expected": "It also watched snow fall from Martian clouds.",
+    "transcribed": "It also watched snowfall from Martian clouds.",
+    "similarity": 0.8,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_phoenix_04",
+    "expected": "Planned for ninety days, it ran for five months, until polar winter took its sunlight.",
+    "transcribed": "Planned for 90 days, it ran for five months until polar winter took its sunlight.",
+    "similarity": 0.933,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_insight_01",
+    "expected": "A lander that didn't drive, fly or roam. It lay still and listened to a planet.",
+    "transcribed": "A lander that didn't drive, fly, or roam. It lay still and listened to a planet.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_insight_02",
+    "expected": "It heard more than 1,300 marsquakes.",
+    "transcribed": "It heard more than phi 300 marsquakes.",
+    "similarity": 0.857,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_insight_03",
+    "expected": "Those tremors revealed a liquid core, buried deep under the surface.",
+    "transcribed": "Those tremors revealed a liquid core buried deep under the surface",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_insight_04",
+    "expected": "Dust piled onto its solar panels until the power faded. December 2022: silence.",
+    "transcribed": "dust piled onto its solar panels until the power faded. December 2022, silence.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_ingenuity_01",
+    "expected": "Planned: five flights. Actual: seventy-two. Meet the little helicopter that broke every rule.",
+    "transcribed": "Planned five flights actual 72 meet the little helicopter that broke every rule",
+    "similarity": 0.889,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_ingenuity_02",
+    "expected": "First aircraft to fly on another planet. Mars's air is only one percent as thick as ours, so its blades spun about five times faster than a normal helicopter's.",
+    "transcribed": "First aircraft to fly on another planet. Mars' air is only 1% as thick as ours, so its blades spun about 5 times faster than a normal helicopter's.",
+    "similarity": 0.9,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "mars_ingenuity_03",
+    "expected": "Tucked under its solar panel: a postage-stamp piece of fabric from the Wright brothers' first airplane.",
+    "transcribed": "Tucked under its solar panel a postage stamp piece of fabric from the Wright Brothers first airplane",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "mars_ingenuity_04",
+    "expected": "In January 2024 its rotor blades were damaged. It still sits on Mars, now a stationary artifact.",
+    "transcribed": "In January 2024 its rotor blades were damaged. It still sits on Mars, now a stationary artifact",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_dawn_01",
+    "expected": "It's circling a dwarf planet right now, with no fuel, no power and no one steering.",
+    "transcribed": "It's circling a dwarf planet right now with no fuel, no power and no one steering.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_dawn_02",
+    "expected": "Dawn was the first spacecraft to orbit two worlds in the asteroid belt: the giant asteroid Vesta, then the dwarf planet Ceres.",
+    "transcribed": "Dawn was the first spacecraft to orbit two worlds in the asteroid belt, the giant asteroid Vesta then the dwarf planet Ceres.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_dawn_03",
+    "expected": "It crossed the belt on ion engines that glow blue. Slow thrust that never stops.",
+    "transcribed": "It crossed the belt on ion engines that glow blue, slow thrust that never stops.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_dawn_04",
+    "expected": "In 2018 its fuel ran out. Dawn stays in orbit around Ceres, silent, for decades to come.",
+    "transcribed": "In 2018, its fuel ran out. Dawn stays in orbit around Ceres, silent, for decades to come.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "beyond_near_shoemaker_01",
+    "expected": "It wasn't built to land. It landed anyway. Then it phoned home.",
+    "transcribed": "It wasn't built to land, it landed anyway, then it phoned home.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "beyond_near_shoemaker_02",
+    "expected": "NEAR was the first spacecraft to orbit an asteroid: 433 Eros, a rock shaped like a giant potato.",
+    "transcribed": "NEAR was the first spacecraft to orbit an asteroid, 433 Eros, a rock shaped like a giant potato.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "beyond_near_shoemaker_03",
+    "expected": "In February 2001, engineers tried a daring descent. It touched down gently and kept transmitting for about two weeks.",
+    "transcribed": "In February 2001, engineers tried a daring descent. It touched down gently and kept transmitting for about two weeks.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_near_shoemaker_04",
+    "expected": "The first spacecraft ever to land on an asteroid. It's still resting on Eros today.",
+    "transcribed": "The first spacecraft ever to land on an asteroid. It's still resting on Eros today.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_pioneer_10_01",
+    "expected": "A spacecraft launched in 1972 is still leaving the solar system. Its last message arrived in 2003.",
+    "transcribed": "A spacecraft launched in 1972 is still leaving the solar system. Its last message arrived in 2003.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_pioneer_10_02",
+    "expected": "Pioneer 10 was the first to cross the asteroid belt and the first to fly past Jupiter.",
+    "transcribed": "Pioneer 10 was the first to cross the asteroid belt and the first to fly past Jupiter.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_pioneer_10_03",
+    "expected": "It carries a gold plaque for anyone who finds it: who we are and where we're from.",
+    "transcribed": "It carries a gold plaque for anyone who finds it who we are and where we're from",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "beyond_pioneer_10_04",
+    "expected": "It's headed toward the star Aldebaran. Estimated arrival: about two million years.",
+    "transcribed": "It's headed toward the star Aldebaran, estimated arrival about 2 million years.",
+    "similarity": 0.923,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "beyond_pioneer_11_01",
+    "expected": "The first spacecraft ever to visit Saturn. Engineers worried it wouldn't survive the rings.",
+    "transcribed": "The first spacecraft ever to visit Saturn, engineers worried it wouldn't survive the rings.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "beyond_pioneer_11_02",
+    "expected": "It flew past Jupiter first, then used Jupiter's gravity to swing across the solar system to Saturn.",
+    "transcribed": "It flew past Jupiter first, then used Jupiter's gravity to swing across the solar system to Saturn.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_pioneer_11_03",
+    "expected": "Like its twin, it carries a plaque for aliens. I'm just saying, I would have replied.",
+    "transcribed": "like it's twin it carries a plaque for aliens I'm just saying I would have replied",
+    "similarity": 0.914,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_pioneer_11_04",
+    "expected": "Its last contact was in 1995. Since then it has drifted silently into the dark, toward the constellation Aquila.",
+    "transcribed": "Its last contact was in 1995. Since then, it has drifted silently into the dark toward the constellation Aquila.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_kepler_01",
+    "expected": "One telescope stared at the same patch of sky for years and changed how we see the universe.",
+    "transcribed": "One telescope stared at the same patch of sky for years and changed how we see the universe.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_kepler_02",
+    "expected": "It watched about 150,000 stars, waiting for the tiny dip in light when a planet passes in front.",
+    "transcribed": "It watched about a hundred and fifty thousand stars waiting for the tiny dip in light when a planet passes in front",
+    "similarity": 0.829,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_kepler_03",
+    "expected": "It found more than 2,600 planets and showed that most stars have planets of their own.",
+    "transcribed": "It found more than 600 planets and showed that most stars have planets of their own",
+    "similarity": 0.97,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "beyond_kepler_04",
+    "expected": "Its fuel ran out in 2018. Kepler now drifts in an Earth-trailing orbit around the Sun, switched off.",
+    "transcribed": "Its fuel ran out in 2018 Kepler now drifts in an earth trailing orbit around the Sun switched off",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "bonus_random_facts_01",
+    "expected": "Twelve people have walked on the Moon. None since 1972.",
+    "transcribed": "12 people have walked on the moon none since 1972",
+    "similarity": 0.9,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "bonus_random_facts_02",
+    "expected": "Apollo crews left about ninety-six bags of personal waste on the Moon. Yes, really.",
+    "transcribed": "Apollo crews left about 96 bags of personal waste on the moon. Yes, really.",
+    "similarity": 0.897,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "bonus_random_facts_03",
+    "expected": "A NASA orbiter can still spot the Apollo landing sites from space.",
+    "transcribed": "A NASA orbiter can still spot the Apollo landing sites from space.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "bonus_random_facts_04",
+    "expected": "No machine on Mars has ever come home. Not one.",
+    "transcribed": "No machine on Mars has ever come home, not one.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "bonus_random_facts_05",
+    "expected": "Two spacecraft from the 1970s are still leaving the solar system. Both carry a message for aliens.",
+    "transcribed": "Two spacecraft from the 1970s are still leaving the solar system both carry a message for aliens",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "bonus_idle_nudges_01",
+    "expected": "Still there? The next story is better. I promise.",
+    "transcribed": "Still there? The next story is better, I promise.",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "bonus_idle_nudges_02",
+    "expected": "Tap 'Next line'. I have more.",
+    "transcribed": "Tap next line, I have more.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "bonus_idle_nudges_03",
+    "expected": "Hover a glowing dot. Dare you.",
+    "transcribed": "Hover a glowing dot dare you",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "bonus_between_stories_01",
+    "expected": "That one stays with you. Wait till you see the next.",
+    "transcribed": "That one stays with you. Wait till you see the next.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "bonus_between_stories_02",
+    "expected": "Okay, that was the sad one. Want a happier one?",
+    "transcribed": "Okay, that was the sad one, want a happier one?",
+    "similarity": 1.0,
+    "source_check": "likely_ok"
+  },
+  {
+    "id": "bonus_end_of_moon_01",
+    "expected": "That's every story on the Moon. Mars has more, and some are heartbreaking. Ready?",
+    "transcribed": "That's every story on the moon Mars has more and some are heartbreaking ready",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "bonus_end_of_mars_01",
+    "expected": "That's every machine on Mars. Want to see what drifted even farther out?",
+    "transcribed": "That's every machine on Mars. Want to see what drifted even farther out?",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "bonus_end_of_beyond_mars_01",
+    "expected": "That's all eighteen. Each one was built to do a job. Most did far more.",
+    "transcribed": "That's all 18 each one was built to do a job most did far more",
+    "similarity": 0.938,
+    "source_check": "REVIEW"
+  },
+  {
+    "id": "bonus_final_closer_01",
+    "expected": "These machines aren't junk. They're proof that we went. If one got to you, show someone.",
+    "transcribed": "these machines aren't junk, they're proof that we went. If one got to you, show someone.",
+    "similarity": 1.0,
+    "source_check": "REVIEW"
+  }
+]

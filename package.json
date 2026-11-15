@@ -15,9 +15,12 @@
     "assets:restore": "node scripts/restore-assets.mjs --restore",
     "check:sources": "node --import tsx scripts/check-sources.ts"
   },
-  "engines": {"node": ">=22.12.0"},
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "dependencies": {
     "@google/model-viewer": "4.1.0",
+    "motion": "14.14.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "three": "0.172.0"

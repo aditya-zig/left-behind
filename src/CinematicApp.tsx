@@ -1,116 +1,112 @@
 import {lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import ArchiveApp from './App';
 import Model,{assetFor} from './Model';
+import {brief,SurfaceVisual,photoFor} from './Photography';
 import OrbitGuide from './OrbitGuide';
-import {findArtifact,worldArtifacts,type Artifact} from './data';
-import {opening,routeMission} from './cinematic';
+import MissionDialog from './MissionDialog';
+import CoordinateAtlas from './CoordinateAtlas';
+import Stewardship from './ResponsibilityPage';
+import {findArtifact,type Artifact} from './data';
+import {formatCoordinates,sitesFor,surfaceSites,type SurfaceSite} from './atlas';
+import {opening,routeMission,adjacentStop,tourSites,tourCaption,tourSeconds} from './cinematic';
+import TourPanel from './TourPanel';
 import {journeyRecording,recordedStory} from './mascotVoice';
 import {useRecordedVoice} from './useRecordedVoice';
+import './companion.css';
 import type {FlightMode,World} from './FlightScene';
 import './cinematic.css';
+import './tour.css';
 const FlightScene=lazy(()=>import('./FlightScene'));
 const introCopy={
-  galaxy:{title:'Far from home.',text:'Our story starts in the Milky Way. Somewhere in this galaxy, a small blue world decided to explore.',label:'The Milky Way'},
-  solar:{title:'A little closer.',text:'Inside our Solar System, explorers from Earth have travelled to other worlds. Some came home. Their equipment stayed.',label:'The Solar System'},
-  earth:{title:'It began here.',text:'This is home. From here, we sent landers, rovers and experiments to the Moon and Mars. Let’s go find them.',label:'Earth'},
-  choose:{title:'Where shall we go?',text:'I’m Orbit, your fictional guide. Pick the Moon or Mars. I’ll fly with you, then we’ll discover the stories behind the hardware.',label:'Choose your destination'},
+ galaxy:{title:'Far from home.',text:'We explored other worlds. Our machines stayed.',label:'The Milky Way'},
+ solar:{title:'A little closer.',text:'Two worlds. Traces of us.',label:'The Solar System'},
+ earth:{title:'It began here.',text:'We left from here. Let’s see what stayed.',label:'Earth'},
+ choose:{title:'Where shall we go?',text:'Pick a world. Follow the discoveries.',label:'Choose your destination'},
 };
 function useMotionPreference(){const [reduced,set]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);useEffect(()=>{const q=matchMedia('(prefers-reduced-motion: reduce)'),fn=()=>set(q.matches);q.addEventListener('change',fn);return()=>q.removeEventListener('change',fn);},[]);return reduced;}
-function DeferredModel({item,motion}:{item:Artifact;motion:boolean}){
-  const ref=useRef<HTMLDivElement>(null),[visible,set]=useState(false);
-  useEffect(()=>{if(!ref.current)return;const observer=new IntersectionObserver(entries=>set(entries[0].isIntersecting),{rootMargin:'100px'});observer.observe(ref.current);return()=>observer.disconnect();},[]);
-  return <div ref={ref} className="showcase-model">{visible?<Model artifact={item} autoRotate={motion}/>:<img src={assetFor(item).preview?.file} alt={`NASA model preview of ${item.name}`} loading="lazy"/>}</div>;
+function DeferredModel({item,motion}:{item:Artifact;motion:boolean}){const ref=useRef<HTMLDivElement>(null),[visible,set]=useState(false);useEffect(()=>{if(!ref.current)return;const observer=new IntersectionObserver(entries=>set(entries[0].isIntersecting),{rootMargin:'100px'});observer.observe(ref.current);return()=>observer.disconnect();},[]);return <div ref={ref} className="showcase-model">{visible?<Model artifact={item} autoRotate={motion}/>: <img src={assetFor(item).preview?.file} alt={`NASA reference preview of ${item.name}`} loading="lazy"/>}</div>;}
+function SiteDialog({site,onClose}:{site:SurfaceSite;onClose:()=>void}){
+ const dialog=useRef<HTMLDialogElement>(null);useEffect(()=>{const d=dialog.current;d?.showModal();return()=>d?.close();},[]);
+ return <dialog ref={dialog} className="site-dialog" aria-labelledby="site-title" onCancel={onClose}><header className="mission-dialog-heading"><div><span className="eyebrow">{site.mission} · {site.kind}</span><h2 id="site-title">{site.name}</h2></div><button aria-label="Close site details" onClick={onClose}>×</button></header><div className="site-dialog-copy"><SurfaceVisual site={site}/><p className="coordinate-value">{formatCoordinates(site.coordinates)}</p><p>{brief(site.summary)}</p><a className="light-button" href={site.source.url} target="_blank" rel="noreferrer">Explore NASA’s mission record ↗</a><details className="location-notes"><summary>Photo & location notes</summary><p>{site.note}</p><p>The image is historical, not a live view or a surveyed reconstruction.</p></details></div></dialog>;
 }
-function MissionDialog({item,motion,onClose}:{item:Artifact;motion:boolean;onClose:()=>void}){
-  const dialog=useRef<HTMLDialogElement>(null);const [tab,setTab]=useState<'story'|'evidence'>('story');
-  useEffect(()=>{const current=dialog.current;current?.showModal();return()=>current?.close();},[]);
-  return <dialog ref={dialog} className="mission-dialog glass" aria-label={`${item.name}: story and NASA evidence`} onCancel={onClose} onClick={event=>{if(event.target===event.currentTarget)onClose();}}>
-    <button className="close-mission" aria-label="Close mission details" onClick={onClose}>×</button>
-    <div className="dialog-visual"><Model artifact={item} autoRotate={motion}/>{item.modelNote&&<p className="reference-note">{item.modelNote}</p>}</div>
-    <div className="dialog-story"><p className="mission-meta">{item.mission} · {item.year}</p><h2>{item.name}</h2><p className="mission-subtitle">{item.subtitle}</p>
-      <div className="dialog-tabs" role="tablist" aria-label="Mission information"><button role="tab" aria-selected={tab==='story'} onClick={()=>setTab('story')}>The story</button><button role="tab" aria-selected={tab==='evidence'} onClick={()=>setTab('evidence')}>Facts & NASA sources</button></div>
-      {tab==='story'?<div className="dialog-copy" role="tabpanel"><p>{item.story}</p><div className="mission-fact"><strong>{item.fact}</strong><span>{item.factLabel}</span></div><h3>Why it stayed</h3><p>{item.why}</p><h3>What we learned</h3><p>{item.discovery}</p><button className="text-action" onClick={()=>setTab('evidence')}>Show the evidence ↗</button></div>:<div className="dialog-copy evidence-copy" role="tabpanel"><dl><dt>Purpose</dt><dd>{item.purpose}</dd><dt>Recorded status</dt><dd>{item.status} — {item.statusDetail}</dd><dt>Location</dt><dd>{item.location}. {item.coordinates?.join(', ')}<br/>{item.locationNote}</dd></dl><h3>Read the original NASA records</h3>{item.sources.map(source=><a className="mission-source" key={source.url} href={source.url} target="_blank" rel="noreferrer"><strong>{source.title} ↗</strong><span>{source.supports}</span></a>)}<p className="reference-note">Educational retelling, not a recovered transmission. Positions and camera travel are illustrative. No unsupported equipment cost is assigned.</p></div>}
-    </div>
-  </dialog>;
-}
+function routeSite(route:string){const id=route.split('/')[2];return id?.startsWith('@')?surfaceSites.find(site=>site.id===id.slice(1)&&site.world===route.split('/')[1])??null:null;}
 function CinematicExperience({route}:{route:string}){
-  const initial=routeMission(route),reduced=useMotionPreference();
-  const [mode,setMode]=useState<FlightMode>(initial?.world??(reduced?'choose':'galaxy'));
-  const [selected,setSelected]=useState(initial?.item??findArtifact('eagle')!);
-  const [motion,setMotion]=useState(!reduced),[introPlaying,setIntroPlaying]=useState(!reduced),[ready,setReady]=useState(false),[travelling,setTravelling]=useState(false);
-  const [voice,setVoice]=useState(false),[guideMinimized,setGuideMinimized]=useState(false),[line,setLine]=useState(0),[detail,setDetail]=useState<Artifact|null>(null),[reset,setReset]=useState(0);
-  const [hovered,setHovered]=useState<{item:Artifact;anchor:{x:number;y:number}}|null>(null),[tour,setTour]=useState(false);
-  const leaveTimer=useRef<ReturnType<typeof setTimeout>|null>(null),sceneRef=useRef<HTMLElement>(null),lastFocus=useRef<HTMLElement|null>(null);
-  const isWorld=mode==='moon'||mode==='mars';
-  const items=useMemo(()=>worldArtifacts(mode==='mars'?'mars':'moon'),[mode]);
-  const recordings=useMemo(()=>recordedStory(selected),[selected]);
-  const lines=recordings.map(recording=>recording.text);
-  const intro=isWorld?null:introCopy[mode as keyof typeof introCopy];
-  const recording=travelling?journeyRecording(mode,true):isWorld?(recordings[line]??recordings[0]):journeyRecording(mode);
-  const speech=recording.text;
-  const audioError=useRecordedVoice(recording,voice&&!guideMinimized&&!detail,()=>{if(!isWorld&&introPlaying&&motion&&mode!=='choose'){const index=opening.indexOf(mode);setMode(opening[Math.min(index+1,3)]);}else if(tour&&!travelling){if(line<lines.length-1)setLine(n=>n+1);else nextStop();}});
-  useEffect(()=>{const next=routeMission(route);if(next){setSelected(next.item);setMode(next.world);setLine(0);}else if(route==='#/intro'){setMode(reduced?'choose':'galaxy');setIntroPlaying(!reduced);}},[route,reduced]);
-  useEffect(()=>{if(reduced){setMotion(false);setIntroPlaying(false);}},[reduced]);
-  useEffect(()=>{setLine(0);setHovered(null);},[selected.id]);
-  useEffect(()=>{
-    if(!introPlaying||!ready||isWorld||mode==='choose'||!motion||voice)return;
-    let elapsed=0;const timer=setInterval(()=>{if(document.hidden)return;elapsed+=250;if(elapsed>=5500){const index=opening.indexOf(mode as typeof opening[number]);setMode(opening[Math.min(index+1,3)]);}},250);
-    return()=>clearInterval(timer);
-  },[mode,introPlaying,ready,isWorld,motion,voice]);
-  useEffect(()=>()=>{if(leaveTimer.current)clearTimeout(leaveTimer.current);},[]);
-  const visit=useCallback((world:World,item?:Artifact)=>{
-    const record=item??worldArtifacts(world)[0];setHovered(null);setDetail(null);setSelected(record);setLine(0);setMode(world);setTravelling(motion);setIntroPlaying(false);setTour(false);setGuideMinimized(false);window.location.hash=`/${world}/${record.id}`;
-    sceneRef.current?.scrollIntoView({behavior:motion?'smooth':'auto'});
-  },[motion]);
-  const select=useCallback((item:Artifact)=>{setSelected(item);setLine(0);setHovered(null);window.location.hash=`/${item.world}/${item.id}`;},[]);
-  const openDetail=useCallback((item:Artifact)=>{lastFocus.current=document.activeElement as HTMLElement;setHovered(null);setDetail(item);},[]);
-  const closeDetail=()=>{setDetail(null);lastFocus.current?.focus();};
-  const nextStop=useCallback(()=>{const index=items.findIndex(item=>item.id===selected.id);const next=items[(index+1)%items.length];select(next);},[items,selected.id,select]);
-  useEffect(()=>{
-    if(!tour||detail||travelling||voice)return;
-    let elapsed=0;const timer=setInterval(()=>{if(document.hidden)return;elapsed+=250;if(elapsed>=Math.max(6500,(lines[line]?.split(' ').length??10)*440)){if(line<lines.length-1)setLine(n=>n+1);else nextStop();}},250);
-    return()=>clearInterval(timer);
-  },[tour,detail,travelling,voice,line,lines,nextStop]);
-  const onHover=useCallback((item:Artifact,anchor:{x:number;y:number})=>{if(leaveTimer.current)clearTimeout(leaveTimer.current);setHovered({item,anchor});},[]);
-  const onLeave=useCallback(()=>{if(leaveTimer.current)clearTimeout(leaveTimer.current);leaveTimer.current=setTimeout(()=>setHovered(null),180);},[]);
-  const keepPreview=()=>{if(leaveTimer.current)clearTimeout(leaveTimer.current);};
-  const replay=()=>{setMode(reduced?'choose':'galaxy');setIntroPlaying(!reduced);setTour(false);setTravelling(false);setHovered(null);setReset(n=>n+1);window.location.hash='/';sceneRef.current?.scrollIntoView({behavior:'smooth'});};
-  const skip=()=>{setMode('choose');setIntroPlaying(false);setTravelling(false);};
-  const onArrive=useCallback(()=>setTravelling(false),[]),onReady=useCallback(()=>setReady(true),[]);
-  return <div className={`cinematic-app ${motion?'motion-on':'motion-off'}`}>
-    <a className="cinematic-skip" href="#mission-access" onClick={event=>{event.preventDefault();(document.querySelector(isWorld?'#mission-access':'.cosmic-intro-copy') as HTMLElement|null)?.focus();}}>Skip to the mission list</a>
-    <header className="cosmic-nav glass"><button className="cosmic-wordmark" onClick={replay}>Left Behind<span className="wordmark-orbit" aria-hidden="true"/></button><nav aria-label="Main navigation"><a href="#/collection">The collection</a><a href="#/sources">NASA sources</a></nav><button className="motion-toggle" aria-pressed={motion} onClick={()=>{setMotion(v=>!v);setIntroPlaying(false);}}>{motion?'Ⅱ Motion':'▶ Motion'}</button></header>
-    <main>
-      <section ref={sceneRef} className={`cosmic-stage stage-${mode}`} aria-label="Cinematic space explorer">
-        <Suspense fallback={<div className="scene-starting" role="status">Opening the universe…</div>}><FlightScene mode={mode} selected={selected} motion={motion} previewing={Boolean(hovered||detail)} reset={reset} onReady={onReady} onArrive={onArrive} onHover={onHover} onLeave={onLeave} onSelect={item=>{select(item);openDetail(item);}}/></Suspense>
-        <div className="cinematic-scrim"/>
-        {!isWorld?<div className="cosmic-intro-copy" tabIndex={-1} key={mode}>
-          <p className="cosmic-context">{intro?.label}</p><h1>{intro?.title}</h1><p className="cosmic-description">{mode==='choose'?'Two worlds. Extraordinary machines. Discover the human stories that stayed behind.':'A journey through space, to the things we left behind.'}</p>
-          {mode==='choose'?<div className="destination-actions"><button className="destination-choice glass" onClick={()=>visit('moon')}><span className="destination-disc moon-disc"/><span><strong>The Moon</strong><small>First steps. Lasting traces.</small></span><span aria-hidden="true">↗</span></button><button className="destination-choice glass" onClick={()=>visit('mars')}><span className="destination-disc mars-disc"/><span><strong>Mars</strong><small>Robots. Dust. Discovery.</small></span><span aria-hidden="true">↗</span></button></div>:<div className="opening-controls"><button className="light-button" onClick={skip}>Choose a destination ↗</button><button className="quiet-button" aria-pressed={!introPlaying} onClick={()=>setIntroPlaying(v=>!v)}>{introPlaying?'Pause opening':'Continue opening'}</button></div>}
-          {!ready&&<p className="asset-loading" role="status">Loading NASA imagery… you can choose a destination now.</p>}
-        </div>:<><div className="planet-heading"><button className="back-to-space" onClick={()=>{skip();window.location.hash='/';}}>← Destinations</button><h1>{mode==='moon'?'The Moon.':'Mars.'}</h1><p>{mode==='moon'?'Our first steps are still here.':'The mission ends. The story doesn’t.'}</p><div className="planet-switch glass"><button aria-pressed={mode==='moon'} onClick={()=>visit('moon')}>Moon</button><button aria-pressed={mode==='mars'} onClick={()=>visit('mars')}>Mars</button></div></div>
-          {travelling&&<div className="travel-label glass" role="status"><span className="travel-indicator"/>Travelling to {mode==='moon'?'the Moon':'Mars'}<button onClick={()=>{setMotion(false);setTravelling(false);}}>Skip flight</button></div>}
-          {!travelling&&<div className="surface-instruction">Drag to orbit · scroll to zoom · hover a landing site</div>}
-          <div id="mission-access" tabIndex={-1} className="mission-dock glass" aria-label="All missions on this world"><div className="mission-dock-heading"><span>{items.length} mission stories</span><button aria-pressed={tour} onClick={()=>setTour(v=>!v)}>{tour?'Ⅱ Pause tour':'▶ Guided tour'}</button></div><div className="mission-dock-items">{items.map(item=><button key={item.id} aria-pressed={selected.id===item.id} className="mission-chip" onClick={()=>select(item)} onDoubleClick={()=>openDetail(item)}><span>{item.mission}</span><strong>{item.name}</strong></button>)}</div><div className="dock-current"><span>{selected.name}</span><button onClick={()=>openDetail(selected)}>Explore this story ↗</button><button aria-label="Next mission" onClick={nextStop}>→</button></div></div>
-        </>}
-        <div className="space-caption">{mode==='galaxy'?<a href="https://science.nasa.gov/photojournal/our-milky-way-gets-a-makeover-artist-concept/" target="_blank" rel="noreferrer">Milky Way artist concept · NASA/JPL-Caltech/R. Hurt ↗</a>:<><a href="#/sources">NASA imagery & reference models ↗</a><span>Cinematic journey · not to scale{isWorld?' · approximate landing areas':''}</span></>}</div>
-        {!isWorld&&<div className="opening-timeline" aria-label="Opening chapters">{opening.map((step,i)=><button key={step} aria-label={`Go to ${introCopy[step].label}`} aria-current={mode===step?'step':undefined} onClick={()=>{setMode(step);setIntroPlaying(false);}}><span/><small>{['Milky Way','Solar System','Earth','Explore'][i]}</small></button>)}</div>}
-        <OrbitGuide text={speech} title={travelling?'A new world ahead':isWorld?selected.name:'Let’s go exploring.'} voice={voice} voiceSupported={true} motion={motion} minimized={guideMinimized} onToggleVoice={()=>setVoice(v=>!v)} onMinimize={()=>setGuideMinimized(v=>!v)} onNext={isWorld&&!travelling?()=>setLine(n=>(n+1)%lines.length):undefined} onDetails={isWorld&&!travelling?()=>openDetail(selected):undefined} travelling={travelling}/>
-        {audioError&&<p role="alert" className="glass" style={{position:'absolute',bottom:16,left:16,zIndex:30,padding:12,maxWidth:340}}>{audioError}</p>}
-        {hovered&&!detail&&!travelling&&<div className="hotspot-preview glass" style={{left:Math.max(12,Math.min(hovered.anchor.x-140,window.innerWidth-292)),top:Math.max(96,Math.min(hovered.anchor.y-330,window.innerHeight-440))}} onMouseEnter={keepPreview} onMouseLeave={onLeave} onKeyDown={event=>{if(event.key==='Escape')setHovered(null);}}><button className="close-preview" aria-label="Close preview" onClick={()=>setHovered(null)}>×</button><Model key={hovered.item.id} artifact={hovered.item} autoRotate={motion}/><div className="preview-copy"><span>{hovered.item.mission} · NASA reference</span><strong>{hovered.item.name}</strong><button onClick={()=>{select(hovered.item);openDetail(hovered.item);}}>Discover the story ↗</button></div></div>}
-      </section>
-      {!isWorld&&<>
-        <section className="mission-showcase" aria-labelledby="showcase-title"><div className="showcase-intro"><h2 id="showcase-title">They stayed.<br/>The story goes on.</h2><p>Not forgotten. Not all abandoned. Meet the machines that became part of another world.</p></div><div className="showcase-objects">{['eagle','opportunity','ingenuity'].map(id=>{const item=findArtifact(id)!;return <article key={id} className={`showcase-object object-${id}`}><DeferredModel item={item} motion={motion}/><div><p>{item.mission}</p><h3>{item.name}</h3><p>{item.subtitle}</p><button className="text-action" onClick={()=>visit(item.world as World,item)}>Go to {item.world==='moon'?'the Moon':'Mars'} ↗</button></div></article>;})}</div></section>
-        <section className="journey-proof"><img src="/assets/eagle-photo.jpg" alt="Buzz Aldrin beside the Apollo 11 lunar module on the Moon. NASA photograph by Neil Armstrong." loading="lazy"/><div><h2>Wonder first.<br/>Evidence always.</h2><p>Every mission story leads back to NASA. The models, the imagery, the discoveries—real sources you can open and explore.</p><a className="light-button" href="#/sources">Explore the NASA sources ↗</a><small>Orbit is a fictional guide. The missions are real.<br/>Apollo 11 photograph: NASA / Neil Armstrong.</small></div></section>
-        <footer className="cosmic-footer"><button onClick={replay}>Left Behind ↗</button><p>An independent NASA Space Apps project.<br/>Not affiliated with or endorsed by NASA.</p><a href="#/collection">All 18 mission records ↗</a><a href="#/about">About the project ↗</a></footer>
-      </>}
-    </main>
-    {detail&&<MissionDialog key={detail.id} item={detail} motion={motion} onClose={closeDetail}/>}
-  </div>;
+ const initial=routeMission(route),reduced=useMotionPreference();
+ const [mode,setMode]=useState<FlightMode>(initial?.world??(reduced?'choose':'galaxy')),[selected,setSelected]=useState(initial?.item??findArtifact('eagle')!);
+ const [focusSite,setFocusSite]=useState<SurfaceSite|null>(()=>routeSite(route));
+ const [motion,setMotion]=useState(!reduced),[introPlaying,setIntroPlaying]=useState(!reduced&&!initial),[ready,setReady]=useState(false),[travelling,setTravelling]=useState(false);
+ const [voice,setVoice]=useState(true),[audioArmed,setAudioArmed]=useState(false),[guideMinimized,setGuideMinimized]=useState(false),[tourPlaying,setTourPlaying]=useState(!reduced),[tourProgress,setTourProgress]=useState(0),[detail,setDetail]=useState<Artifact|null>(null),[siteDetail,setSiteDetail]=useState<SurfaceSite|null>(null),[atlas,setAtlas]=useState(false),[reset,setReset]=useState(0),[unavailable,setUnavailable]=useState(false);
+ const sceneRef=useRef<HTMLElement>(null),lastFocus=useRef<HTMLElement|null>(null);
+ const isWorld=mode==='moon'||mode==='mars',world:World=mode==='mars'?'mars':'moon',sites=useMemo(()=>sitesFor(world),[world]);
+ const currentSite=focusSite??sites.find(site=>site.artifactId===selected.id)??sites[0];
+ const stops=useMemo(()=>tourSites(world),[world]);
+ const intro=isWorld?null:introCopy[mode as keyof typeof introCopy];
+ const [worldTransfer,setWorldTransfer]=useState(true);
+ const [voiceLine,setVoiceLine]=useState(0),[flightArrived,setFlightArrived]=useState(false),[flightSpoken,setFlightSpoken]=useState(false);
+ const recordings=useMemo(()=>currentSite.artifactId?recordedStory(findArtifact(currentSite.artifactId)!):[],[currentSite.artifactId]);
+ const recording=travelling?(worldTransfer?journeyRecording(mode,true):journeyRecording('solar')):isWorld?recordings[voiceLine]??recordings[0]:journeyRecording(mode);
+ const speech=recording?.text??tourCaption(currentSite);
+ const narrationEnabled=voice&&audioArmed&&!guideMinimized&&!detail&&!siteDetail&&!atlas;
+ useEffect(()=>{setVoiceLine(0);},[currentSite.id]);
+ useEffect(()=>{if(travelling){setFlightArrived(false);setFlightSpoken(false);}},[travelling,currentSite.id]);
+ const selectSite=useCallback((site:SurfaceSite)=>{setVoiceLine(0);setWorldTransfer(site.world!==mode);setFocusSite(site.artifactId?null:site);if(site.artifactId)setSelected(findArtifact(site.artifactId)!);setTourProgress(0);setMode(site.world);setTravelling(motion&&(site.world!==mode||site.id!==(focusSite?.id??selected.id)));setIntroPlaying(false);setGuideMinimized(false);window.location.hash=`/${site.world}/${site.artifactId??`@${site.id}`}`;},[motion,mode,focusSite?.id,selected.id]);
+ const nextStop=useCallback(()=>selectSite(adjacentStop(world,currentSite.id,1)),[world,currentSite.id,selectSite]);
+ const previousStop=()=>selectSite(adjacentStop(world,currentSite.id,-1));
+ const pauseTour=useCallback(()=>setTourPlaying(false),[]);
+ // Narration is enabled by default, but browsers require an interaction before audio.
+ useEffect(()=>{const arm=()=>setAudioArmed(true);window.addEventListener('pointerdown',arm,{once:true});window.addEventListener('keydown',arm,{once:true});return()=>{window.removeEventListener('pointerdown',arm);window.removeEventListener('keydown',arm);};},[]);
+ const voiceState=useRecordedVoice(recording,narrationEnabled,()=>{
+  if(travelling){setFlightSpoken(true);return;}
+  if(!isWorld&&introPlaying&&motion&&mode!=='choose'){const index=opening.indexOf(mode);setMode(opening[Math.min(index+1,3)]);}
+  else if(isWorld&&voiceLine<recordings.length-1)setVoiceLine(n=>n+1);
+  else if(isWorld&&tourPlaying&&motion)nextStop();
+ });
+ useEffect(()=>{
+  setTourProgress(0);if(!isWorld||!ready||travelling||!tourPlaying||!motion||detail||siteDetail||atlas||(narrationEnabled&&recording&&!voiceState.error))return;
+  let elapsed=0;const timer=setInterval(()=>{if(document.hidden)return;elapsed+=200;setTourProgress(elapsed/(tourSeconds*1000));if(elapsed>=tourSeconds*1000){clearInterval(timer);nextStop();}},200);
+  return()=>clearInterval(timer);
+ },[isWorld,ready,travelling,tourPlaying,motion,detail,siteDetail,atlas,currentSite.id,nextStop,narrationEnabled,recording?.id,voiceState.error]);
+ useEffect(()=>{if(travelling&&flightArrived&&(!narrationEnabled||flightSpoken||voiceState.error))setTravelling(false);},[travelling,flightArrived,narrationEnabled,flightSpoken,voiceState.error]);
+ useEffect(()=>{const next=routeMission(route);if(next){setVoiceLine(0);setSelected(next.item);setFocusSite(routeSite(route));setMode(next.world);setTourProgress(0);}else if(route==='#/intro'){setMode(reduced?'choose':'galaxy');setIntroPlaying(!reduced);setFocusSite(null);}},[route,reduced]);
+ useEffect(()=>{if(reduced){setMotion(false);setIntroPlaying(false);setTourPlaying(false);}},[reduced]);
+ useEffect(()=>{if(mode==='choose')setIntroPlaying(false);},[mode]);
+ const waitingForVoice=voice&&audioArmed&&!voiceState.error;
+ useEffect(()=>{if(!introPlaying||!ready||isWorld||mode==='choose'||!motion||waitingForVoice)return;let elapsed=0;const timer=setInterval(()=>{if(document.hidden)return;elapsed+=250;if(elapsed>=6000){const index=opening.indexOf(mode as typeof opening[number]);setMode(opening[Math.min(index+1,3)]);}},250);return()=>clearInterval(timer);},[mode,introPlaying,ready,isWorld,motion,waitingForVoice]);
+ const visit=useCallback((target:World,item?:Artifact)=>{selectSite(item?(sitesFor(target).find(site=>site.artifactId===item.id)??sitesFor(target)[0]):sitesFor(target)[0]);sceneRef.current?.scrollIntoView({behavior:motion?'smooth':'auto'});},[motion,selectSite]);
+ const rememberFocus=()=>{lastFocus.current=document.activeElement as HTMLElement;};
+ // Wait until the native dialog is removed; its opener is inert before React commits.
+ const restoreFocus=()=>{const el=lastFocus.current;requestAnimationFrame(()=>{if(el?.isConnected)el.focus({preventScroll:true});});};
+ const openDetail=()=>{rememberFocus();if(focusSite)setSiteDetail(focusSite);else setDetail(selected);};
+ const closeDetail=()=>{setDetail(null);setSiteDetail(null);restoreFocus();};
+ const closeAtlas=()=>{setAtlas(false);restoreFocus();};
+ const replay=()=>{setMode(reduced?'choose':'galaxy');setIntroPlaying(motion&&!reduced);setTravelling(false);setFocusSite(null);setTourPlaying(!reduced&&motion);setReset(n=>n+1);window.location.hash='/';sceneRef.current?.scrollIntoView({behavior:motion?'smooth':'auto'});};
+ const skip=()=>{setMode('choose');setIntroPlaying(false);setTravelling(false);};
+ const onArrive=useCallback(()=>setFlightArrived(true),[]),onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>setUnavailable(true),[]);
+ return <div className={`cinematic-app ${motion?'motion-on':'motion-off'} ${isWorld?'tour-active':''}`} >
+  <a className="cinematic-skip" href="#mission-access" onClick={e=>{e.preventDefault();(document.querySelector(isWorld?'#mission-access':'.cosmic-intro-copy') as HTMLElement|null)?.focus();}}>Skip to the mission controls</a>
+  <button className="home-icon glass" aria-label="Go home" title="Home" onClick={replay}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v11h5v-6h4v6h5V9" strokeLinecap="round" strokeLinejoin="round"/></svg></button>
+  <div className="explorer-settings" aria-label="Experience settings"><button className="motion-toggle glass" aria-label={motion?'Pause motion':'Enable motion'} title={motion?'Pause motion':'Enable motion'} aria-pressed={motion} onClick={()=>{setMotion(v=>!v);setIntroPlaying(false);}}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">{motion?<><path d="M9 5v14M15 5v14"/></>:<path d="m8 5 11 7-11 7Z"/>}</svg></button><button className="voice-toggle glass" aria-label={voice?'Mute narration':'Enable narration'} title={voice&&!audioArmed?'Recorded narration · starts after your first interaction':voice?'Mute narration':'Enable narration'} aria-pressed={voice} onClick={()=>{setAudioArmed(true);setVoice(v=>!v);}}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9Z" strokeLinejoin="round"/>{voice?<><path d="M16 8a6 6 0 0 1 0 8M19 5a10 10 0 0 1 0 14" strokeLinecap="round"/></>:<path d="m17 9 5 6m0-6-5 6" strokeLinecap="round"/>}</svg></button></div>
+  <main><section ref={sceneRef} className={`cosmic-stage stage-${mode} ${isWorld?'':'stage-opening'}`} aria-label="Interactive NASA space explorer">
+   <Suspense fallback={<div className="scene-starting" role="status">Opening NASA’s universe…</div>}><FlightScene mode={mode} selected={selected} focusSite={focusSite} motion={motion} previewing={Boolean(detail||siteDetail||atlas)} reset={reset} onReady={onReady} onArrive={onArrive} onUnavailable={onUnavailable} onSiteSelect={site=>{pauseTour();selectSite(site);}} onInteract={pauseTour}/></Suspense><div className="cinematic-scrim"/>
+   {!isWorld?<div className="cosmic-intro-copy" tabIndex={-1} key={mode}><h1>{intro?.title}</h1>
+    <div className="destination-actions">{(['moon','mars'] as const).map(w=><button key={w} className="destination-choice glass" onClick={()=>visit(w)}><span className={`destination-disc ${w}-disc`} aria-hidden="true"/><strong>{w==='moon'?'Moon':'Mars'}</strong><span aria-hidden="true">↗</span></button>)}</div>
+    {!ready&&<p className="asset-loading" role="status">Loading NASA imagery. You can choose a destination now.</p>}
+   </div>:<><div className="planet-heading"><button className="back-to-space" onClick={()=>{skip();window.location.hash='/';}}>← Worlds</button><span className="tour-eyebrow">Left behind / {world==='moon'?'01':'02'}</span><h1>{world==='moon'?'MOON':'MARS'}</h1><div className="planet-switch glass">{(['moon','mars'] as const).map(w=><button key={w} aria-pressed={world===w} onClick={()=>visit(w)}>{w==='moon'?'Moon':'Mars'}</button>)}</div><button className="coordinate-trigger" aria-label={`Coordinates & all ${sites.length} sites`} onClick={()=>{rememberFocus();setAtlas(true);}}>All {sites.length} locations ↗</button></div>
+    {travelling&&<div className="travel-label glass" role="status">Flying to {currentSite.name}<span aria-hidden="true"> ↗</span></div>}
+    <p id="globe-help" className="sr-only">Drag to orbit, scroll to zoom. Keyboard: plus or minus to zoom, Home to recenter. Coordinate grid and pins are enlarged, not to scale. {unavailable?'3D unavailable; use the coordinate atlas.':''}</p>
+    <div id="mission-access" tabIndex={-1} className="mission-dock glass" aria-label="Mission focus controls"><label htmlFor="site-select"><span className="sr-only">Choose a location</span><select id="site-select" value={currentSite.id} onChange={e=>{pauseTour();selectSite(sites.find(s=>s.id===e.target.value)!);}}> {sites.map(site=><option key={site.id} value={site.id}>{site.mission} · {site.name}</option>)}</select></label><a className="nasa-credits" href="#/sources">NASA sources ↗</a></div>
+   </>}
+   {!isWorld&&<div className="space-caption">{mode==='galaxy'?<a href="https://science.nasa.gov/photojournal/our-milky-way-gets-a-makeover-artist-concept/" target="_blank" rel="noreferrer">Milky Way · NASA/JPL-Caltech/R. Hurt ↗</a>:mode==='solar'?<a href="https://svs.gsfc.nasa.gov/3851/" target="_blank" rel="noreferrer">Sun · NASA STEREO/SDO · EUV false colour ↗</a>:<a href="#/sources">NASA sources ↗</a>}</div>}
+   {!isWorld&&<details className="opening-timeline"><summary>Our journey</summary><div aria-label="Opening chapters">{opening.map((step,i)=><button key={step} aria-label={`Go to ${introCopy[step].label}`} aria-current={mode===step?'step':undefined} onClick={()=>{setMode(step);setIntroPlaying(false);}}><span/><small>{['Milky Way','Solar System','Earth','Explore'][i]}</small></button>)}<button aria-label={introPlaying&&motion?'Pause opening':'Play opening'} aria-pressed={introPlaying&&motion} onClick={()=>{if(introPlaying&&motion)setIntroPlaying(false);else{if(mode==='choose')setMode('galaxy');setMotion(true);setIntroPlaying(true);}}}>{introPlaying&&motion?'Pause':'Play'} ↗</button></div></details>}
+   {isWorld&&<TourPanel caption={speech} recordingAvailable={Boolean(recording)} narrating={voiceState.speaking} audioProgress={voiceState.progress} onNextLine={recordings.length>1?()=>setVoiceLine(n=>(n+1)%recordings.length):undefined} site={currentSite} stops={stops} travelling={travelling} motion={motion&&!detail&&!siteDetail&&!atlas} playing={tourPlaying&&motion} progress={narrationEnabled&&recordings.length?(voiceLine+voiceState.progress)/recordings.length:tourProgress} onPlay={()=>{if(!motion){setMotion(true);setTourPlaying(true);}else setTourPlaying(v=>!v);}} onPrevious={previousStop} onNext={nextStop} onDetails={openDetail} onSelect={site=>{pauseTour();selectSite(site);}}/>}
+   <OrbitGuide sceneKey={`${mode}:${currentSite.id}`} compact={isWorld} text={speech} title={travelling?'Come fly with me.':'Follow what stayed.'} narrating={voiceState.speaking} motion={motion&&!detail&&!siteDetail&&!atlas} minimized={guideMinimized} onMinimize={()=>setGuideMinimized(v=>!v)} travelling={travelling}/>
+   {voiceState.error&&<p role="alert" className="recording-notice glass">{voiceState.error}</p>}
+   {isWorld&&<div className="tour-map-note">Drag to explore · Illustrative route, not a spacecraft trajectory</div>}
+  </section>
+  {!isWorld&&<><section className="mission-showcase" aria-labelledby="showcase-title"><div className="showcase-intro"><h2 id="showcase-title">Left behind.</h2></div><div className="showcase-objects">{['eagle','opportunity','ingenuity'].map(id=>{const item=findArtifact(id)!;return <article key={id} className="showcase-object"><DeferredModel item={item} motion={motion}/><div><h3>{item.name}</h3><button className="text-action" onClick={()=>visit(item.world as World,item)}>Find on {item.world==='moon'?'the Moon':'Mars'} ↗</button></div></article>;})}</div></section><section className="journey-proof"><img src={photoFor('eagle')?.file??'/assets/eagle-photo.jpg'} alt="Buzz Aldrin beside Eagle. NASA / Neil Armstrong." loading="lazy"/><div><h2>What should we leave?</h2><a className="light-button" href="#/responsibility">Explore solutions ↗</a><small>NASA / Neil Armstrong</small></div></section><footer className="cosmic-footer"><small>Independent project · No NASA endorsement.</small><a href="#/collection">Missions ↗</a><a href="#/sources">Credits ↗</a></footer></>}
+  </main>
+  {detail&&<MissionDialog key={detail.id} item={detail} motion={motion} onClose={closeDetail}/>} {siteDetail&&<SiteDialog site={siteDetail} onClose={closeDetail}/>}
+  {atlas&&<CoordinateAtlas world={world} onClose={closeAtlas} onVisit={site=>{closeAtlas();selectSite(site);}}/>}
+ </div>;
 }
-export default function CinematicRouter(){
-  const [route,setRoute]=useState(()=>window.location.hash);
-  useEffect(()=>{const changed=()=>setRoute(window.location.hash);window.addEventListener('hashchange',changed);return()=>window.removeEventListener('hashchange',changed);},[]);
-  const archive=/^#\/(collection|sources|legacy|about)(?:\/|$)/.test(route)||new URLSearchParams(location.search).has('classic');
-  return archive?<div className="cinematic-archive"><ArchiveApp/></div>:<CinematicExperience route={route}/>;
-}
+export default function CinematicRouter(){const [route,setRoute]=useState(()=>window.location.hash);useEffect(()=>{const changed=()=>setRoute(window.location.hash);window.addEventListener('hashchange',changed);return()=>window.removeEventListener('hashchange',changed);},[]);const archive=/^#\/(collection|sources|legacy|about)(?:\/|$)/.test(route)||new URLSearchParams(location.search).has('classic');return route==='#/responsibility'?<Stewardship/>:archive?<div className="cinematic-archive"><ArchiveApp/></div>:<CinematicExperience route={route}/>;}

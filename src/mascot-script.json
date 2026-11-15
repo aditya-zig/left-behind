@@ -6,9 +6,13 @@
     "line": 1,
     "text": "Psst. Every machine out here still has a story. Pick a world and I'll tell you the ones nobody told you.",
     "audio": "audio/journey_landing_01.wav",
-    "start": 0.0,
-    "end": 6.075,
-    "check": "likely_ok"
+    "start": 0,
+    "end": 5.99,
+    "check": "likely_ok",
+    "supplied_start": 0.0,
+    "supplied_end": 6.075,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "308cb60436c61c2b00178705a926caa5b6478e3b92716e4125b84ebf888170d3"
   },
   {
     "id": "journey_choose_destination_01",
@@ -17,9 +21,13 @@
     "line": 1,
     "text": "Eighteen machines. Two worlds, and the deep space beyond. Which story do you dare open first?",
     "audio": "audio/journey_choose_destination_01.wav",
-    "start": 6.075,
-    "end": 11.62,
-    "check": "REVIEW"
+    "start": 5.99,
+    "end": 10.56,
+    "check": "REVIEW",
+    "supplied_start": 6.075,
+    "supplied_end": 11.62,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "c571772f40793723b3ced0fcc3197d172350df4482517235921be3172afc373b"
   },
   {
     "id": "journey_travel_moon_01",
@@ -28,9 +36,13 @@
     "line": 1,
     "text": "Hold tight. Next stop: the only other world humans have ever walked on.",
     "audio": "audio/journey_travel_moon_01.wav",
-    "start": 11.62,
-    "end": 15.982,
-    "check": "REVIEW"
+    "start": 10.56,
+    "end": 15.34,
+    "check": "REVIEW",
+    "supplied_start": 11.62,
+    "supplied_end": 15.982,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "0eea3c97f71e19bc794a7bd12a21ca68b50d10b2d5370d97158ab51a2c83db6d"
   },
   {
     "id": "journey_moon_arrival_01",
@@ -39,9 +51,13 @@
     "line": 1,
     "text": "No wind. No rain. Nothing here gets tidied up. Hover over a glowing dot. Something was left there.",
     "audio": "audio/journey_moon_arrival_01.wav",
-    "start": 15.982,
-    "end": 20.965,
-    "check": "REVIEW"
+    "start": 15.34,
+    "end": 21.01,
+    "check": "REVIEW",
+    "supplied_start": 15.982,
+    "supplied_end": 20.965,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "22136b548e30d851c6dc4c41311ec39c6387274f0b19b29f35ce6b55b5d21858"
   },
   {
     "id": "journey_travel_mars_01",
@@ -50,9 +66,13 @@
     "line": 1,
     "text": "Seven months of space travel in a few seconds. You're welcome.",
     "audio": "audio/journey_travel_mars_01.wav",
-    "start": 20.965,
-    "end": 25.375,
-    "check": "likely_ok"
+    "start": 21.01,
+    "end": 24.09,
+    "check": "likely_ok",
+    "supplied_start": 20.965,
+    "supplied_end": 25.375,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "9acfe02bde1668a78858cebbb2eadcd99cc7bc28922f089692375c4e1487e7cd"
   },
   {
     "id": "journey_mars_arrival_01",
@@ -61,9 +81,13 @@
     "line": 1,
     "text": "Red dust. Thin sky. Eight machines that never came home. Drag the planet and find them.",
     "audio": "audio/journey_mars_arrival_01.wav",
-    "start": 25.375,
-    "end": 30.33,
-    "check": "likely_ok"
+    "start": 24.09,
+    "end": 30.17,
+    "check": "likely_ok",
+    "supplied_start": 25.375,
+    "supplied_end": 30.33,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "edc31328fdaf48c4753a914c6b20646d1de27fe770510a71d6e1c6eb013425e5"
   },
   {
     "id": "journey_travel_beyond_mars_01",
@@ -72,9 +96,13 @@
     "line": 1,
     "text": "Leaving Mars behind. Out here, the machines are far from home, and getting farther.",
     "audio": "audio/journey_travel_beyond_mars_01.wav",
-    "start": 30.33,
-    "end": 34.45,
-    "check": "likely_ok"
+    "start": 30.17,
+    "end": 34.25,
+    "check": "likely_ok",
+    "supplied_start": 30.33,
+    "supplied_end": 34.45,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "a6be0d799399d5f0abf26e5ab0e2e69bb0de93925686bf2cae635617b069e9ba"
   },
   {
     "id": "journey_guided_tour_start_01",
@@ -83,9 +111,13 @@
     "line": 1,
     "text": "Guided tour? Great choice. Stay close. I'll save the best for last.",
     "audio": "audio/journey_guided_tour_start_01.wav",
-    "start": 34.45,
-    "end": 39.22,
-    "check": "likely_ok"
+    "start": 34.25,
+    "end": 39.03,
+    "check": "likely_ok",
+    "supplied_start": 34.45,
+    "supplied_end": 39.22,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "4f4c6eed1a926787d5b3348526c21fbf5c80f5eaad645c376e5ad136afcd5280"
   },
   {
     "id": "moon_apollo_lunar_modules_eagle_01",
@@ -94,9 +126,13 @@
     "line": 1,
     "text": "You're standing where humans first set foot on another world. Half of their ship is still here.",
     "audio": "audio/moon_apollo_lunar_modules_eagle_01.wav",
-    "start": 39.22,
-    "end": 44.84,
-    "check": "likely_ok"
+    "start": 39.03,
+    "end": 44.83,
+    "check": "likely_ok",
+    "supplied_start": 39.22,
+    "supplied_end": 44.84,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "53717e4c5bf0c26a888475308e6e15b56448ceefcf8692a8e6a9a2ace0e98785"
   },
   {
     "id": "moon_apollo_lunar_modules_eagle_02",
@@ -105,9 +141,13 @@
     "line": 2,
     "text": "Eagle landed two astronauts at Tranquility Base. The bottom half became the launch pad for the trip home, then stayed behind.",
     "audio": "audio/moon_apollo_lunar_modules_eagle_02.wav",
-    "start": 44.84,
-    "end": 51.745,
-    "check": "likely_ok"
+    "start": 44.83,
+    "end": 51.49,
+    "check": "likely_ok",
+    "supplied_start": 44.84,
+    "supplied_end": 51.745,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "222cdd90014300646f28368a511fc12e09771d932754c5c197d9fc2f138cfd37"
   },
   {
     "id": "moon_apollo_lunar_modules_eagle_03",
@@ -116,9 +156,13 @@
     "line": 3,
     "text": "No wind. No rain. Their bootprints are probably still there, beside a plaque saying they came in peace.",
     "audio": "audio/moon_apollo_lunar_modules_eagle_03.wav",
-    "start": 51.745,
-    "end": 58.185,
-    "check": "REVIEW"
+    "start": 51.49,
+    "end": 58.17,
+    "check": "REVIEW",
+    "supplied_start": 51.745,
+    "supplied_end": 58.185,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "e7b441dc0aa701a46c7ea70badd08a620d1529e3a1705f16ae386f8ebe6c8628"
   },
   {
     "id": "moon_apollo_lunar_modules_eagle_04",
@@ -127,9 +171,13 @@
     "line": 4,
     "text": "Six Apollo landers left their bottom halves on the Moon. Eagle was just the first.",
     "audio": "audio/moon_apollo_lunar_modules_eagle_04.wav",
-    "start": 58.185,
-    "end": 63.123,
-    "check": "REVIEW"
+    "start": 58.17,
+    "end": 63.02,
+    "check": "REVIEW",
+    "supplied_start": 58.185,
+    "supplied_end": 63.123,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "93ec7624ae853098cb9182477efb738c94d7e40627a951909f2e4b9cba49d21a"
   },
   {
     "id": "moon_lunar_roving_vehicles_01",
@@ -138,9 +186,13 @@
     "line": 1,
     "text": "Imagine driving on the Moon. Someone did. Then they parked it and walked away forever.",
     "audio": "audio/moon_lunar_roving_vehicles_01.wav",
-    "start": 63.123,
-    "end": 68.18,
-    "check": "REVIEW"
+    "start": 63.02,
+    "end": 67.96,
+    "check": "REVIEW",
+    "supplied_start": 63.123,
+    "supplied_end": 68.18,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "62ac24ba147e68d067820a10cb7438a4f4c0c9630369c2459eda397f1779845e"
   },
   {
     "id": "moon_lunar_roving_vehicles_02",
@@ -149,9 +201,13 @@
     "line": 2,
     "text": "An electric buggy that folded flat to fit inside the lander, then unfolded into a four-wheeled explorer.",
     "audio": "audio/moon_lunar_roving_vehicles_02.wav",
-    "start": 68.18,
-    "end": 74.1,
-    "check": "likely_ok"
+    "start": 67.96,
+    "end": 73.94,
+    "check": "likely_ok",
+    "supplied_start": 68.18,
+    "supplied_end": 74.1,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "656c0f5be73f44ecaa527702c00989d2bea8033e70fd4bc425161146da4ee3de"
   },
   {
     "id": "moon_lunar_roving_vehicles_03",
@@ -160,9 +216,13 @@
     "line": 3,
     "text": "Its batteries were never meant to be recharged. Parked under a black sky, it's still waiting.",
     "audio": "audio/moon_lunar_roving_vehicles_03.wav",
-    "start": 74.1,
-    "end": 79.72,
-    "check": "likely_ok"
+    "start": 73.94,
+    "end": 79.61,
+    "check": "likely_ok",
+    "supplied_start": 74.1,
+    "supplied_end": 79.72,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "9a03fc0b1387445d399e4b572aeec7266a9c1b6955242e272b35ac1f64ec829e"
   },
   {
     "id": "moon_lunar_roving_vehicles_04",
@@ -171,9 +231,13 @@
     "line": 4,
     "text": "Three moon buggies sit on the Moon today, from Apollo 15, 16 and 17. All parked permanently.",
     "audio": "audio/moon_lunar_roving_vehicles_04.wav",
-    "start": 79.72,
-    "end": 86.195,
-    "check": "likely_ok"
+    "start": 79.61,
+    "end": 85.88,
+    "check": "likely_ok",
+    "supplied_start": 79.72,
+    "supplied_end": 86.195,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "490c593ae7ba8b22a362b06e0c3c263f8de686d234de2ca7f8ce232222bfdda5"
   },
   {
     "id": "moon_alsep_listening_station_01",
@@ -182,9 +246,13 @@
     "line": 1,
     "text": "Something listened to the Moon for years. Then NASA switched it off.",
     "audio": "audio/moon_alsep_listening_station_01.wav",
-    "start": 86.195,
-    "end": 90.385,
-    "check": "likely_ok"
+    "start": 85.88,
+    "end": 90.35,
+    "check": "likely_ok",
+    "supplied_start": 86.195,
+    "supplied_end": 90.385,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "189f1a780e04ed8742546f502f684a708c0f5ffc8c0e4c57ab4af03b2777803a"
   },
   {
     "id": "moon_alsep_listening_station_02",
@@ -193,9 +261,13 @@
     "line": 2,
     "text": "Apollo astronauts wired seismometers and other instruments to a central station and left them running.",
     "audio": "audio/moon_alsep_listening_station_02.wav",
-    "start": 90.385,
-    "end": 95.84,
-    "check": "likely_ok"
+    "start": 90.35,
+    "end": 95.69,
+    "check": "likely_ok",
+    "supplied_start": 90.385,
+    "supplied_end": 95.84,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "07d717166cb8614c27f8a5d4ae6b1091d4d7bb0e19a16a77d0a3b3e492a88910"
   },
   {
     "id": "moon_alsep_listening_station_03",
@@ -204,9 +276,13 @@
     "line": 3,
     "text": "When a spent lander hit the surface, the Moon rang like a bell for almost an hour.",
     "audio": "audio/moon_alsep_listening_station_03.wav",
-    "start": 95.84,
-    "end": 100.905,
-    "check": "likely_ok"
+    "start": 95.69,
+    "end": 100.77,
+    "check": "likely_ok",
+    "supplied_start": 95.84,
+    "supplied_end": 100.905,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "f12b9dc9238d74d552bbb0a56a9ebfa9c20a3b126d65107b113924b9d7a3e6c9"
   },
   {
     "id": "moon_alsep_listening_station_04",
@@ -215,9 +291,13 @@
     "line": 4,
     "text": "Built to run for a year. The Apollo 12 station ran for almost eight.",
     "audio": "audio/moon_alsep_listening_station_04.wav",
-    "start": 100.905,
-    "end": 105.7,
-    "check": "likely_ok"
+    "start": 100.77,
+    "end": 105.52,
+    "check": "likely_ok",
+    "supplied_start": 100.905,
+    "supplied_end": 105.7,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "acf3e20ac337c537d908a01b26c447a2881d36bc66babd5d0f72887783075d3f"
   },
   {
     "id": "moon_surveyor_3_01",
@@ -226,9 +306,13 @@
     "line": 1,
     "text": "A robot landed on the Moon in 1967. Two years later, humans walked up and took pieces of it home.",
     "audio": "audio/moon_surveyor_3_01.wav",
-    "start": 105.7,
-    "end": 111.93,
-    "check": "likely_ok"
+    "start": 105.52,
+    "end": 111.65,
+    "check": "likely_ok",
+    "supplied_start": 105.7,
+    "supplied_end": 111.93,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "927b40d488cd01dfa37b0856dd23c2a8031997f8c96c3f014b63b915b576542b"
   },
   {
     "id": "moon_surveyor_3_02",
@@ -237,9 +321,13 @@
     "line": 2,
     "text": "The Surveyors of the 1960s proved soft landings were possible, long before any astronaut tried.",
     "audio": "audio/moon_surveyor_3_02.wav",
-    "start": 111.93,
-    "end": 118.39,
-    "check": "likely_ok"
+    "start": 111.65,
+    "end": 118.27,
+    "check": "likely_ok",
+    "supplied_start": 111.93,
+    "supplied_end": 118.39,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "8ed9b0a2b1a9ea35836f7dc07dc2e2450ebbe22d448686686be98c9d51a7595d"
   },
   {
     "id": "moon_surveyor_3_03",
@@ -248,9 +336,13 @@
     "line": 3,
     "text": "Apollo 12 landed close enough to walk over. They brought its camera back to Earth.",
     "audio": "audio/moon_surveyor_3_03.wav",
-    "start": 118.39,
-    "end": 122.955,
-    "check": "likely_ok"
+    "start": 118.27,
+    "end": 122.85,
+    "check": "likely_ok",
+    "supplied_start": 118.39,
+    "supplied_end": 122.955,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "04a32f7bfe74b04b2ead155a71b98f8dd958394be40c971d7835940b4e26911d"
   },
   {
     "id": "moon_surveyor_3_04",
@@ -259,9 +351,13 @@
     "line": 4,
     "text": "It bounced twice on landing, then settled in a crater. The rest of the robot is still there.",
     "audio": "audio/moon_surveyor_3_04.wav",
-    "start": 122.955,
-    "end": 128.665,
-    "check": "likely_ok"
+    "start": 122.85,
+    "end": 128.74,
+    "check": "likely_ok",
+    "supplied_start": 122.955,
+    "supplied_end": 128.665,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "8ac316d38680e31d7eff253475f781a0171253bcff523136a537ccc04cc0c540"
   },
   {
     "id": "moon_laser_retroreflector_01",
@@ -270,9 +366,13 @@
     "line": 1,
     "text": "Scientists still fire lasers at the Moon. And something here fires them back.",
     "audio": "audio/moon_laser_retroreflector_01.wav",
-    "start": 128.665,
-    "end": 133.33,
-    "check": "likely_ok"
+    "start": 128.74,
+    "end": 133.35,
+    "check": "likely_ok",
+    "supplied_start": 128.665,
+    "supplied_end": 133.33,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "79b096d33ee32c6cc2f38dec574f8193841aaebe8448645f0db3f79a89245177"
   },
   {
     "id": "moon_laser_retroreflector_02",
@@ -281,9 +381,13 @@
     "line": 2,
     "text": "Apollo 11 left a panel of one hundred tiny mirrors. Each sends light straight back where it came from.",
     "audio": "audio/moon_laser_retroreflector_02.wav",
-    "start": 133.33,
-    "end": 139.98,
-    "check": "likely_ok"
+    "start": 133.35,
+    "end": 140.1,
+    "check": "likely_ok",
+    "supplied_start": 133.33,
+    "supplied_end": 139.98,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "c0cca01d9fdf2a66192ea796bab9f480eda754bffa2f0f3d66598d2a8b11b65c"
   },
   {
     "id": "moon_laser_retroreflector_03",
@@ -292,9 +396,13 @@
     "line": 3,
     "text": "A pulse makes the round trip in about two and a half seconds. That's how we know the Moon drifts away about as fast as your fingernails grow.",
     "audio": "audio/moon_laser_retroreflector_03.wav",
-    "start": 139.98,
-    "end": 148.005,
-    "check": "REVIEW"
+    "start": 140.1,
+    "end": 146.94,
+    "check": "REVIEW",
+    "supplied_start": 139.98,
+    "supplied_end": 148.005,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "0c542b6a3b4e316efb4d1073169fa879222e5faa871241ff6e047e1c95a9f141"
   },
   {
     "id": "moon_laser_retroreflector_04",
@@ -303,9 +411,13 @@
     "line": 4,
     "text": "No power. No moving parts. Still working.",
     "audio": "audio/moon_laser_retroreflector_04.wav",
-    "start": 148.005,
-    "end": 152.295,
-    "check": "REVIEW"
+    "start": 146.94,
+    "end": 150.33,
+    "check": "REVIEW",
+    "supplied_start": 148.005,
+    "supplied_end": 152.295,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "3278552b7333a5dda43d5bf039957db878116e777cfe6ac35bc63ef11c00d2e0"
   },
   {
     "id": "mars_sojourner_01",
@@ -314,9 +426,13 @@
     "line": 1,
     "text": "The size of a microwave oven. The first rover to ever roam Mars.",
     "audio": "audio/mars_sojourner_01.wav",
-    "start": 152.295,
-    "end": 156.925,
-    "check": "REVIEW"
+    "start": 150.33,
+    "end": 154.19,
+    "check": "REVIEW",
+    "supplied_start": 152.295,
+    "supplied_end": 156.925,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "afc0d6831d551bc8a5844a6bcc44162c7a8a9069ee6e05ff6008abbfd7bc132d"
   },
   {
     "id": "mars_sojourner_02",
@@ -325,9 +441,13 @@
     "line": 2,
     "text": "It landed on July 4, 1997, bouncing across the surface in airbags like a giant beach ball.",
     "audio": "audio/mars_sojourner_02.wav",
-    "start": 156.925,
-    "end": 160.4,
-    "check": "REVIEW"
+    "start": 154.19,
+    "end": 160.22,
+    "check": "REVIEW",
+    "supplied_start": 156.925,
+    "supplied_end": 160.4,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "b7b9136f6679abd73370f455588ec96d1728bcfeebac1196e6a18903e7c34af8"
   },
   {
     "id": "mars_sojourner_03",
@@ -336,9 +456,13 @@
     "line": 3,
     "text": "Planned for a week. It lasted nearly three months.",
     "audio": "audio/mars_sojourner_03.wav",
-    "start": 160.4,
-    "end": 163.42,
-    "check": "REVIEW"
+    "start": 160.22,
+    "end": 163.21,
+    "check": "REVIEW",
+    "supplied_start": 160.4,
+    "supplied_end": 163.42,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "31cce878393a384f439056add23bb169139a22b9949653a6281a3eeed724c1dd"
   },
   {
     "id": "mars_sojourner_04",
@@ -347,9 +471,13 @@
     "line": 4,
     "text": "It studied rocks nicknamed Yogi and Barnacle Bill, and never strayed far from its lander. Now permanently parked.",
     "audio": "audio/mars_sojourner_04.wav",
-    "start": 163.42,
-    "end": 170.19,
-    "check": "likely_ok"
+    "start": 163.21,
+    "end": 170.02,
+    "check": "likely_ok",
+    "supplied_start": 163.42,
+    "supplied_end": 170.19,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "5240bb013fd9773c4085b45ecb695fb413eb5dec42380a07b98d22c807fff74a"
   },
   {
     "id": "mars_spirit_01",
@@ -358,9 +486,13 @@
     "line": 1,
     "text": "Opportunity had a twin. Spirit's story was less lucky, and braver.",
     "audio": "audio/mars_spirit_01.wav",
-    "start": 170.19,
-    "end": 174.15,
-    "check": "likely_ok"
+    "start": 170.02,
+    "end": 174.03,
+    "check": "likely_ok",
+    "supplied_start": 170.19,
+    "supplied_end": 174.15,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "6f36424a0f94cd85b033a33103d8ead7d2480f25a062fb9b98cf0432c7b4ca24"
   },
   {
     "id": "mars_spirit_02",
@@ -369,9 +501,13 @@
     "line": 2,
     "text": "It landed in Gusev Crater three weeks before its twin.",
     "audio": "audio/mars_spirit_02.wav",
-    "start": 174.15,
-    "end": 177.115,
-    "check": "likely_ok"
+    "start": 174.03,
+    "end": 176.96,
+    "check": "likely_ok",
+    "supplied_start": 174.15,
+    "supplied_end": 177.115,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "566d06dc15b1bb1b33922eb11d330546eb406f7ea68f67b6702f604577e08bb4"
   },
   {
     "id": "mars_spirit_03",
@@ -380,9 +516,13 @@
     "line": 3,
     "text": "A wheel broke, so it drove backward, dragging it. That dug up bright white soil, a sign of ancient hot springs.",
     "audio": "audio/mars_spirit_03.wav",
-    "start": 177.115,
-    "end": 183.99,
-    "check": "likely_ok"
+    "start": 176.96,
+    "end": 183.68,
+    "check": "likely_ok",
+    "supplied_start": 177.115,
+    "supplied_end": 183.99,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "dbfbdd8c246786f94a4524f919826dcd6c8632b587ab32e94ecdc1ca9b2700b3"
   },
   {
     "id": "mars_spirit_04",
@@ -391,9 +531,13 @@
     "line": 4,
     "text": "In 2009 it sank into soft sand. Last contact: March 2010. Now a monument to Mars exploration.",
     "audio": "audio/mars_spirit_04.wav",
-    "start": 183.99,
-    "end": 191.225,
-    "check": "likely_ok"
+    "start": 183.68,
+    "end": 190.94,
+    "check": "likely_ok",
+    "supplied_start": 183.99,
+    "supplied_end": 191.225,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "0982f77bbc91b727d10aee2fcb01cc5cee660e04176f8616651a9da5b769bd8f"
   },
   {
     "id": "mars_opportunity_01",
@@ -402,9 +546,13 @@
     "line": 1,
     "text": "Plan: ninety days. Reality: almost fifteen years. Meet the rover that refused to quit.",
     "audio": "audio/mars_opportunity_01.wav",
-    "start": 191.225,
-    "end": 196.505,
-    "check": "likely_ok"
+    "start": 190.94,
+    "end": 196.46,
+    "check": "likely_ok",
+    "supplied_start": 191.225,
+    "supplied_end": 196.505,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "48d24c9f6ee63df2a05aa1c428faf6a035920ae892e1866b93670970f7c13633"
   },
   {
     "id": "mars_opportunity_02",
@@ -413,9 +561,13 @@
     "line": 2,
     "text": "It drove farther than a marathon, on another planet.",
     "audio": "audio/mars_opportunity_02.wav",
-    "start": 196.505,
-    "end": 198.96,
-    "check": "likely_ok"
+    "start": 196.46,
+    "end": 198.84,
+    "check": "likely_ok",
+    "supplied_start": 196.505,
+    "supplied_end": 198.96,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "fe398512222feddc64df8d94fb329d20a44b81eb940dd0b5e55522af6702455c"
   },
   {
     "id": "mars_opportunity_03",
@@ -424,9 +576,13 @@
     "line": 3,
     "text": "It found minerals that form in water. Ancient Mars was wet.",
     "audio": "audio/mars_opportunity_03.wav",
-    "start": 198.96,
-    "end": 202.325,
-    "check": "likely_ok"
+    "start": 198.84,
+    "end": 202.27,
+    "check": "likely_ok",
+    "supplied_start": 198.96,
+    "supplied_end": 202.325,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "7d9c9cab8866387b7668dcd25ec5d72d376801991769f242b361cdbc640a9f43"
   },
   {
     "id": "mars_opportunity_04",
@@ -435,9 +591,13 @@
     "line": 4,
     "text": "In 2018 a global dust storm blocked the Sun. Engineers sent over a thousand wake-up calls. Silence.",
     "audio": "audio/mars_opportunity_04.wav",
-    "start": 202.325,
-    "end": 209.12,
-    "check": "likely_ok"
+    "start": 202.27,
+    "end": 208.96,
+    "check": "likely_ok",
+    "supplied_start": 202.325,
+    "supplied_end": 209.12,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "637e683561387c234b1175a7ca95d61950fba20d51d2ecfbe53665e37a00540e"
   },
   {
     "id": "mars_viking_1_01",
@@ -446,9 +606,13 @@
     "line": 1,
     "text": "In 1976, a robot landed on Mars to ask the biggest question: is anything alive here?",
     "audio": "audio/mars_viking_1_01.wav",
-    "start": 209.12,
-    "end": 214.75,
-    "check": "likely_ok"
+    "start": 208.96,
+    "end": 214.64,
+    "check": "likely_ok",
+    "supplied_start": 209.12,
+    "supplied_end": 214.75,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "a968b8620b3561dd8d5a37b47dd0ef1d79b1f9f1eac65aea2d0ee6808a35a923"
   },
   {
     "id": "mars_viking_1_02",
@@ -457,9 +621,13 @@
     "line": 2,
     "text": "NASA's first successful Mars landing. Its cameras showed the world a red sky.",
     "audio": "audio/mars_viking_1_02.wav",
-    "start": 214.75,
-    "end": 219.66,
-    "check": "likely_ok"
+    "start": 214.64,
+    "end": 219.47,
+    "check": "likely_ok",
+    "supplied_start": 214.75,
+    "supplied_end": 219.66,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "3f1c01960c4bcb509c170769f8235d6dcdfd957bdd492574bab77e62ee2fd428"
   },
   {
     "id": "mars_viking_1_03",
@@ -468,9 +636,13 @@
     "line": 3,
     "text": "It scooped soil and ran three experiments hunting for life. People still argue about the results.",
     "audio": "audio/mars_viking_1_03.wav",
-    "start": 219.66,
-    "end": 225.025,
-    "check": "likely_ok"
+    "start": 219.47,
+    "end": 224.83,
+    "check": "likely_ok",
+    "supplied_start": 219.66,
+    "supplied_end": 225.025,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "01d825a336e0c5ad00c162d9895a536b0b1d7b4f3e08ee879734a884ca12bfde"
   },
   {
     "id": "mars_viking_1_04",
@@ -479,9 +651,13 @@
     "line": 4,
     "text": "It worked for over six years. In 1982 a faulty command cut contact. It's still sitting exactly where it touched down.",
     "audio": "audio/mars_viking_1_04.wav",
-    "start": 225.025,
-    "end": 232.38,
-    "check": "likely_ok"
+    "start": 224.83,
+    "end": 232.24,
+    "check": "likely_ok",
+    "supplied_start": 225.025,
+    "supplied_end": 232.38,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "5c3352f266f5513aa3dee72363817ef3d6fe662331a3cb6a917e613b42982c23"
   },
   {
     "id": "mars_viking_2_01",
@@ -490,9 +666,13 @@
     "line": 1,
     "text": "Two landers. One mission. Viking 2 saw something rare: a frozen morning on Mars.",
     "audio": "audio/mars_viking_2_01.wav",
-    "start": 232.38,
-    "end": 238.17,
-    "check": "likely_ok"
+    "start": 232.24,
+    "end": 237.96,
+    "check": "likely_ok",
+    "supplied_start": 232.38,
+    "supplied_end": 238.17,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "635342ddc6897dbdb5d30747ca8794d4d538276e57eaf235dd0cc02c9d9c086c"
   },
   {
     "id": "mars_viking_2_02",
@@ -501,9 +681,13 @@
     "line": 2,
     "text": "It landed in September 1976, on a plain called Utopia Planitia.",
     "audio": "audio/mars_viking_2_02.wav",
-    "start": 238.17,
-    "end": 242.915,
-    "check": "likely_ok"
+    "start": 237.96,
+    "end": 242.69,
+    "check": "likely_ok",
+    "supplied_start": 238.17,
+    "supplied_end": 242.915,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "97329bd2a6498cab7787b8e669c791a65bede24e3ac543e5ebd547ec698ed622"
   },
   {
     "id": "mars_viking_2_03",
@@ -512,9 +696,13 @@
     "line": 3,
     "text": "In winter its cameras caught a thin layer of white frost on the ground.",
     "audio": "audio/mars_viking_2_03.wav",
-    "start": 242.915,
-    "end": 246.52,
-    "check": "likely_ok"
+    "start": 242.69,
+    "end": 246.3,
+    "check": "likely_ok",
+    "supplied_start": 242.915,
+    "supplied_end": 246.52,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "d1e2a95ac2d37f94556bcb2e5409d2e1676a003cb5d26d01286c189ab9e0cd50"
   },
   {
     "id": "mars_viking_2_04",
@@ -523,9 +711,13 @@
     "line": 4,
     "text": "It lasted until April 1980, when its batteries failed. Both Vikings remain exactly where they touched down.",
     "audio": "audio/mars_viking_2_04.wav",
-    "start": 246.52,
-    "end": 252.86,
-    "check": "REVIEW"
+    "start": 246.3,
+    "end": 252.68,
+    "check": "REVIEW",
+    "supplied_start": 246.52,
+    "supplied_end": 252.86,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "898e1427ad4a3b2391758b108f3cd64ed87f15f05d6c11e77f9462df744b8014"
   },
   {
     "id": "mars_phoenix_01",
@@ -534,9 +726,13 @@
     "line": 1,
     "text": "Most rovers chase warm places. Phoenix went to the cold top of Mars, hunting for ice.",
     "audio": "audio/mars_phoenix_01.wav",
-    "start": 252.86,
-    "end": 258.276,
-    "check": "REVIEW"
+    "start": 252.68,
+    "end": 257.68,
+    "check": "REVIEW",
+    "supplied_start": 252.86,
+    "supplied_end": 258.276,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "f037e6733299e1c2ff4508deffaae33a67773a4bf5d9a127c3e4b8130a034afd"
   },
   {
     "id": "mars_phoenix_02",
@@ -545,9 +741,13 @@
     "line": 2,
     "text": "It dug a trench. Bright chunks vanished within days. Water ice, right under the dust.",
     "audio": "audio/mars_phoenix_02.wav",
-    "start": 258.276,
-    "end": 263.595,
-    "check": "REVIEW"
+    "start": 257.68,
+    "end": 263.4,
+    "check": "REVIEW",
+    "supplied_start": 258.276,
+    "supplied_end": 263.595,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "295340b88ebb6aed4c9a6433c6800e5a6ae97223a486c693d6fca6380853e761"
   },
   {
     "id": "mars_phoenix_03",
@@ -556,9 +756,13 @@
     "line": 3,
     "text": "It also watched snow fall from Martian clouds.",
     "audio": "audio/mars_phoenix_03.wav",
-    "start": 263.595,
-    "end": 266.42,
-    "check": "likely_ok"
+    "start": 263.4,
+    "end": 266.18,
+    "check": "likely_ok",
+    "supplied_start": 263.595,
+    "supplied_end": 266.42,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "91deb6225c3ed10d478834d4b4055f62fc07164dc9f81545e44ecf3e24947d82"
   },
   {
     "id": "mars_phoenix_04",
@@ -567,9 +771,13 @@
     "line": 4,
     "text": "Planned for ninety days, it ran for five months, until polar winter took its sunlight.",
     "audio": "audio/mars_phoenix_04.wav",
-    "start": 266.42,
-    "end": 270.83,
-    "check": "likely_ok"
+    "start": 266.18,
+    "end": 270.6,
+    "check": "likely_ok",
+    "supplied_start": 266.42,
+    "supplied_end": 270.83,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "6b5a473757364de4f350b3b2c16142c98d17b58d931b364f64b117b292aecc11"
   },
   {
     "id": "mars_insight_01",
@@ -578,9 +786,13 @@
     "line": 1,
     "text": "A lander that didn't drive, fly or roam. It lay still and listened to a planet.",
     "audio": "audio/mars_insight_01.wav",
-    "start": 270.83,
-    "end": 276.075,
-    "check": "REVIEW"
+    "start": 270.6,
+    "end": 275.84,
+    "check": "REVIEW",
+    "supplied_start": 270.83,
+    "supplied_end": 276.075,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "cf3a5755852b3181d40dbdf29631847569327ee37f1b22d34d39d4e0623082ef"
   },
   {
     "id": "mars_insight_02",
@@ -589,9 +801,13 @@
     "line": 2,
     "text": "It heard more than 1,300 marsquakes.",
     "audio": "audio/mars_insight_02.wav",
-    "start": 276.075,
-    "end": 278.97,
-    "check": "REVIEW"
+    "start": 275.84,
+    "end": 278.73,
+    "check": "REVIEW",
+    "supplied_start": 276.075,
+    "supplied_end": 278.97,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "a5c74263762c87967cbfd07107753fe8b05543089dc6c6bcd866cf8f51c0cf20"
   },
   {
     "id": "mars_insight_03",
@@ -600,9 +816,13 @@
     "line": 3,
     "text": "Those tremors revealed a liquid core, buried deep under the surface.",
     "audio": "audio/mars_insight_03.wav",
-    "start": 278.97,
-    "end": 282.905,
-    "check": "REVIEW"
+    "start": 278.73,
+    "end": 282.19,
+    "check": "REVIEW",
+    "supplied_start": 278.97,
+    "supplied_end": 282.905,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "ad636e9cef144e65735204568074e624543e0436b02049d2398f0721ad11cf20"
   },
   {
     "id": "mars_insight_04",
@@ -611,9 +831,13 @@
     "line": 4,
     "text": "Dust piled onto its solar panels until the power faded. December 2022: silence.",
     "audio": "audio/mars_insight_04.wav",
-    "start": 282.905,
-    "end": 287.65,
-    "check": "REVIEW"
+    "start": 282.19,
+    "end": 288.46,
+    "check": "REVIEW",
+    "supplied_start": 282.905,
+    "supplied_end": 287.65,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "049c624951e9f5abd71c990dcf124a9913dc89ece75459ba25ac5d7f593341ff"
   },
   {
     "id": "mars_ingenuity_01",
@@ -622,9 +846,13 @@
     "line": 1,
     "text": "Planned: five flights. Actual: seventy-two. Meet the little helicopter that broke every rule.",
     "audio": "audio/mars_ingenuity_01.wav",
-    "start": 287.65,
-    "end": 293.86,
-    "check": "REVIEW"
+    "start": 288.46,
+    "end": 294.04,
+    "check": "REVIEW",
+    "supplied_start": 287.65,
+    "supplied_end": 293.86,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "786050cc3a47e88700c4f19cee9980e4760e0eeaf83b60c632ccdc31c75e3b4d"
   },
   {
     "id": "mars_ingenuity_02",
@@ -633,9 +861,13 @@
     "line": 2,
     "text": "First aircraft to fly on another planet. Mars's air is only one percent as thick as ours, so its blades spun about five times faster than a normal helicopter's.",
     "audio": "audio/mars_ingenuity_02.wav",
-    "start": 293.86,
-    "end": 303.335,
-    "check": "REVIEW"
+    "start": 294.04,
+    "end": 303.27,
+    "check": "REVIEW",
+    "supplied_start": 293.86,
+    "supplied_end": 303.335,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "adc39bf245d1801e73fa108607d2b4874aecc0a830a1aa5461324b0903dbec44"
   },
   {
     "id": "mars_ingenuity_03",
@@ -644,9 +876,13 @@
     "line": 3,
     "text": "Tucked under its solar panel: a postage-stamp piece of fabric from the Wright brothers' first airplane.",
     "audio": "audio/mars_ingenuity_03.wav",
-    "start": 303.335,
-    "end": 309.26,
-    "check": "likely_ok"
+    "start": 303.27,
+    "end": 309.11,
+    "check": "likely_ok",
+    "supplied_start": 303.335,
+    "supplied_end": 309.26,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "9d3414bf1b5f4efbd33a9e906a5d28a0437023434a17e7fb5ef576f9ccc99f1c"
   },
   {
     "id": "mars_ingenuity_04",
@@ -655,9 +891,13 @@
     "line": 4,
     "text": "In January 2024 its rotor blades were damaged. It still sits on Mars, now a stationary artifact.",
     "audio": "audio/mars_ingenuity_04.wav",
-    "start": 309.26,
-    "end": 315.7,
-    "check": "likely_ok"
+    "start": 309.11,
+    "end": 315.42,
+    "check": "likely_ok",
+    "supplied_start": 309.26,
+    "supplied_end": 315.7,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "830e5ebdd15527b2fc859220909548ed852756b0ad91d07cb91f59398d7beeb9"
   },
   {
     "id": "beyond_dawn_01",
@@ -666,9 +906,13 @@
     "line": 1,
     "text": "It's circling a dwarf planet right now, with no fuel, no power and no one steering.",
     "audio": "audio/beyond_dawn_01.wav",
-    "start": 315.7,
-    "end": 320.98,
-    "check": "likely_ok"
+    "start": 315.42,
+    "end": 321.02,
+    "check": "likely_ok",
+    "supplied_start": 315.7,
+    "supplied_end": 320.98,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "1019db93aec2fe208e25804b845d1bc22dd089be6987e76784921d07d52f94f3"
   },
   {
     "id": "beyond_dawn_02",
@@ -677,9 +921,13 @@
     "line": 2,
     "text": "Dawn was the first spacecraft to orbit two worlds in the asteroid belt: the giant asteroid Vesta, then the dwarf planet Ceres.",
     "audio": "audio/beyond_dawn_02.wav",
-    "start": 320.98,
-    "end": 328.38,
-    "check": "likely_ok"
+    "start": 321.02,
+    "end": 328.17,
+    "check": "likely_ok",
+    "supplied_start": 320.98,
+    "supplied_end": 328.38,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "6f6c5c7b2b1b3587b87f02989809d71ea2abcf0d06a46e59fb3f07e09cd7f927"
   },
   {
     "id": "beyond_dawn_03",
@@ -688,9 +936,13 @@
     "line": 3,
     "text": "It crossed the belt on ion engines that glow blue. Slow thrust that never stops.",
     "audio": "audio/beyond_dawn_03.wav",
-    "start": 328.38,
-    "end": 333.065,
-    "check": "likely_ok"
+    "start": 328.17,
+    "end": 332.88,
+    "check": "likely_ok",
+    "supplied_start": 328.38,
+    "supplied_end": 333.065,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "2612b6b9757e811049ff9b35a02ff793eef27a4f147ec887e4639fda4e147830"
   },
   {
     "id": "beyond_dawn_04",
@@ -699,9 +951,13 @@
     "line": 4,
     "text": "In 2018 its fuel ran out. Dawn stays in orbit around Ceres, silent, for decades to come.",
     "audio": "audio/beyond_dawn_04.wav",
-    "start": 333.065,
-    "end": 339.61,
-    "check": "REVIEW"
+    "start": 332.88,
+    "end": 339.48,
+    "check": "REVIEW",
+    "supplied_start": 333.065,
+    "supplied_end": 339.61,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "cb92f2b601f0a1ae3b0bea2d72dfde590a369527b97d4a2231bab32aabc8d1b1"
   },
   {
     "id": "beyond_near_shoemaker_01",
@@ -710,9 +966,13 @@
     "line": 1,
     "text": "It wasn't built to land. It landed anyway. Then it phoned home.",
     "audio": "audio/beyond_near_shoemaker_01.wav",
-    "start": 339.61,
-    "end": 343.679,
-    "check": "REVIEW"
+    "start": 339.48,
+    "end": 342.44,
+    "check": "REVIEW",
+    "supplied_start": 339.61,
+    "supplied_end": 343.679,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "3ddbd38b3a97cb103724d10e4f02ffeb41c641f82c8a21d2fec26945e73bb892"
   },
   {
     "id": "beyond_near_shoemaker_02",
@@ -721,9 +981,13 @@
     "line": 2,
     "text": "NEAR was the first spacecraft to orbit an asteroid: 433 Eros, a rock shaped like a giant potato.",
     "audio": "audio/beyond_near_shoemaker_02.wav",
-    "start": 343.679,
-    "end": 348.995,
-    "check": "REVIEW"
+    "start": 342.44,
+    "end": 348.76,
+    "check": "REVIEW",
+    "supplied_start": 343.679,
+    "supplied_end": 348.995,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "904d57cbaa8ba1c9e82f92a5617c11df80f128a6db930eaff0c820dda36deca2"
   },
   {
     "id": "beyond_near_shoemaker_03",
@@ -732,9 +996,13 @@
     "line": 3,
     "text": "In February 2001, engineers tried a daring descent. It touched down gently and kept transmitting for about two weeks.",
     "audio": "audio/beyond_near_shoemaker_03.wav",
-    "start": 348.995,
-    "end": 356.46,
-    "check": "likely_ok"
+    "start": 348.76,
+    "end": 356.26,
+    "check": "likely_ok",
+    "supplied_start": 348.995,
+    "supplied_end": 356.46,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "041309d93a15c5399c2873da60f74aabac276ffbba4dc4ad041332f0af410fed"
   },
   {
     "id": "beyond_near_shoemaker_04",
@@ -743,9 +1011,13 @@
     "line": 4,
     "text": "The first spacecraft ever to land on an asteroid. It's still resting on Eros today.",
     "audio": "audio/beyond_near_shoemaker_04.wav",
-    "start": 356.46,
-    "end": 361.595,
-    "check": "likely_ok"
+    "start": 356.26,
+    "end": 361.47,
+    "check": "likely_ok",
+    "supplied_start": 356.46,
+    "supplied_end": 361.595,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "310a18f3a113f8f8d29555c0a1833f957c7c33c89c4aefb84cb7b61144622cb3"
   },
   {
     "id": "beyond_pioneer_10_01",
@@ -754,9 +1026,13 @@
     "line": 1,
     "text": "A spacecraft launched in 1972 is still leaving the solar system. Its last message arrived in 2003.",
     "audio": "audio/beyond_pioneer_10_01.wav",
-    "start": 361.595,
-    "end": 368.575,
-    "check": "likely_ok"
+    "start": 361.47,
+    "end": 368.39,
+    "check": "likely_ok",
+    "supplied_start": 361.595,
+    "supplied_end": 368.575,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "8d59cefc9f150d65e5acd2ef3eb375625815dfc39f1513dfded4bacae712349a"
   },
   {
     "id": "beyond_pioneer_10_02",
@@ -765,9 +1041,13 @@
     "line": 2,
     "text": "Pioneer 10 was the first to cross the asteroid belt and the first to fly past Jupiter.",
     "audio": "audio/beyond_pioneer_10_02.wav",
-    "start": 368.575,
-    "end": 373.825,
-    "check": "likely_ok"
+    "start": 368.39,
+    "end": 373.6,
+    "check": "likely_ok",
+    "supplied_start": 368.575,
+    "supplied_end": 373.825,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "0937c94d973e74a7f484f45fc7933448cd3dbeda299f008027d8406dbc5bdc23"
   },
   {
     "id": "beyond_pioneer_10_03",
@@ -776,9 +1056,13 @@
     "line": 3,
     "text": "It carries a gold plaque for anyone who finds it: who we are and where we're from.",
     "audio": "audio/beyond_pioneer_10_03.wav",
-    "start": 373.825,
-    "end": 378.385,
-    "check": "REVIEW"
+    "start": 373.6,
+    "end": 378.34,
+    "check": "REVIEW",
+    "supplied_start": 373.825,
+    "supplied_end": 378.385,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "e61370903fca7f277b3541c280084c17ba373a63c4c94832f0d74de236356f41"
   },
   {
     "id": "beyond_pioneer_10_04",
@@ -787,9 +1071,13 @@
     "line": 4,
     "text": "It's headed toward the star Aldebaran. Estimated arrival: about two million years.",
     "audio": "audio/beyond_pioneer_10_04.wav",
-    "start": 378.385,
-    "end": 384.325,
-    "check": "REVIEW"
+    "start": 378.34,
+    "end": 384.12,
+    "check": "REVIEW",
+    "supplied_start": 378.385,
+    "supplied_end": 384.325,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "5021b67bd689f5c4107c11cf2bbd5db19db9d219a9c472363408020d5b49eb3c"
   },
   {
     "id": "beyond_pioneer_11_01",
@@ -798,9 +1086,13 @@
     "line": 1,
     "text": "The first spacecraft ever to visit Saturn. Engineers worried it wouldn't survive the rings.",
     "audio": "audio/beyond_pioneer_11_01.wav",
-    "start": 384.325,
-    "end": 389.49,
-    "check": "REVIEW"
+    "start": 384.12,
+    "end": 389.33,
+    "check": "REVIEW",
+    "supplied_start": 384.325,
+    "supplied_end": 389.49,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "a99ca6c14b9e54e150b069ead086d2ce250fd853bb90fc2212018f1caaea269b"
   },
   {
     "id": "beyond_pioneer_11_02",
@@ -809,9 +1101,13 @@
     "line": 2,
     "text": "It flew past Jupiter first, then used Jupiter's gravity to swing across the solar system to Saturn.",
     "audio": "audio/beyond_pioneer_11_02.wav",
-    "start": 389.49,
-    "end": 395.3,
-    "check": "likely_ok"
+    "start": 389.33,
+    "end": 394.85,
+    "check": "likely_ok",
+    "supplied_start": 389.49,
+    "supplied_end": 395.3,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "fc5b37a95da6dece68a9d4f956f3ac4b9ff41aeca7078a30c57aeba023a9a574"
   },
   {
     "id": "beyond_pioneer_11_03",
@@ -820,9 +1116,13 @@
     "line": 3,
     "text": "Like its twin, it carries a plaque for aliens. I'm just saying, I would have replied.",
     "audio": "audio/beyond_pioneer_11_03.wav",
-    "start": 395.3,
-    "end": 400.105,
-    "check": "likely_ok"
+    "start": 394.85,
+    "end": 399.94,
+    "check": "likely_ok",
+    "supplied_start": 395.3,
+    "supplied_end": 400.105,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "13dd8b0ea88350c2b883bba358fd31d44fa94dd11e33b74dc49cbd21b2712f7d"
   },
   {
     "id": "beyond_pioneer_11_04",
@@ -831,9 +1131,13 @@
     "line": 4,
     "text": "Its last contact was in 1995. Since then it has drifted silently into the dark, toward the constellation Aquila.",
     "audio": "audio/beyond_pioneer_11_04.wav",
-    "start": 400.105,
-    "end": 407.285,
-    "check": "likely_ok"
+    "start": 399.94,
+    "end": 407.01,
+    "check": "likely_ok",
+    "supplied_start": 400.105,
+    "supplied_end": 407.285,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "bb94c398ab4e8dbd386c7eed66c05a3c2c53d213a178f64373585ffcfbb2fb88"
   },
   {
     "id": "beyond_kepler_01",
@@ -842,9 +1146,13 @@
     "line": 1,
     "text": "One telescope stared at the same patch of sky for years and changed how we see the universe.",
     "audio": "audio/beyond_kepler_01.wav",
-    "start": 407.285,
-    "end": 412.545,
-    "check": "likely_ok"
+    "start": 407.01,
+    "end": 412.26,
+    "check": "likely_ok",
+    "supplied_start": 407.285,
+    "supplied_end": 412.545,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "602c76b7d39020679b370f7453e3e67d0656ca329d2c1aaa000fb97377edfe4b"
   },
   {
     "id": "beyond_kepler_02",
@@ -853,9 +1161,13 @@
     "line": 2,
     "text": "It watched about 150,000 stars, waiting for the tiny dip in light when a planet passes in front.",
     "audio": "audio/beyond_kepler_02.wav",
-    "start": 412.545,
-    "end": 418.965,
-    "check": "likely_ok"
+    "start": 412.26,
+    "end": 418.82,
+    "check": "likely_ok",
+    "supplied_start": 412.545,
+    "supplied_end": 418.965,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "608e3086528378c09f4063ec816cd87de3b7dda80748e1f0afdebecf9d8812aa"
   },
   {
     "id": "beyond_kepler_03",
@@ -864,9 +1176,13 @@
     "line": 3,
     "text": "It found more than 2,600 planets and showed that most stars have planets of their own.",
     "audio": "audio/beyond_kepler_03.wav",
-    "start": 418.965,
-    "end": 424.16,
-    "check": "likely_ok"
+    "start": 418.82,
+    "end": 424.04,
+    "check": "likely_ok",
+    "supplied_start": 418.965,
+    "supplied_end": 424.16,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "af08854bdae356e52080d4e98268076a66f727da0152fb682879cb6a37d5c976"
   },
   {
     "id": "beyond_kepler_04",
@@ -875,9 +1191,13 @@
     "line": 4,
     "text": "Its fuel ran out in 2018. Kepler now drifts in an Earth-trailing orbit around the Sun, switched off.",
     "audio": "audio/beyond_kepler_04.wav",
-    "start": 424.16,
-    "end": 430.7,
-    "check": "likely_ok"
+    "start": 424.04,
+    "end": 430.58,
+    "check": "likely_ok",
+    "supplied_start": 424.16,
+    "supplied_end": 430.7,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "b9d8981ee0cc2130c42a6928f49d03af75f0034743aadd1711573009dc265d30"
   },
   {
     "id": "bonus_random_facts_01",
@@ -886,9 +1206,13 @@
     "line": 1,
     "text": "Twelve people have walked on the Moon. None since 1972.",
     "audio": "audio/bonus_random_facts_01.wav",
-    "start": 430.7,
-    "end": 434.715,
-    "check": "likely_ok"
+    "start": 430.58,
+    "end": 434.42,
+    "check": "likely_ok",
+    "supplied_start": 430.7,
+    "supplied_end": 434.715,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "297d536bd70b4512b09bbd9fe74704926b52dbf05a8b95ffa22991b23f08c451"
   },
   {
     "id": "bonus_random_facts_02",
@@ -897,9 +1221,13 @@
     "line": 2,
     "text": "Apollo crews left about ninety-six bags of personal waste on the Moon. Yes, really.",
     "audio": "audio/bonus_random_facts_02.wav",
-    "start": 434.715,
-    "end": 440.105,
-    "check": "likely_ok"
+    "start": 434.42,
+    "end": 439.98,
+    "check": "likely_ok",
+    "supplied_start": 434.715,
+    "supplied_end": 440.105,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "9ed0fca1eebf1848b1ed59fee6dcefb3b87859d8ee030af849350ca21655f701"
   },
   {
     "id": "bonus_random_facts_03",
@@ -908,9 +1236,13 @@
     "line": 3,
     "text": "A NASA orbiter can still spot the Apollo landing sites from space.",
     "audio": "audio/bonus_random_facts_03.wav",
-    "start": 440.105,
-    "end": 444.165,
-    "check": "likely_ok"
+    "start": 439.98,
+    "end": 443.95,
+    "check": "likely_ok",
+    "supplied_start": 440.105,
+    "supplied_end": 444.165,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "9c1c3cf347bd3c9859a3af875331fd34ab2cf224c29506489e3cf6c8845e9cf8"
   },
   {
     "id": "bonus_random_facts_04",
@@ -919,9 +1251,13 @@
     "line": 4,
     "text": "No machine on Mars has ever come home. Not one.",
     "audio": "audio/bonus_random_facts_04.wav",
-    "start": 444.165,
-    "end": 447.23,
-    "check": "likely_ok"
+    "start": 443.95,
+    "end": 447.07,
+    "check": "likely_ok",
+    "supplied_start": 444.165,
+    "supplied_end": 447.23,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "7c7a852a64b2ee0f5e4584bbb0d99ccefd295c95b7dd80e5b89011f14f8db779"
   },
   {
     "id": "bonus_random_facts_05",
@@ -930,9 +1266,13 @@
     "line": 5,
     "text": "Two spacecraft from the 1970s are still leaving the solar system. Both carry a message for aliens.",
     "audio": "audio/bonus_random_facts_05.wav",
-    "start": 447.23,
-    "end": 453.085,
-    "check": "likely_ok"
+    "start": 447.07,
+    "end": 452.78,
+    "check": "likely_ok",
+    "supplied_start": 447.23,
+    "supplied_end": 453.085,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "04569359fdd611105483bdbb6acd24f2d95ae279bcb8733d7f9b18cdceea415c"
   },
   {
     "id": "bonus_idle_nudges_01",
@@ -941,9 +1281,13 @@
     "line": 1,
     "text": "Still there? The next story is better. I promise.",
     "audio": "audio/bonus_idle_nudges_01.wav",
-    "start": 453.085,
-    "end": 456.28,
-    "check": "likely_ok"
+    "start": 452.78,
+    "end": 456.13,
+    "check": "likely_ok",
+    "supplied_start": 453.085,
+    "supplied_end": 456.28,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "acf20198e0b972be9632fa2d26b452dabf43d3be029643bb9322f6ca7ce03983"
   },
   {
     "id": "bonus_idle_nudges_02",
@@ -952,9 +1296,13 @@
     "line": 2,
     "text": "Tap 'Next line'. I have more.",
     "audio": "audio/bonus_idle_nudges_02.wav",
-    "start": 456.28,
-    "end": 457.965,
-    "check": "REVIEW"
+    "start": 456.13,
+    "end": 457.85,
+    "check": "REVIEW",
+    "supplied_start": 456.28,
+    "supplied_end": 457.965,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "8df9a5b0d6065572718b112601a9d2ba62799a7b98982856609869982f31083a"
   },
   {
     "id": "bonus_idle_nudges_03",
@@ -963,9 +1311,13 @@
     "line": 3,
     "text": "Hover a glowing dot. Dare you.",
     "audio": "audio/bonus_idle_nudges_03.wav",
-    "start": 457.965,
-    "end": 459.657,
-    "check": "REVIEW"
+    "start": 457.85,
+    "end": 459.78,
+    "check": "REVIEW",
+    "supplied_start": 457.965,
+    "supplied_end": 459.657,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "143f93e98f40a2c48410549a6d6f6d3c4247f12f22a2bd366910807c051d62e7"
   },
   {
     "id": "bonus_between_stories_01",
@@ -974,9 +1326,13 @@
     "line": 1,
     "text": "That one stays with you. Wait till you see the next.",
     "audio": "audio/bonus_between_stories_01.wav",
-    "start": 459.657,
-    "end": 462.86,
-    "check": "REVIEW"
+    "start": 459.78,
+    "end": 462.57,
+    "check": "REVIEW",
+    "supplied_start": 459.657,
+    "supplied_end": 462.86,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "a04982d42e4e8c04bf5980fae481bbdc4d5340b98fcb126862ec789c6b1c7e29"
   },
   {
     "id": "bonus_between_stories_02",
@@ -985,9 +1341,13 @@
     "line": 2,
     "text": "Okay, that was the sad one. Want a happier one?",
     "audio": "audio/bonus_between_stories_02.wav",
-    "start": 462.86,
-    "end": 466.185,
-    "check": "likely_ok"
+    "start": 462.57,
+    "end": 466.04,
+    "check": "likely_ok",
+    "supplied_start": 462.86,
+    "supplied_end": 466.185,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "42952995c454fb5f0543b9a6997b2711e2fcdd18059c35c9adb5046d0f5f8a42"
   },
   {
     "id": "bonus_end_of_moon_01",
@@ -996,9 +1356,13 @@
     "line": 1,
     "text": "That's every story on the Moon. Mars has more, and some are heartbreaking. Ready?",
     "audio": "audio/bonus_end_of_moon_01.wav",
-    "start": 466.185,
-    "end": 469.78,
-    "check": "REVIEW"
+    "start": 466.04,
+    "end": 470.92,
+    "check": "REVIEW",
+    "supplied_start": 466.185,
+    "supplied_end": 469.78,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "62f989d501d172a3547bf14d3429da4ea7e9789c239ef99497b4326c8892ee51"
   },
   {
     "id": "bonus_end_of_mars_01",
@@ -1007,9 +1371,13 @@
     "line": 1,
     "text": "That's every machine on Mars. Want to see what drifted even farther out?",
     "audio": "audio/bonus_end_of_mars_01.wav",
-    "start": 469.78,
-    "end": 472.695,
-    "check": "REVIEW"
+    "start": 470.92,
+    "end": 474.54,
+    "check": "REVIEW",
+    "supplied_start": 469.78,
+    "supplied_end": 472.695,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "891b2f2b0b35a3df1c7c51cb452449d9d11775fc5ea783b961ff0a26f0f48f9c"
   },
   {
     "id": "bonus_end_of_beyond_mars_01",
@@ -1018,9 +1386,13 @@
     "line": 1,
     "text": "That's all eighteen. Each one was built to do a job. Most did far more.",
     "audio": "audio/bonus_end_of_beyond_mars_01.wav",
-    "start": 472.695,
-    "end": 477.884,
-    "check": "REVIEW"
+    "start": 474.54,
+    "end": 478.23,
+    "check": "REVIEW",
+    "supplied_start": 472.695,
+    "supplied_end": 477.884,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "6cf2731d19c0e796d56babb399d939968a63444161b8eb85891ac335ab755c66"
   },
   {
     "id": "bonus_final_closer_01",
@@ -1029,8 +1401,12 @@
     "line": 1,
     "text": "These machines aren't junk. They're proof that we went. If one got to you, show someone.",
     "audio": "audio/bonus_final_closer_01.wav",
-    "start": 477.884,
-    "end": 483.34,
-    "check": "REVIEW"
+    "start": 478.23,
+    "end": 483.3442083333333,
+    "check": "REVIEW",
+    "supplied_start": 477.884,
+    "supplied_end": 483.34,
+    "alignment": "master-word-timestamps-midpoint-cut",
+    "sha256": "9b179aa572d01ccda326c0c8e6171adb1ee02cede3893730dd0b7e0b0ff2063e"
   }
 ]

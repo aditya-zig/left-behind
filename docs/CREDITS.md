@@ -28,7 +28,17 @@ Collection: https://github.com/nasa/NASA-3D-Resources. Its README lists NASA/JPL
 
 NASA guidelines: https://www.nasa.gov/nasa-brand-center/images-and-media/. NASA identifiers, insignia and employee likenesses have special restrictions. The site does not use NASA's insignia as a project logo, claim endorsement, or imply that an astronaut narrated these stories. NASA publication is not a blanket waiver of third-party rights.
 
+## Image-first local checkpoint (15 November, 9.46am)
+
+`src/photography.json` adds 31 sourced NASA image records, also listed in the in-app source register. Each file retains its original NASA record/download, actual dimensions, byte count and SHA-256. Two oversized originals also use NASA's own ~large display renditions (with separate dimensions, URLs and checksums) in the interface; full-resolution originals are still available. These are not project-generated or AI-upscaled images. Photography is NASA / the astronaut or mission teams named on the linked original; Mars imagery includes NASA/JPL-Caltech/MSSS. NASA publication does not erase contributor rights.
+
+The cylindrical Sun map is [NASA SVS 3851](https://svs.gsfc.nasa.gov/3851/), NASA/GSFC/SVS, Tom Bridgman, STEREO and SDO teams: 304 Å extreme-ultraviolet observations from 2011, in false colour. NASA's gap-filled historical visualization is not a live or visible-light Sun. Its 4096×2048 source is mapped onto an ordinary sphere without generated surface pixels or a synthetic corona.
+
+The descent-stage drawing is extracted from page 4 (printed page 64) of [NASA's LM overview](https://www.nasa.gov/wp-content/uploads/static/history/alsj/08_LM_&_SLA_Overview_pp61-68.pdf). The PDF's embedded JPEG is extracted and cropped to its original diagram bounds, without drawing or generating new hardware. The manifest records this derivation. Other new photographs are unaltered source bytes; low-resolution historical originals are not upscaled. Captions distinguish programme/ground references, hardware before deployment, orbital images and rotor shadows from actual close-up photographs. The 1920px Apollo 11 reflector file reuses the already verified NASA image when the attempted higher-resolution download is unavailable.
+
 ## Fonts
+
+- **Atkinson Hyperlegible Next** (local `feedback` branch interface), The Atkinson Hyperlegible Next Project Authors, SIL Open Font License 1.1. Source: https://github.com/google/fonts/tree/main/ofl/atkinsonhyperlegiblenext. Font: `public/fonts/atkinson-hyperlegible-next.ttf`; full license: `public/fonts/OFL.txt`. Served locally, without a font-service request.
 
 - **Imbue**, The Imbue Project Authors / Etcetera Type Company, SIL Open Font License 1.1. Original: https://github.com/google/fonts/tree/main/ofl/imbue. License: `imbue-OFL.txt`.
 - **Albert Sans**, The Albert Sans Project Authors, SIL Open Font License 1.1. Original: https://github.com/google/fonts/tree/main/ofl/albertsans. License: `albertsans-OFL.txt`.
@@ -37,7 +47,7 @@ Unmodified Google Fonts WOFF2 files are self-hosted. They are interface typograp
 
 ## Software
 
-React / React DOM (MIT); Three.js (MIT); Google model-viewer (Apache-2.0); Vite (MIT); TypeScript (Apache-2.0); Playwright (Apache-2.0). Dependency lockfile and installed packages retain full upstream licenses.
+React / React DOM (MIT); Motion for React 14.14.0 (MIT, https://github.com/motiondivision/motion); Three.js (MIT); Google model-viewer (Apache-2.0); Vite (MIT); TypeScript (Apache-2.0); Playwright (Apache-2.0). Dependency lockfile and installed packages retain full upstream licenses. Motion animates the fictional Orbit interface, not NASA imagery or equipment.
 
 Local Draco decoder files are copied unmodified from Three.js 0.172.0 `examples/jsm/libs/draco/gltf/`. Draco: Copyright Google Inc., Apache License 2.0; full license in `draco-LICENSE.txt`. The local decoder avoids a runtime dependency on Google's CDN.
 
