@@ -39,7 +39,7 @@ Unmodified Google Fonts WOFF2 files are self-hosted. They are interface typograp
 
 ## Software
 
-React / React DOM (MIT); Three.js (MIT); Google model-viewer (Apache-2.0); Vite (MIT); TypeScript (Apache-2.0); Playwright (Apache-2.0). Dependency lockfile and installed packages retain full upstream licenses.
+React / React DOM (MIT); Motion for React 14.14.0 (MIT, https://github.com/motiondivision/motion); Three.js (MIT); Google model-viewer (Apache-2.0); Vite (MIT); TypeScript (Apache-2.0); Playwright (Apache-2.0). Dependency lockfile and installed packages retain full upstream licenses. Motion animates the fictional Orbit interface, not NASA imagery or equipment.
 
 Local Draco decoder files are copied unmodified from Three.js 0.172.0 `examples/jsm/libs/draco/gltf/`. Draco: Copyright Google Inc., Apache License 2.0; full license in `draco-LICENSE.txt`. The local decoder avoids a runtime dependency on Google's CDN.
 

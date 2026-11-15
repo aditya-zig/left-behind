@@ -1,5 +1,6 @@
-import {useEffect,useRef} from 'react';
-export function AlienUfo(){
+import {useEffect,useRef,useState} from 'react';
+import {motion,useInView,useSpring,type MotionValue} from 'motion/react';
+export function AlienUfo({lookX,lookY}:{lookX?:MotionValue<number>;lookY?:MotionValue<number>}={}){
   return <svg className="alien-ufo" viewBox="0 0 240 180" role="img" aria-label="Orbit, a fictional friendly alien in a flying saucer">
     <defs>
       <linearGradient id="ufo-metal" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#f0f5ff"/><stop offset=".45" stopColor="#8c9bac"/><stop offset=".6" stopColor="#e0e7f0"/><stop offset="1" stopColor="#354656"/></linearGradient>
@@ -11,7 +12,7 @@ export function AlienUfo(){
     <path d="M66 114 Q66 27 120 24 Q174 27 174 114Z" fill="url(#ufo-dome)" stroke="#c5e6f0" strokeOpacity=".5" strokeWidth="1.5"/>
     <path d="M96 108 Q96 85 120 86 Q144 85 144 108" fill="#569772"/>
     <path d="M93 58 Q93 37 120 36 Q147 37 147 58 Q146 83 120 94 Q94 83 93 58" fill="url(#alien-skin)"/>
-    <g className="alien-look"><g className="alien-eyes"><ellipse cx="107" cy="64" rx="9" ry="14" transform="rotate(-24 107 64)" fill="#111e23"/><ellipse cx="133" cy="64" rx="9" ry="14" transform="rotate(24 133 64)" fill="#111e23"/><ellipse cx="104" cy="60" rx="2.2" ry="3.7" fill="#dff9ff"/><ellipse cx="130" cy="60" rx="2.2" ry="3.7" fill="#dff9ff"/></g></g>
+    <motion.g className="alien-look" style={{x:lookX,y:lookY}}><g className="alien-eyes"><ellipse cx="107" cy="64" rx="9" ry="14" transform="rotate(-24 107 64)" fill="#111e23"/><ellipse cx="133" cy="64" rx="9" ry="14" transform="rotate(24 133 64)" fill="#111e23"/><ellipse cx="104" cy="60" rx="2.2" ry="3.7" fill="#dff9ff"/><ellipse cx="130" cy="60" rx="2.2" ry="3.7" fill="#dff9ff"/></g></motion.g>
     <path className="alien-mouth" d="M115 83 Q120 87 125 83" fill="none" stroke="#366746" strokeWidth="1.6" strokeLinecap="round"/>
     <path d="M82 68 Q80 45 98 35" stroke="#e2faff" strokeOpacity=".6" strokeWidth="3" fill="none" strokeLinecap="round"/>
     <ellipse cx="120" cy="119" rx="95" ry="27" fill="#263645"/><ellipse cx="120" cy="111" rx="100" ry="22" fill="url(#ufo-metal)"/>
@@ -21,20 +22,27 @@ export function AlienUfo(){
   </svg>;
 }
 
-type Props={text:string;title:string;voice:boolean;voiceSupported:boolean;narrating?:boolean;motion:boolean;minimized:boolean;onToggleVoice:()=>void;onMinimize:()=>void;onNext?:()=>void;onDetails?:()=>void;travelling:boolean};
+type Props={text:string;title:string;narrating?:boolean;motion:boolean;minimized:boolean;onMinimize:()=>void;onNext?:()=>void;onDetails?:()=>void;travelling:boolean};
+const spring={stiffness:130,damping:20,mass:.65};
 export default function OrbitGuide(p:Props){
-  const ref=useRef<HTMLElement>(null);
+  const ref=useRef<HTMLElement>(null),inView=useInView(ref,{margin:'80px'}),[visible,setVisible]=useState(!document.hidden);
+  const x=useSpring(0,spring),y=useSpring(0,spring),tilt=useSpring(0,spring),eyesX=useSpring(0,spring),eyesY=useSpring(0,spring);
+  const active=p.motion&&visible&&inView&&!p.minimized;
+  useEffect(()=>{const changed=()=>setVisible(!document.hidden);document.addEventListener('visibilitychange',changed);return()=>document.removeEventListener('visibilitychange',changed);},[]);
   useEffect(()=>{
-    if(!p.motion||p.minimized)return;let frame=0,x=0,y=0;
-    const move=(event:PointerEvent)=>{x=event.clientX;y=event.clientY;if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const host=ref.current;if(!host)return;const r=host.querySelector('.ufo-button')?.getBoundingClientRect();if(!r)return;const dx=Math.max(-1,Math.min(1,(x-r.x-r.width/2)/250)),dy=Math.max(-1,Math.min(1,(y-r.y-r.height/2)/250));host.style.setProperty('--look-x',`${dx*4}px`);host.style.setProperty('--look-y',`${dy*3}px`);host.style.setProperty('--look-tilt',`${dx*5}deg`);});};
-    window.addEventListener('pointermove',move,{passive:true});return()=>{window.removeEventListener('pointermove',move);cancelAnimationFrame(frame);ref.current?.style.removeProperty('--look-x');ref.current?.style.removeProperty('--look-y');ref.current?.style.removeProperty('--look-tilt');};
-  },[p.motion,p.minimized]);
-  return <aside ref={ref} className={`orbit-guide ${p.motion?'guide-animated':''} ${p.minimized?'guide-minimized':''} ${p.travelling?'guide-travelling':''} ${p.narrating?'guide-speaking':''}`} aria-label="Orbit's guided story">
-    {!p.minimized&&<div className="guide-bubble glass">
-      <div className="guide-bubble-top"><span>Orbit <span className="guide-role">Your fictional guide</span></span><button aria-label="Minimize guide" onClick={p.onMinimize}>−</button></div>
-      <strong className="guide-story-title">{p.title}</strong><p className="guide-speech">{p.text}</p>
-      {p.onDetails&&<button className="guide-primary" onClick={p.onDetails}>Inspect this equipment ↗</button>}<div className="guide-actions"><button disabled={!p.voiceSupported} aria-pressed={p.voice} onClick={p.onToggleVoice}>{p.voice?'Voice on':'Voice off'}</button>{p.onNext&&<button onClick={p.onNext}>Next thought →</button>}<span className="voice-caption">{p.voice?(p.narrating?'Reading these exact words':'Device voice · exact transcript'):'Read or listen at your pace'}</span></div>
-    </div>}
-    <button className="ufo-button" aria-label={p.minimized?'Show Orbit guide':'Minimize Orbit guide'} onClick={p.onMinimize}><AlienUfo/></button>
+    if(!active){[x,y,tilt,eyesX,eyesY].forEach(value=>value.jump(0));return;}
+    let frame=0,px=0,py=0;
+    const move=(event:PointerEvent)=>{if(event.pointerType==='touch')return;px=event.clientX;py=event.clientY;if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const rect=ref.current?.querySelector('.ufo-button')?.getBoundingClientRect();if(!rect)return;const dx=Math.max(-1,Math.min(1,(px-rect.x-rect.width/2)/350)),dy=Math.max(-1,Math.min(1,(py-rect.y-rect.height/2)/350));x.set(dx*12);y.set(dy*7);tilt.set(dx*8);eyesX.set(dx*5);eyesY.set(dy*4);});};
+    window.addEventListener('pointermove',move,{passive:true});return()=>{window.removeEventListener('pointermove',move);cancelAnimationFrame(frame);};
+  },[active,x,y,tilt,eyesX,eyesY]);
+  return <aside ref={ref} className={`orbit-guide ${active?'guide-animated':''} ${p.minimized?'guide-minimized':''} ${p.travelling?'guide-travelling':''} ${p.narrating?'guide-speaking':''}`} aria-label="Orbit's guided story">
+    <motion.button className="ufo-button" aria-label={p.minimized?'Show Orbit guide':'Minimize Orbit guide'} onClick={p.onMinimize} initial={p.motion?{opacity:0,scale:.88,y:20}:false} animate={{opacity:1,scale:1,y:0}} transition={{type:'spring',stiffness:180,damping:18}} whileHover={p.motion?{scale:1.06}:undefined} whileTap={p.motion?{scale:.96}:undefined}>
+      <motion.span className="orbit-float" animate={active?{y:[0,-12,0],rotate:[-2,2,-2]}:{y:0,rotate:0}} transition={active?{duration:4.2,repeat:Infinity,ease:'easeInOut'}:{duration:0}}><motion.span className="orbit-look" style={{x,y,rotate:tilt}}><AlienUfo lookX={eyesX} lookY={eyesY}/></motion.span></motion.span>
+    </motion.button>
+    {!p.minimized&&<motion.div className="guide-bubble glass" initial={p.motion?{opacity:0,y:12}:false} animate={{opacity:1,y:0}} transition={{duration:.3,ease:[.16,1,.3,1]}}>
+      <div className="guide-bubble-top"><span>Orbit <span className="guide-speaking-dot" data-speaking={Boolean(p.narrating)} aria-label={p.narrating?'Narrating':'Your fictional guide'}/></span><button aria-label="Minimize guide" onClick={p.onMinimize}>−</button></div>
+      <strong className="guide-story-title">{p.title}</strong><motion.p key={p.text} className="guide-speech" initial={p.motion?{opacity:0,y:6}:false} animate={{opacity:1,y:0}} transition={{duration:.24,ease:[.16,1,.3,1]}}>{p.text}</motion.p>
+      {p.onDetails&&<motion.button className="guide-primary" onClick={p.onDetails} whileHover={p.motion?{scale:1.015}:undefined} whileTap={p.motion?{scale:.98}:undefined}>Inspect this equipment ↗</motion.button>}{p.onNext&&<div className="guide-actions"><button onClick={p.onNext}>Next thought →</button></div>}
+    </motion.div>}
   </aside>;
 }
