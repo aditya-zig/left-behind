@@ -52,7 +52,9 @@ export default function FlightScene(props:Props){
       for(let lon=-180;lon<180;lon+=30)for(let lat=-90;lat<90;lat+=5)segment(direction(lat,lon).multiplyScalar(r),direction(lat+5,lon).multiplyScalar(r));
       const grid=new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(points,3)),new THREE.LineBasicMaterial({color:0xb4c9d8,transparent:true,opacity:.17}));grid.position.copy(centers[body]);scene.add(grid);grids.set(body,grid);
     }
-    const sun=new THREE.Sprite(new THREE.SpriteMaterial({map:load('/assets/sun-sdo.jpg'),blending:THREE.AdditiveBlending,depthWrite:false}));sun.scale.set(38,33.6,1);sun.position.set(-80,2,-30);planets.add(sun);
+    // NASA's historical 4K cylindrical STEREO/SDO EUV map is designed for a sphere.
+    // False colour, not visible light; no generated corona or surface texture.
+    const sun=new THREE.Mesh(new THREE.SphereGeometry(19,96,64),new THREE.MeshBasicMaterial({map:load('/photography/sun-map.jpg')}));sun.position.set(-80,2,-30);planets.add(sun);
     const aim=()=>{
       const {mode,selected,focusSite}=latest.current;arrived=false;aiming=true;flightElapsed=0;
       controls.autoRotate=false;controls.enableDamping=false;controls.update();controls.enableDamping=latest.current.motion;
@@ -82,6 +84,9 @@ export default function FlightScene(props:Props){
       frame=requestAnimationFrame(tick);const elapsed=Math.max(0,(now-last)/1000),dt=Math.min(elapsed,.05);last=now;
       if(!alive||document.hidden||!visible)return;
       const {mode,motion,previewing}=latest.current,isSurface=mode==='moon'||mode==='mars';
+      // A native modal makes the globe inert: keep its last frame instead of
+      // competing with NASA's equipment viewer for the GPU.
+      if(previewing&&!aiming)return;
       planets.visible=mode!=='galaxy';for(const [body,grid] of grids)grid.visible=mode===body;
       for(const body of ['earth','moon','mars'] as const)meshes[body].visible=!isSurface||aiming||body===mode;
       sun.visible=!isSurface||aiming;
@@ -96,7 +101,7 @@ export default function FlightScene(props:Props){
       controls.enabled=isSurface&&!aiming;controls.enableDamping=motion;controls.autoRotate=isSurface&&motion&&!previewing&&!aiming;
       if(isSurface&&!aiming){controls.minDistance=radii[mode]*1.4;controls.maxDistance=radii[mode]*7;}
       controls.update(elapsed);
-      if(!isSurface&&motion){meshes.earth.rotation.y+=dt*.025;meshes.mars.rotation.y+=dt*.02;}
+      if(!isSurface&&motion){meshes.earth.rotation.y+=dt*.025;meshes.mars.rotation.y+=dt*.02;sun.rotation.y+=dt*.018;}
       if(isSurface){meshes[mode].rotation.y=0;}
       const currentCenter=isSurface?centers[mode]:centers.moon;
       const towardCamera=camera.position.clone().sub(currentCenter).normalize();
@@ -121,13 +126,12 @@ export default function FlightScene(props:Props){
   useEffect(()=>{commands.current?.aim();},[props.mode,props.selected.id,props.focusSite?.id,props.reset]);
   const isWorld=props.mode==='moon'||props.mode==='mars';
   return <div ref={host} className={`flight-scene ${error?'scene-fallback':''}`} data-ready={ready||error}>
-    <div ref={canvas} className="flight-canvas" aria-label="Interactive NASA-textured worlds. Use the mission list for every landing site." tabIndex={isWorld?0:-1} onKeyDown={event=>{
+    <div ref={canvas} className="flight-canvas" aria-label="Interactive NASA-textured worlds. Use the mission list for every landing site." aria-describedby="globe-help" tabIndex={isWorld?0:-1} onKeyDown={event=>{
       if(event.key==='+'||event.key==='='){commands.current?.zoom(.85);event.preventDefault();}if(event.key==='-'){commands.current?.zoom(1.18);event.preventDefault();}if(event.key==='Home'){commands.current?.aim();event.preventDefault();}
     }}/>
     {error&&<div className="flight-fallback"><img src={props.mode==='mars'?'/assets/mars.jpg':props.mode==='moon'?'/assets/moon-map.jpg':'/assets/galaxy.jpg'} alt="NASA reference imagery"/><p>3D is unavailable on this device. Every mission, NASA image and story is still available below.</p></div>}
     {!error&&(['moon','mars'] as const).flatMap(body=>sites[body].map(item=><div key={item.id} ref={el=>{if(el)pinRefs.current.set(item.id,el);else pinRefs.current.delete(item.id);}} className={`orbital-hotspot ${(props.focusSite?.id??props.selected.id)===item.id?'selected':''} ${item.artifactId?'story-site':'context-site'}`} data-visible="false" aria-hidden="true">
-      <button className="orbital-pin" tabIndex={-1} aria-label={`Explore ${item.name}`} title={`${item.name} · ${item.kind}`} onClick={()=>props.onSiteSelect(item)}><span className="site-dot"/><span className="site-name">{item.name}</span></button>
+      <button className="orbital-pin" tabIndex={-1} aria-label={`Explore ${item.name}`} title={`${item.name} · ${item.kind}`} onClick={()=>props.onSiteSelect(item)}><svg className="site-pin-icon" viewBox="0 0 24 30" fill="currentColor" aria-hidden="true"><path d="M12 1a10 10 0 0 0-10 10c0 7 10 18 10 18s10-11 10-18A10 10 0 0 0 12 1Z"/><circle cx="12" cy="11" r="3.5" fill="#102319"/></svg><span className="site-name">{item.name}</span></button>
     </div>))}
-    {isWorld&&!error&&<div className="flight-map-controls glass" aria-label="Globe controls"><button aria-label="Zoom in" onClick={()=>commands.current?.zoom(.82)}>+</button><button aria-label="Zoom out" onClick={()=>commands.current?.zoom(1.2)}>−</button><button aria-label="Recenter globe" onClick={()=>commands.current?.aim()}>⌖</button></div>}
   </div>;
 }

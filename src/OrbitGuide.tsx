@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useRef,useState,type ReactNode} from 'react';
 import {motion,useInView,useSpring,type MotionValue} from 'motion/react';
 export function AlienUfo({lookX,lookY}:{lookX?:MotionValue<number>;lookY?:MotionValue<number>}={}){
   return <svg className="alien-ufo" viewBox="0 0 240 180" role="img" aria-label="Orbit, a fictional friendly alien in a flying saucer">
@@ -22,8 +22,8 @@ export function AlienUfo({lookX,lookY}:{lookX?:MotionValue<number>;lookY?:Motion
   </svg>;
 }
 
-type Props={text:string;title:string;narrating?:boolean;motion:boolean;minimized:boolean;onMinimize:()=>void;onNext?:()=>void;onDetails?:()=>void;travelling:boolean};
-const spring={stiffness:130,damping:20,mass:.65};
+type Props={media?:ReactNode;text:string;title:string;narrating?:boolean;motion:boolean;minimized:boolean;onMinimize:()=>void;onNext?:()=>void;onDetails?:()=>void;travelling:boolean};
+const spring={stiffness:95,damping:17,mass:.8};
 export default function OrbitGuide(p:Props){
   const ref=useRef<HTMLElement>(null),inView=useInView(ref,{margin:'80px'}),[visible,setVisible]=useState(!document.hidden);
   const x=useSpring(0,spring),y=useSpring(0,spring),tilt=useSpring(0,spring),eyesX=useSpring(0,spring),eyesY=useSpring(0,spring);
@@ -32,17 +32,18 @@ export default function OrbitGuide(p:Props){
   useEffect(()=>{
     if(!active){[x,y,tilt,eyesX,eyesY].forEach(value=>value.jump(0));return;}
     let frame=0,px=0,py=0;
-    const move=(event:PointerEvent)=>{if(event.pointerType==='touch')return;px=event.clientX;py=event.clientY;if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const rect=ref.current?.querySelector('.ufo-button')?.getBoundingClientRect();if(!rect)return;const dx=Math.max(-1,Math.min(1,(px-rect.x-rect.width/2)/350)),dy=Math.max(-1,Math.min(1,(py-rect.y-rect.height/2)/350));x.set(dx*12);y.set(dy*7);tilt.set(dx*8);eyesX.set(dx*5);eyesY.set(dy*4);});};
+    const move=(event:PointerEvent)=>{if(event.pointerType==='touch')return;px=event.clientX;py=event.clientY;if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const rect=ref.current?.querySelector('.ufo-button')?.getBoundingClientRect();if(!rect)return;const dx=Math.max(-1,Math.min(1,(px-rect.x-rect.width/2)/350)),dy=Math.max(-1,Math.min(1,(py-rect.y-rect.height/2)/350));x.set(dx*18);y.set(dy*10);tilt.set(dx*10);eyesX.set(dx*5);eyesY.set(dy*4);});};
     window.addEventListener('pointermove',move,{passive:true});return()=>{window.removeEventListener('pointermove',move);cancelAnimationFrame(frame);};
   },[active,x,y,tilt,eyesX,eyesY]);
-  return <aside ref={ref} className={`orbit-guide ${active?'guide-animated':''} ${p.minimized?'guide-minimized':''} ${p.travelling?'guide-travelling':''} ${p.narrating?'guide-speaking':''}`} aria-label="Orbit's guided story">
+  return <aside ref={ref} className={`orbit-guide ${active?'guide-animated':''} ${p.minimized?'guide-minimized':''} ${p.travelling?'guide-travelling':''} ${p.narrating?'guide-speaking':''} ${p.media?'guide-with-media':''}`} aria-label="Orbit's guided story">
     <motion.button className="ufo-button" aria-label={p.minimized?'Show Orbit guide':'Minimize Orbit guide'} onClick={p.onMinimize} initial={p.motion?{opacity:0,scale:.88,y:20}:false} animate={{opacity:1,scale:1,y:0}} transition={{type:'spring',stiffness:180,damping:18}} whileHover={p.motion?{scale:1.06}:undefined} whileTap={p.motion?{scale:.96}:undefined}>
-      <motion.span className="orbit-float" animate={active?{y:[0,-12,0],rotate:[-2,2,-2]}:{y:0,rotate:0}} transition={active?{duration:4.2,repeat:Infinity,ease:'easeInOut'}:{duration:0}}><motion.span className="orbit-look" style={{x,y,rotate:tilt}}><AlienUfo lookX={eyesX} lookY={eyesY}/></motion.span></motion.span>
+      <motion.span className="orbit-float" animate={active?{x:[0,10,-8,0],y:[0,-16,-6,0],rotate:[-3,3,-2,-3]}:{x:0,y:0,rotate:0}} transition={active?{duration:6,repeat:Infinity,ease:'easeInOut'}:{duration:0}}><motion.span className="orbit-look" style={{x,y,rotate:tilt}}><AlienUfo lookX={eyesX} lookY={eyesY}/></motion.span></motion.span>
     </motion.button>
+    {!p.minimized&&p.media&&<motion.div key={p.title} className="guide-media" initial={p.motion?{opacity:0,scale:.97}:false} animate={{opacity:1,scale:1}} transition={{duration:.45,ease:[.16,1,.3,1]}}>{p.media}</motion.div>}
     {!p.minimized&&<motion.div className="guide-bubble glass" initial={p.motion?{opacity:0,y:12}:false} animate={{opacity:1,y:0}} transition={{duration:.3,ease:[.16,1,.3,1]}}>
       <div className="guide-bubble-top"><span>Orbit <span className="guide-speaking-dot" data-speaking={Boolean(p.narrating)} aria-label={p.narrating?'Narrating':'Your fictional guide'}/></span><button aria-label="Minimize guide" onClick={p.onMinimize}>−</button></div>
       <strong className="guide-story-title">{p.title}</strong><motion.p key={p.text} className="guide-speech" initial={p.motion?{opacity:0,y:6}:false} animate={{opacity:1,y:0}} transition={{duration:.24,ease:[.16,1,.3,1]}}>{p.text}</motion.p>
-      {p.onDetails&&<motion.button className="guide-primary" onClick={p.onDetails} whileHover={p.motion?{scale:1.015}:undefined} whileTap={p.motion?{scale:.98}:undefined}>Inspect this equipment ↗</motion.button>}{p.onNext&&<div className="guide-actions"><button onClick={p.onNext}>Next thought →</button></div>}
+      {p.onDetails&&<motion.button className="guide-primary" onClick={p.onDetails} whileHover={p.motion?{scale:1.015}:undefined} whileTap={p.motion?{scale:.98}:undefined}>Inspect this equipment ↗</motion.button>}{p.onNext&&<div className="guide-actions"><motion.button aria-label="Next thought" onClick={p.onNext} whileHover={p.motion?{x:5}:undefined} whileTap={p.motion?{scale:.94}:undefined}>→</motion.button></div>}
     </motion.div>}
   </aside>;
 }
