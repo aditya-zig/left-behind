@@ -3,11 +3,11 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {type Artifact} from './data';
 import {sitesFor,type SurfaceSite} from './atlas';
-import {flightEase} from './cinematic';
+import {flightEase,surfaceDirection} from './cinematic';
 
 export type FlightMode='galaxy'|'solar'|'earth'|'choose'|'moon'|'mars';
 export type World='moon'|'mars';
-type Props={mode:FlightMode;selected:Artifact;focusSite:SurfaceSite|null;motion:boolean;previewing:boolean;reset:number;onReady:()=>void;onArrive:()=>void;onUnavailable:()=>void;onSiteSelect:(site:SurfaceSite)=>void};
+type Props={mode:FlightMode;selected:Artifact;focusSite:SurfaceSite|null;motion:boolean;previewing:boolean;reset:number;onReady:()=>void;onArrive:()=>void;onUnavailable:()=>void;onSiteSelect:(site:SurfaceSite)=>void;onInteract:()=>void};
 const sites={moon:sitesFor('moon'),mars:sitesFor('mars')};
 const centers={earth:new THREE.Vector3(0,0,0),moon:new THREE.Vector3(22,0,0),mars:new THREE.Vector3(53,1,-10)};
 const radii={earth:8,moon:3.8,mars:6};
@@ -32,13 +32,17 @@ export default function FlightScene(props:Props){
     camera.position.set(0,150,1700);
     const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.055;controls.enablePan=false;controls.rotateSpeed=.45;controls.zoomSpeed=.6;controls.autoRotateSpeed=.35;
     const textures:THREE.Texture[]=[];const loader=new THREE.TextureLoader();let alive=true,frame=0,visible=true,aiming=true,arrived=false,last=performance.now(),readyCount=0;
-    const goalPosition=new THREE.Vector3(),goalTarget=new THREE.Vector3(),fromPosition=new THREE.Vector3(),fromTarget=new THREE.Vector3();let flightElapsed=0;
+    const goalPosition=new THREE.Vector3(),goalTarget=new THREE.Vector3(),fromPosition=new THREE.Vector3(),fromTarget=new THREE.Vector3();let flightElapsed=0,previousWorld:World|null=null,surfaceFlight=false;
+    const previousNormal=new THREE.Vector3(),flightCenter=new THREE.Vector3(),flightFrom=new THREE.Vector3(),flightTo=new THREE.Vector3();let flightRadius=1,startDistance=1,endDistance=1;
+    const routeMaterial=new THREE.LineBasicMaterial({color:0xd9ecd4,transparent:true,opacity:.7});
+    const route=new THREE.Line(new THREE.BufferGeometry(),routeMaterial);route.visible=false;scene.add(route);
+    const interact=()=>{if(!aiming)latest.current.onInteract();};controls.addEventListener('start',interact);
     const load=(url:string)=>{const t=loader.load(url,()=>{if(!alive)return;readyCount++;if(readyCount>=3){setReady(true);latest.current.onReady();}},undefined,()=>{if(!alive)return;readyCount++;if(readyCount>=3){setReady(true);latest.current.onReady();}});t.colorSpace=THREE.SRGBColorSpace;textures.push(t);return t;};
     const stars=new THREE.Mesh(new THREE.SphereGeometry(4500,48,24),new THREE.MeshBasicMaterial({map:load('/assets/stars.jpg'),side:THREE.BackSide,transparent:true,opacity:.4,depthWrite:false}));scene.add(stars);
     const galaxyMaterial=new THREE.MeshBasicMaterial({map:load('/assets/galaxy.jpg'),transparent:true,depthWrite:false});
     const galaxy=new THREE.Mesh(new THREE.PlaneGeometry(1800,1800),galaxyMaterial);galaxy.position.set(0,0,-200);galaxy.rotation.z=-.18;scene.add(galaxy);
     const planets=new THREE.Group();scene.add(planets);
-    scene.add(new THREE.AmbientLight(0xc5d7ed,1.6));const sunlight=new THREE.DirectionalLight(0xfff6e7,3.3);sunlight.position.set(-45,25,70);scene.add(sunlight);
+    scene.add(new THREE.AmbientLight(0xc5d7ed,.85));const sunlight=new THREE.DirectionalLight(0xffe2c2,2.7);sunlight.position.set(-45,25,70);scene.add(sunlight);
     const meshes={} as Record<'earth'|World,THREE.Mesh>;
     (['earth','moon','mars'] as const).forEach(name=>{
       const texture=load(`/assets/${name==='moon'?'moon-map':name}.jpg`);
@@ -56,7 +60,7 @@ export default function FlightScene(props:Props){
     // False colour, not visible light; no generated corona or surface texture.
     const sun=new THREE.Mesh(new THREE.SphereGeometry(19,96,64),new THREE.MeshBasicMaterial({map:load('/photography/sun-map.jpg')}));sun.position.set(-80,2,-30);planets.add(sun);
     const aim=()=>{
-      const {mode,selected,focusSite}=latest.current;arrived=false;aiming=true;flightElapsed=0;
+      const {mode,selected,focusSite}=latest.current;arrived=false;aiming=true;flightElapsed=0;surfaceFlight=false;route.visible=false;
       controls.autoRotate=false;controls.enableDamping=false;controls.update();controls.enableDamping=latest.current.motion;
       fromPosition.copy(camera.position);fromTarget.copy(controls.target);controls.minDistance=.1;controls.maxDistance=5000;
       if(mode==='galaxy'){goalPosition.set(0,65,780);goalTarget.set(0,0,-200);}
@@ -65,15 +69,23 @@ export default function FlightScene(props:Props){
       else if(mode==='choose'){goalPosition.set(34,13,62);goalTarget.set(35,0,-5);}
       else{
         const center=centers[mode],r=radii[mode];
-        const w=container.clientWidth,distance=w<600?3.8:w<1000?3.8:3.25;
-        goalTarget.copy(center);goalPosition.copy(center).add(direction(...(focusSite?.coordinates??selected.coordinates??[0,0])).multiplyScalar(r*distance));
+        const w=container.clientWidth,distance=w<600?3.2:2.65;
+        const normal=direction(...(focusSite?.coordinates??selected.coordinates??[0,0]));
+        goalTarget.copy(center);goalPosition.copy(center).addScaledVector(normal,r*distance);
+        surfaceFlight=previousWorld===mode;
+        if(surfaceFlight){
+          flightCenter.copy(center);flightRadius=r;flightFrom.copy(fromPosition).sub(center).normalize();flightTo.copy(normal);startDistance=fromPosition.distanceTo(center);endDistance=r*distance;
+          const points=Array.from({length:97},(_,i)=>{const t=i/96;return new THREE.Vector3(...surfaceDirection(previousNormal.toArray(),normal.toArray(),t)).multiplyScalar(r*(1.012+.22*Math.sin(Math.PI*t))).add(center);});
+          route.geometry.dispose();route.geometry=new THREE.BufferGeometry().setFromPoints(points);route.geometry.setDrawRange(0,0);route.visible=latest.current.motion&&previousNormal.dot(normal)<.999999;
+        }
+        previousWorld=mode;previousNormal.copy(normal);
       }
       if(!latest.current.motion){camera.position.copy(goalPosition);controls.target.copy(goalTarget);aiming=false;}
     };
     commands.current={aim,zoom:n=>{const delta=camera.position.clone().sub(controls.target);delta.multiplyScalar(n);delta.clampLength(controls.minDistance,controls.maxDistance);camera.position.copy(controls.target).add(delta);}};aim();
     const resize=()=>{
       const w=container.clientWidth,h=container.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;
-      if(w>1000)camera.setViewOffset(w,h,-w*.14,0,w,h);else camera.clearViewOffset();
+      if(w>900)camera.setViewOffset(w,h,-w*.13,0,w,h);else camera.clearViewOffset();
       camera.updateProjectionMatrix();
     };
     const observer=new ResizeObserver(resize);observer.observe(container);resize();
@@ -88,17 +100,22 @@ export default function FlightScene(props:Props){
       // competing with NASA's equipment viewer for the GPU.
       if(previewing&&!aiming)return;
       planets.visible=mode!=='galaxy';for(const [body,grid] of grids)grid.visible=mode===body;
-      for(const body of ['earth','moon','mars'] as const)meshes[body].visible=!isSurface||aiming||body===mode;
-      sun.visible=!isSurface||aiming;
+      for(const body of ['earth','moon','mars'] as const)meshes[body].visible=!isSurface||body===mode;
+      sun.visible=!isSurface;
+      if(isSurface)sunlight.position.copy(centers[mode]).add(new THREE.Vector3(-25,16,40).applyQuaternion(camera.quaternion));
       const opacityGoal=mode==='galaxy'?1:0;galaxyMaterial.opacity=THREE.MathUtils.damp(galaxyMaterial.opacity,opacityGoal,2,elapsed);galaxy.visible=galaxyMaterial.opacity>.004;
       if(aiming){
         // Duration follows visible wall-clock time, not frame count: slow GPUs still arrive.
         flightElapsed+=elapsed;const progress=motion?flightEase(flightElapsed):1;
-        camera.position.lerpVectors(fromPosition,goalPosition,progress);controls.target.lerpVectors(fromTarget,goalTarget,progress);
+        if(surfaceFlight){camera.position.set(...surfaceDirection(flightFrom.toArray(),flightTo.toArray(),progress)).multiplyScalar(THREE.MathUtils.lerp(startDistance,endDistance,progress)+flightRadius*.7*Math.sin(Math.PI*progress)).add(flightCenter);}
+        else camera.position.lerpVectors(fromPosition,goalPosition,progress);
+        controls.target.lerpVectors(fromTarget,goalTarget,progress);
+        if(route.visible)route.geometry.setDrawRange(0,Math.max(2,Math.ceil(progress*97)));
         if(progress===1)aiming=false;
       }
       if(!aiming&&!arrived){arrived=true;latest.current.onArrive();}
-      controls.enabled=isSurface&&!aiming;controls.enableDamping=motion;controls.autoRotate=isSurface&&motion&&!previewing&&!aiming;
+      routeMaterial.opacity=aiming?.8:Math.max(.12,routeMaterial.opacity-dt*.12);
+      controls.enabled=isSurface&&!aiming;controls.enableDamping=motion;controls.autoRotate=false;
       if(isSurface&&!aiming){controls.minDistance=radii[mode]*1.4;controls.maxDistance=radii[mode]*7;}
       controls.update(elapsed);
       if(!isSurface&&motion){meshes.earth.rotation.y+=dt*.025;meshes.mars.rotation.y+=dt*.02;sun.rotation.y+=dt*.018;}
@@ -119,14 +136,15 @@ export default function FlightScene(props:Props){
       renderer.render(scene,camera);
     };frame=requestAnimationFrame(tick);
     return()=>{
-      alive=false;cancelAnimationFrame(frame);observer.disconnect();viewObserver.disconnect();document.removeEventListener('visibilitychange',resetClock);commands.current=null;controls.dispose();renderer.domElement.removeEventListener('webglcontextlost',onContextLost);
-      scene.traverse(o=>{if(o instanceof THREE.Mesh||o instanceof THREE.LineSegments){o.geometry.dispose();(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose());}else if(o instanceof THREE.Sprite)o.material.dispose();});textures.forEach(t=>t.dispose());renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();
+      alive=false;cancelAnimationFrame(frame);observer.disconnect();viewObserver.disconnect();document.removeEventListener('visibilitychange',resetClock);commands.current=null;controls.removeEventListener('start',interact);controls.dispose();renderer.domElement.removeEventListener('webglcontextlost',onContextLost);
+      scene.traverse(o=>{if(o instanceof THREE.Mesh||o instanceof THREE.Line){o.geometry.dispose();(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose());}else if(o instanceof THREE.Sprite)o.material.dispose();});textures.forEach(t=>t.dispose());renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();
     };
   },[]);
-  useEffect(()=>{commands.current?.aim();},[props.mode,props.selected.id,props.focusSite?.id,props.reset]);
+  useEffect(()=>{if(error)props.onArrive();else commands.current?.aim();},[error,props.mode,props.selected.id,props.focusSite?.id,props.reset,props.onArrive]);
   const isWorld=props.mode==='moon'||props.mode==='mars';
   return <div ref={host} className={`flight-scene ${error?'scene-fallback':''}`} data-ready={ready||error}>
-    <div ref={canvas} className="flight-canvas" aria-label="Interactive NASA-textured worlds. Use the mission list for every landing site." aria-describedby="globe-help" tabIndex={isWorld?0:-1} onKeyDown={event=>{
+    <div ref={canvas} className="flight-canvas" aria-label="Interactive NASA-textured worlds. Drag to orbit; use the mission list for every landing site." aria-describedby="globe-help" tabIndex={isWorld?0:-1} onKeyDown={event=>{
+      if(['+','=','-','Home'].includes(event.key))props.onInteract();
       if(event.key==='+'||event.key==='='){commands.current?.zoom(.85);event.preventDefault();}if(event.key==='-'){commands.current?.zoom(1.18);event.preventDefault();}if(event.key==='Home'){commands.current?.aim();event.preventDefault();}
     }}/>
     {error&&<div className="flight-fallback"><img src={props.mode==='mars'?'/assets/mars.jpg':props.mode==='moon'?'/assets/moon-map.jpg':'/assets/galaxy.jpg'} alt="NASA reference imagery"/><p>3D is unavailable on this device. Every mission, NASA image and story is still available below.</p></div>}
