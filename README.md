@@ -6,7 +6,7 @@
 
 An independent, source-led web documentary for the NASA Space Apps challenge **Abandoned but not Forgotten: Storytelling about NASA’s Discarded Equipment on the Moon and Mars**.
 
-Explore the Moon and Mars through ten guided stories, eighteen mission records, original NASA reference models, published mission imagery, and inspectable NASA landing-site terrain. No generated space imagery, procedural stars, particle effects, simulated telemetry, or automatic 3D animation.
+Explore the Moon and Mars through thirteen surface stories, twenty-nine sourced map locations, eighteen archive records, original NASA reference models and published mission imagery. A compact guided tour flies between locations; longer stories and evidence open on demand. No generated space imagery, fabricated transmissions or simulated telemetry.
 
 ## Run locally
 
@@ -38,16 +38,16 @@ Run `BASE_URL=http://localhost:4173 npm run test:prep` against a production prev
 
 ## The experience
 
-- **Opening:** four NASA-sourced visual chapters, with pause, manual advance, and skip.
-- **Guided journey:** five Moon stories and five Mars stories, roughly thirty seconds each; pause, skip, exit, or change worlds at any time. No autoplay sound. Background tabs pause the journey.
-- **Explore:** manually rotate and zoom contextual globes with source-based markers; inspect actual NASA Apollo 11 / Opportunity landing-site STL terrain separately. Full button lists duplicate map selection accessibly.
+- **Opening:** four automatically advancing NASA-sourced chapters, with pause, manual advance and immediate Moon/Mars choices. Narration requires a user gesture.
+- **Guided journey:** five Moon and eight Mars equipment stops, eighteen visible seconds each; previous/next, pause/resume and world switching. Opening details, the atlas, hidden tabs and global motion-off pause the tour. Routes are illustrative, not spacecraft trajectories.
+- **Explore:** drag and zoom NASA-textured globes with sourced markers and a location minimap. The coordinate atlas contains nineteen Moon and ten Mars sites; landing references are not current rover positions. Map/list interaction enters manual exploration.
 - **Inspect:** NASA GLBs when available, official imagery otherwise. Model limitations are shown, including the complete lunar-module model versus the descent stage left behind.
 - **Evidence:** purpose, why hardware stayed, discoveries, location precision, nuanced status, and a source link explaining each claim. No unsupported item-level prices.
 - **Collection:** search/filter all eighteen records. Dawn, NEAR, Pioneer 10/11 and Kepler are explicitly **beyond** the Moon and Mars, not surface markers.
-- **Legacy:** Moon/Mars comparison, future lessons and a reflection question with explanatory feedback.
+- **Responsibility:** distinguish preservation, contamination and return risks; create a local discussion brief without claiming a deployed cleanup mission. The legacy archive and reflection remain available.
 - **Transparency:** source register, asset credits, AI-assistance disclosure and local history reset.
 
-Optional narration uses the browser/device speech service and the visible transcript. The site does **not** include ElevenLabs audio or an invented astronaut mascot. See [implementation notes](docs/IMPLEMENTATION.md) for those boundaries.
+Gesture-gated narration uses the browser/device speech service and visible text, not ElevenLabs. The small alien guide is fictional UI, not a NASA character or an astronaut quotation. See the [current tour design and verification notes](docs/TOUR-REDESIGN.md); older [implementation notes](docs/IMPLEMENTATION.md) describe the original archive.
 
 ## NASA resources actually used
 
@@ -59,15 +59,18 @@ The [official challenge resource list](https://www.spaceappschallenge.org/2026/c
 - [NASA Science](https://science.nasa.gov/): mission facts and published images. NASA-published artist concepts are distinguished from photographs.
 - [NASA Trek](https://trek.nasa.gov/): direct Moon/Mars links for authoritative geographic exploration; not embedded or presented as our own mapping data.
 
-Every bundled NASA file has its original download URL, source record, retrieval date, byte count and SHA-256 in [`src/assets.json`](src/assets.json). `npm run assets:restore` restores missing/changed files only after verifying the pinned original. It refuses silently changed upstream content.
+Bundled NASA resources record original download URLs, source records, retrieval dates, byte counts and SHA-256 values in [`src/assets.json`](src/assets.json) and [`src/photography.json`](src/photography.json). The latter includes thirty-one added photographs and the Sun map; concepts and reference configurations remain labeled. `npm run assets:restore` restores missing/changed files only after verifying the pinned original. It refuses silently changed upstream content.
 
 ## Structure
 
 - `src/data.ts` — typed mission records, source-to-claim descriptions and tour order
-- `src/App.tsx` — hash routes, readable transcripts, tour controls and collection
-- `src/Scene.tsx` — demand-rendered Three.js globe / original STL terrain, no auto-rotation
+- `src/CinematicApp.tsx`, `src/FlightScene.tsx` — opening, planetary flights and global preferences
+- `src/TourPanel.tsx`, `src/tour.css` — compact discovery card, tour transport and minimap
+- `src/atlas.ts`, `src/CoordinateAtlas.tsx` — sourced coordinates and accessible location selection
+- `src/MissionDialog.tsx`, `src/Photography.tsx` — hardware details, honest imagery and evidence
+- `src/App.tsx`, `src/Scene.tsx` — preserved archive routes and legacy globe/terrain explorer
 - `src/Model.tsx` — on-demand Google model-viewer, image fallback and credits
-- `public/assets/` — official NASA originals plus self-hosted fonts
+- `public/assets/`, `public/photography/`, `public/fonts/` — self-hosted NASA resources and fonts
 - `public/draco/` — local decoder, so compressed NASA models need no Google CDN
 - `tests/` — data/integrity and real-browser checks
 - `vercel.json` — static deployment and restrictive security headers
@@ -82,7 +85,7 @@ To deploy your own copy, import this GitHub repository into Vercel. Framework **
 
 This is an educational archive, not live spacecraft monitoring or a navigation tool. Approximate/final-site/landing-site distinctions appear beside the map. Terrain is a NASA printing-model reference with its original relief, not a walkable, georeferenced reconstruction. No life detection, fabricated transmissions, equipment prices or current-health claims are invented.
 
-Transcripts, text evidence and mission lists remain available without WebGL. Keyboard globe controls: arrows, +/− and Home; named zoom/reset buttons are also provided. Browser speech availability varies; transcripts are always the primary content. Reduced-motion settings are respected. No analytics, tracking cookies, login, or backend. Visited record IDs stay in localStorage on this device and can be cleared in About. Hosting providers and an optional OS speech service have their own policies.
+Transcripts, text evidence and mission lists remain available without WebGL. The planetary canvas supports +/− zoom and Home reset; named mission lists duplicate marker selection. The preserved archive explorer also provides zoom/reset buttons. Browser speech availability varies; transcripts are always the primary content. Reduced-motion settings are respected. No analytics, tracking cookies, login, or backend. Visited record IDs stay in localStorage on this device and can be cleared in About. Hosting providers and an optional OS speech service have their own policies.
 
 See [credits](docs/CREDITS.md), [source methodology](docs/SOURCING.md), [demo/submission notes](docs/DEMO.md), and [implementation boundaries](docs/IMPLEMENTATION.md).
 
