@@ -19,7 +19,7 @@ The Notion “NASA space implementation” hub and its Artemis II implementation
 - [x] Reduced motion disables automatic touring and moving cameras by default. No-WebGL keeps images, details, locations and tour navigation.
 - [x] Removed the per-model “Pause rotation” button at the user’s request. Global motion preference still controls model rotation; dragging still works.
 - [x] Keep authentic media, historical/configuration caveats and concept/reference labels. Models are references, not a survey of present conditions.
-- [x] Responsive screenshots checked at 390, 768 and 1440 pixels on both worlds; no clipped transport, atlas trigger or horizontal overflow. Final release browser gate is enforced before merging.
+- [x] Responsive screenshots checked at 390, 768 and 1440 pixels on both worlds; no clipped transport, atlas trigger or horizontal overflow. Additional 1280×720 and 1024×700 checks verify the locations button is not covered by the story card. Final release browser gate is enforced before merging.
 
 ## Native visual verification
 
@@ -39,6 +39,6 @@ The planetary view is a textured globe with sourced pins, not photogrammetric su
 
 Release gates: `npm run check` (22 unit checks, strict TypeScript and Vite), `npm run assets:verify` (49 registered originals), `npm run test:e2e` (20 explorer checks), and `npm run test:prep` (8 practice checks). Photograph integrity is included in the unit suite. GitHub Actions runs these gates for the published commit; use its revision-specific result as the final automated receipt.
 
-A focused browser probe verified 18-second automatic advance, pause, immediate next/previous and no-WebGL arrival. Its fake clock is installed before navigation, so application intervals are controlled rather than left on the real clock. The full suite retains its existing assertions while updating selectors for the redesigned controls and testing absence of the removed rotation button.
+A focused browser probe verified 18-second automatic advance, pause, immediate next/previous and no-WebGL arrival. Timer fixtures use isolated browser contexts because Playwright clock control is context-wide. They exercise the supported no-WebGL path to avoid rendering every simulated GPU frame; the other explorer checks retain real rendering. Fake clocks are installed before navigation, then explicitly paused after application readiness or dialog setup. Exact simulated durations test opening advance, pause/resume and the equipment tour without letting real setup time race those assertions. The full suite retains its existing assertions while updating selectors for the redesigned controls and testing absence of the removed rotation button.
 
-Native review and the six responsive screenshots are local visual evidence, not independent user research or an external-agent review.
+Native review, the six main responsive screenshots and four additional short-desktop captures are local visual evidence, not independent user research or an external-agent review.

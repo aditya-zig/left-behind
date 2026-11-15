@@ -64,7 +64,7 @@
 .stage-opening .guide-speech{font-size:17px}
 .stage-opening .guide-story-title{font-size:21px}
 .stage-opening .ufo-button{width:180px;height:140px}
-@media(min-width:901px) and (max-height:820px){.tour-active .planet-heading{top:88px}.tour-eyebrow{margin-top:8px}.tour-active .planet-heading h1{font-size:80px;margin-bottom:12px}.tour-story{bottom:95px}.tour-visual{height:125px;margin:4px -8px 8px}.tour-visual .nasa-photograph img{height:125px}.tour-story h2{font-size:24px}}
+@media(min-width:901px) and (max-height:820px){.tour-active .planet-heading{top:88px}.tour-active .back-to-space{min-height:28px;font-size:12px}.tour-eyebrow{display:none}.tour-active .planet-heading h1{font-size:65px;margin-bottom:8px}.tour-active .planet-switch{display:inline-flex;vertical-align:middle}.tour-active .coordinate-trigger{display:inline-flex;vertical-align:middle;margin-left:8px}.tour-story{bottom:95px}.tour-visual{height:125px;margin:4px -8px 8px}.tour-visual .nasa-photograph img{height:125px}.tour-story h2{font-size:24px}}
 @media(max-width:900px){
  .tour-active .cosmic-stage{height:100svh;min-height:680px}
  .tour-active .planet-heading{top:76px;left:24px;max-width:260px}
