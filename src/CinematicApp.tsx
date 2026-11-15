@@ -3,7 +3,9 @@ import ArchiveApp from './App';
 import Model,{assetFor} from './Model';
 import OrbitGuide from './OrbitGuide';
 import {findArtifact,worldArtifacts,type Artifact} from './data';
-import {opening,routeMission,storyLines} from './cinematic';
+import {opening,routeMission} from './cinematic';
+import {journeyRecording,recordedStory} from './mascotVoice';
+import {useRecordedVoice} from './useRecordedVoice';
 import type {FlightMode,World} from './FlightScene';
 import './cinematic.css';
 const FlightScene=lazy(()=>import('./FlightScene'));
@@ -14,11 +16,6 @@ const introCopy={
   choose:{title:'Where shall we go?',text:'I’m Orbit, your fictional guide. Pick the Moon or Mars. I’ll fly with you, then we’ll discover the stories behind the hardware.',label:'Choose your destination'},
 };
 function useMotionPreference(){const [reduced,set]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);useEffect(()=>{const q=matchMedia('(prefers-reduced-motion: reduce)'),fn=()=>set(q.matches);q.addEventListener('change',fn);return()=>q.removeEventListener('change',fn);},[]);return reduced;}
-function useVoice(text:string,enabled:boolean,onEnd?:()=>void){
-  const supported=typeof speechSynthesis!=='undefined',end=useRef(onEnd);end.current=onEnd;
-  useEffect(()=>{if(!supported||!enabled)return;let active=true;speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.rate=.92;utterance.lang='en-US';utterance.onend=()=>{if(active)end.current?.();};speechSynthesis.speak(utterance);return()=>{active=false;speechSynthesis.cancel();};},[text,enabled,supported]);
-  return supported;
-}
 function DeferredModel({item,motion}:{item:Artifact;motion:boolean}){
   const ref=useRef<HTMLDivElement>(null),[visible,set]=useState(false);
   useEffect(()=>{if(!ref.current)return;const observer=new IntersectionObserver(entries=>set(entries[0].isIntersecting),{rootMargin:'100px'});observer.observe(ref.current);return()=>observer.disconnect();},[]);
@@ -46,10 +43,12 @@ function CinematicExperience({route}:{route:string}){
   const leaveTimer=useRef<ReturnType<typeof setTimeout>|null>(null),sceneRef=useRef<HTMLElement>(null),lastFocus=useRef<HTMLElement|null>(null);
   const isWorld=mode==='moon'||mode==='mars';
   const items=useMemo(()=>worldArtifacts(mode==='mars'?'mars':'moon'),[mode]);
-  const lines=useMemo(()=>storyLines(selected.story),[selected.story]);
+  const recordings=useMemo(()=>recordedStory(selected),[selected]);
+  const lines=recordings.map(recording=>recording.text);
   const intro=isWorld?null:introCopy[mode as keyof typeof introCopy];
-  const speech=travelling?`Hold tight. We’re travelling to the ${mode==='moon'?'Moon':'planet Mars'}. Our camera journey is cinematic, not a real trajectory.`:isWorld?lines[line]??lines[0]:intro?.text??'';
-  const voiceSupported=useVoice(speech,voice&&!guideMinimized&&!detail,()=>{if(!isWorld&&introPlaying&&motion&&mode!=='choose'){const index=opening.indexOf(mode);setMode(opening[Math.min(index+1,3)]);}else if(tour&&!travelling){if(line<lines.length-1)setLine(n=>n+1);else nextStop();}});
+  const recording=travelling?journeyRecording(mode,true):isWorld?(recordings[line]??recordings[0]):journeyRecording(mode);
+  const speech=recording.text;
+  const audioError=useRecordedVoice(recording,voice&&!guideMinimized&&!detail,()=>{if(!isWorld&&introPlaying&&motion&&mode!=='choose'){const index=opening.indexOf(mode);setMode(opening[Math.min(index+1,3)]);}else if(tour&&!travelling){if(line<lines.length-1)setLine(n=>n+1);else nextStop();}});
   useEffect(()=>{const next=routeMission(route);if(next){setSelected(next.item);setMode(next.world);setLine(0);}else if(route==='#/intro'){setMode(reduced?'choose':'galaxy');setIntroPlaying(!reduced);}},[route,reduced]);
   useEffect(()=>{if(reduced){setMotion(false);setIntroPlaying(false);}},[reduced]);
   useEffect(()=>{setLine(0);setHovered(null);},[selected.id]);
@@ -96,7 +95,8 @@ function CinematicExperience({route}:{route:string}){
         </>}
         <div className="space-caption">{mode==='galaxy'?<a href="https://science.nasa.gov/photojournal/our-milky-way-gets-a-makeover-artist-concept/" target="_blank" rel="noreferrer">Milky Way artist concept · NASA/JPL-Caltech/R. Hurt ↗</a>:<><a href="#/sources">NASA imagery & reference models ↗</a><span>Cinematic journey · not to scale{isWorld?' · approximate landing areas':''}</span></>}</div>
         {!isWorld&&<div className="opening-timeline" aria-label="Opening chapters">{opening.map((step,i)=><button key={step} aria-label={`Go to ${introCopy[step].label}`} aria-current={mode===step?'step':undefined} onClick={()=>{setMode(step);setIntroPlaying(false);}}><span/><small>{['Milky Way','Solar System','Earth','Explore'][i]}</small></button>)}</div>}
-        <OrbitGuide text={speech} title={travelling?'A new world ahead':isWorld?selected.name:'Let’s go exploring.'} voice={voice} voiceSupported={voiceSupported} motion={motion} minimized={guideMinimized} onToggleVoice={()=>setVoice(v=>!v)} onMinimize={()=>setGuideMinimized(v=>!v)} onNext={isWorld&&!travelling?()=>setLine(n=>(n+1)%lines.length):undefined} onDetails={isWorld&&!travelling?()=>openDetail(selected):undefined} travelling={travelling}/>
+        <OrbitGuide text={speech} title={travelling?'A new world ahead':isWorld?selected.name:'Let’s go exploring.'} voice={voice} voiceSupported={true} motion={motion} minimized={guideMinimized} onToggleVoice={()=>setVoice(v=>!v)} onMinimize={()=>setGuideMinimized(v=>!v)} onNext={isWorld&&!travelling?()=>setLine(n=>(n+1)%lines.length):undefined} onDetails={isWorld&&!travelling?()=>openDetail(selected):undefined} travelling={travelling}/>
+        {audioError&&<p role="alert" className="glass" style={{position:'absolute',bottom:16,left:16,zIndex:30,padding:12,maxWidth:340}}>{audioError}</p>}
         {hovered&&!detail&&!travelling&&<div className="hotspot-preview glass" style={{left:Math.max(12,Math.min(hovered.anchor.x-140,window.innerWidth-292)),top:Math.max(96,Math.min(hovered.anchor.y-330,window.innerHeight-440))}} onMouseEnter={keepPreview} onMouseLeave={onLeave} onKeyDown={event=>{if(event.key==='Escape')setHovered(null);}}><button className="close-preview" aria-label="Close preview" onClick={()=>setHovered(null)}>×</button><Model key={hovered.item.id} artifact={hovered.item} autoRotate={motion}/><div className="preview-copy"><span>{hovered.item.mission} · NASA reference</span><strong>{hovered.item.name}</strong><button onClick={()=>{select(hovered.item);openDetail(hovered.item);}}>Discover the story ↗</button></div></div>}
       </section>
       {!isWorld&&<>
