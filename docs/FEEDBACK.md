@@ -2,6 +2,12 @@
 
 Branch: `feedback`, based on `8acec2d` (`Globe version`). This work does not authorize a push or replace the published Globe version. The film and supplied Blip experiments remain in history; this branch renders the interactive globe opening and original SVG Orbit, with **no video**.
 
+## 15 November, 11.07am follow-up — automatic opening
+
+The operator's journey screenshot clarified that the opening should start by itself. On a normal fresh visit it now advances Milky Way → Solar System → Earth → destination choices without a Play click; it stops at the choices. Pause/Play still works, Play restarts a completed journey, Home replays when motion is enabled, and selecting a chapter pauses automatic progression. Reduced motion still skips directly to the destination choices, and a manually paused experience is not silently restarted. Moon/Mars remain available immediately throughout. Visual autoplay does not bypass the browser's interaction requirement for audio.
+
+Verification `b49d82861` passed: **20 unit + 19 explorer groups + 8 coach checks = 47**, strict production build, 49 original NASA assets and all photographic checksums. The new regression observes uninterrupted progression without interaction, no unsolicited speech, stopping at destinations, completion/replay, Pause/Play and Home; reduced-motion and exact-narration regressions also pass. No normal application errors, failed resources or external runtime requests. No layout, media assets, dependencies or production deployment are changed by this follow-up.
+
 ## 15 November, 9.46am checkpoint — image-first exploration
 
 Local-only follow-up, requested commit message `new-work-15th-9.46am`. Main and the public Globe version are not changed.
